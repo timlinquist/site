@@ -4,6 +4,8 @@ class Video < ActiveRecord::Base
 
   belongs_to :event
 
+  has_many :assets
+
   validates_presence_of :title
   validates_presence_of :recorded_at
 
@@ -13,6 +15,10 @@ class Video < ActiveRecord::Base
 
   accepts_nested_attributes_for :presentations,
     :reject_if => lambda { |a| a[:presenter_id].blank? },
+    :allow_destroy => true
+
+  accepts_nested_attributes_for :assets,
+    :reject_if => lambda { |a| a[:asset_type_id].blank? },
     :allow_destroy => true
 
   cattr_reader :per_page

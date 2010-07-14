@@ -15,6 +15,7 @@ class Admin::VideosController < ApplicationController
 
     @video = Video.find(params[:id])
     @presenters = Presenter.find(:all, :order => 'last_name, first_name')
+    @asset_types = AssetType.find(:all, :order => 'description')
   end
 
   def new
@@ -23,7 +24,9 @@ class Admin::VideosController < ApplicationController
                          :order => "start_at desc")
     @video = Video.new
     @video.presentations.build
+    @video.assets.build
     @presenters = Presenter.find(:all, :order => 'last_name, first_name')
+    @asset_types = AssetType.find(:all, :order => 'description')
 
     @event = Event.find(params[:event_id])
 

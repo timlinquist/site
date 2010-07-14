@@ -1,5 +1,9 @@
 Confreaks Version 2a of the web-site
 
-make things dynamic
+Make things dynamic
 
-attempting to use isolate for gem management - but confused
+Uses capistrano to deploy
+
+     Deployment      -> Capistrano
+     Gem Management  -> Isolate
+

@@ -9,7 +9,27 @@
 #
 # It's strongly recommended to check this file into your version control system.
 
-ActiveRecord::Schema.define(:version => 20100612205520) do
+ActiveRecord::Schema.define(:version => 20100714031628) do
+
+  create_table "asset_types", :force => true do |t|
+    t.string   "description"
+    t.boolean  "streaming"
+    t.datetime "created_at"
+    t.datetime "updated_at"
+  end
+
+  create_table "assets", :force => true do |t|
+    t.integer  "video_id"
+    t.integer  "asset_type_id"
+    t.string   "data_file_name"
+    t.string   "data_content_type"
+    t.integer  "data_file_size"
+    t.datetime "data_updated_at"
+    t.integer  "width"
+    t.integer  "height"
+    t.datetime "created_at"
+    t.datetime "updated_at"
+  end
 
   create_table "conferences", :force => true do |t|
     t.string   "name"

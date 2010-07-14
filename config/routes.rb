@@ -8,11 +8,13 @@ ActionController::Routing::Routes.draw do |map|
 
   map.root :controller => "main", :action => "home_page"
 
-
   map.resource  :session, :member => { :reset => [:get, :post] }
 
   map.resources :events
-  map.resources :videos
+  map.resources :videos do | video |
+    video.resources :assets
+  end
+
   map.resources :presenters
   map.resources :users
   map.resources :conferences
