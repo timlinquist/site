@@ -1,0 +1,35 @@
+.module
+  =render :partial => 'shared/corners'
+  .module-inner
+    %h1 Administration
+=render :partial => 'admin/navigation'
+.module
+  =render :partial => 'shared/corners'
+  .module-inner
+    %h2 Videos
+
+.module
+  =render :partial => 'shared/corners'
+  .module-inner
+  =link_to 'Add Video', new_admin_video_path
+  %table.admin
+    %tr
+      %th
+        ID
+      %th
+        Event
+      %th
+        Title
+      %th
+        Recorded At
+      %th
+        Presenters
+      %th
+        Format
+      %th
+        Available
+      %th
+        Actions
+    =render :partial => 'video', :collection => @videos
+  #pagination
+    =will_paginate @videos, :params => {:controller => 'admin/videos', :action => 'index', :page_size => 10}, :class => 'not_ajax'

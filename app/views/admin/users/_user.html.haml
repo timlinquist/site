@@ -1,0 +1,15 @@
+%tr
+  %td
+    =user.id
+  %td
+    ="#{user.first_name} #{user.last_name} (#{user.username})"
+  %td
+    =user.email
+  %td
+    =user.time_zone
+  %td
+    =user.admin ? 'Yes' : 'No'
+  %td
+    =link_to 'Edit', edit_admin_user_path(user)
+    |
+    =link_to 'Delete', admin_user_path(user), :method => 'delete'

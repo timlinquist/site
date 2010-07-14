@@ -1,0 +1,14 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html>
+  <head>
+    <meta content="text/html; charset=UTF-8" http-equiv="Content-Type" />
+  </head>
+  <body>
+    <h1>Welcome to larubyconf.com, <%=h @user.username %></h1>
+    <p>
+      You have successfully signed up at larubyconf.com, and your username is: <%= @user.username %>.<br/>
+      To login to the site, just follow this link: <%=h @url %>.
+    </p>
+    <p>Thanks for joining and we hope to see you on February 19th or 20th, 2010 in Burbank, CA!</p>
+  </body>
+</html>

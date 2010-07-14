@@ -1,0 +1,25 @@
+.module
+  =render :partial => 'shared/corners'
+  .module-inner
+    %h1 Administration
+=render :partial => 'admin/navigation'
+.module
+  =render :partial => 'shared/corners'
+  .module-inner
+    %h2 Conferences
+
+.module
+  =render :partial => 'shared/corners'
+  .module-inner
+  =link_to 'Add Conference', new_admin_conference_path
+  %table.admin
+    %tr
+      %th
+        ID
+      %th
+        Name
+      %th
+        Actions
+    =render :partial => 'conference', :collection => @conferences
+  #pagination
+    =will_paginate @conferences, :params => {:controller => 'admin/conferences', :action => 'index'}, :class => 'not_ajax'

@@ -1,0 +1,19 @@
+%tr
+  %td
+    =video.id
+  %td
+    =link_to video.event.display_name, event_path(video.event)
+  %td
+    =video.title
+  %td{:nowrap => true}
+    =video.recorded_at.strftime("%m-%d-%Y %H:%M") unless video.recorded_at.nil?
+  %td
+    =display_presenters_with_links video
+  %td.nowrap
+    ="#{video.display_format} (#{video.width}x#{video.height})"
+  %td
+    =video.available
+  %td{:nowrap => true}
+    =link_to 'Edit', edit_admin_video_path(video)
+    |
+    =link_to 'Delete', admin_video_path(video), :method => 'delete'

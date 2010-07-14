@@ -1,0 +1,54 @@
+.center
+  =image_tag(@event.logo.url(:original))
+
+-form_for [:admin, @event], :html => { :multipart => true } do |f|
+  .form-field
+    =f.label :name_prefix, "Prefix"
+    =f.text_field :name_prefix
+
+  .form-field.required
+    =f.label :conference_id, "Conference"
+    =f.collection_select :conference_id, @conferences, :id, :name
+
+  .form-field
+    =f.label :name_suffix, "Suffix"
+    =f.text_field :name_suffix
+
+  .form-field
+    =f.label :short_code, "Short Code"
+    =f.text_field :short_code
+
+  .form-field
+    =f.label :start_at, "Start"
+    =calendar_date_select_tag "[event]start_at", (@event.start_at unless @event.nil?), :time => false
+
+  .form-field
+    =f.label :end_at, "End"
+    =calendar_date_select_tag "[event]end_at", (@event.end_at unless @event.nil?), :time => false
+
+  .form-field
+    =f.label :slug_date_format, "Date Format"
+    =f.text_field :slug_date_format
+
+  .form-field
+    =f.label :slug_format_data, "Slug Data"
+    =f.text_field :slug_format_data
+
+  .form-field
+    =f.label :joiner, "Joined by"
+    =f.text_field :joiner, :size => 3
+
+  .form-field
+    =f.label :image_extension, "Preview/Thumb Extension"
+    =f.text_field :image_extension, :size => 5
+
+  .form-field
+    =f.label :video_extension, "Video Extension"
+    =f.text_field :video_extension, :size => 5
+
+  .form-field
+    =f.label :logo, "Logo"
+    =f.file_field :logo
+
+  %span.submit
+    =f.submit "Save", :class => "button"

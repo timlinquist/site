@@ -1,0 +1,32 @@
+.center
+  %h2
+    =@presenter.display_name
+  %br
+    =link_to "All Presenters", presenters_path
+  %table{:width => '100%'}
+    %tr
+      %th
+        Conference
+      %th
+        Time
+      %th{:colspan => 2}
+        Presentation
+    -@presenter.videos.each do |v|
+      %tr
+        %td
+          =link_to v.event.display_name, event_path(v.event)
+        %td
+          =v.recorded_at.strftime("%d-%b-%y %H:%M")
+        %td
+          -if v.available
+            =link_to image_tag(v.thumbnail, :width => 142), video_path(v), :class => "noborder"
+        %td
+          %em
+            -if v.available
+              =link_to v.title, video_path(v)
+            -else
+              =v.title
+        -if session.user && session.user.admin?
+          %td
+            =link_to 'E', edit_admin_video_path(v)
+

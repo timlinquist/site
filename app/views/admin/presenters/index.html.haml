@@ -1,0 +1,27 @@
+.module
+  =render :partial => 'shared/corners'
+  .module-inner
+    %h1 Administration
+=render :partial => 'admin/navigation'
+.module
+  =render :partial => 'shared/corners'
+  .module-inner
+    %h2 Presenters
+
+.module
+  =render :partial => 'shared/corners'
+  .module-inner
+  =link_to 'Add Presenter', new_admin_presenter_path
+  %table.admin
+    %tr
+      %th
+        ID
+      %th
+        Name
+      %th
+        Videos
+      %th
+        Actions
+      =render :partial => 'presenter', :collection => @presenters
+  #pagination
+    =will_paginate @presenters, :params => {:controller => 'admin/presenters', :action => 'index', :page_size => 10}, :class => 'not_ajax'

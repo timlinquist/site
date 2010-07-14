@@ -1,0 +1,49 @@
+class Event < ActiveRecord::Base
+
+  belongs_to :conference
+  has_many :videos, :order => 'recorded_at asc'
+
+  has_event_calendar
+
+  has_attached_file :logo,
+    :path => ":rails_root/public/system/:class/:attachment/:id/:style/:basename.:extension",
+    :url => "/system/:class/:attachment/:id/:style/:basename.:extension",
+    :styles => {
+      :default_url => '/events/:style/missing.png'}
+
+  cattr_reader :per_page
+
+  @@per_page = 10
+
+  def display_name
+    "#{name_prefix} #{conference.name} #{name_suffix}".strip! unless conference.nil?
+  end
+
+  def logo_file
+    unless logo.nil?
+      File.join('events',short_code, logo)
+    else
+      ""
+    end
+  end
+
+  def slug_format
+    parts = slug_format_data.split(",")
+  end
+
+  def date_occurred
+    unless start_at.nil?
+      unless start_at == end_at
+        "#{start_at.strftime("%b %d")} - #{end_at.strftime("%d, %Y")}"
+      else
+        "#{start_at.strftime("%b %d, %Y")}"
+      end
+    else
+      if end_at.nil?
+        ""
+      else
+        "#{end_at.strftime("%b %d, %Y")}"
+      end
+    end
+  end
+end

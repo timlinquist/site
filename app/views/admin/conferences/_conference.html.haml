@@ -1,0 +1,9 @@
+%tr
+  %td
+    =conference.id
+  %td
+    =link_to conference.name, conference_path(conference)
+  %td
+    =link_to 'Edit', edit_admin_conference_path(conference)
+    |
+    =link_to 'Delete', admin_conference_path(conference), :method => 'delete'

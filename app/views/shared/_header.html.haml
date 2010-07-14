@@ -1,0 +1,24 @@
+#header
+  #logo
+    %h1
+      =link_to "Confreaks","/", :class => "noborder"
+  #tagline
+    %em
+      Expert recording and networking services for conferences,
+      seminars, and workshops.
+  #navigation
+    %ul
+      %li.first=link_to_unless_current 'Home', root_path
+      %li=link_to_unless_current "Events", events_path
+      %li=link_to_unless_current "Presenters", presenters_path
+      -unless session.authenticated?
+        %li=link_to_unless_current 'Login', new_session_path
+        %li=link_to_unless_current 'Sign Up', new_user_path
+      -else
+        %li
+          Welcome 
+          =link_to_unless_current session.user.username, user_path(session.user)
+        %li
+          =link_to 'Logout', session_path, :method => :delete
+        -if session.user.admin?
+          %li=link_to_unless_current 'Administration', admin_path

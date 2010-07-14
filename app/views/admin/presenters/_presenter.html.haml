@@ -1,0 +1,11 @@
+%tr
+  %td
+    =presenter.id
+  %td
+    =link_to presenter.display_name, presenter_path(presenter)
+  %td
+    =presenter.videos.count
+  %td
+    =link_to 'Edit', edit_admin_presenter_path(presenter)
+    |
+    =link_to 'Delete', admin_presenter_path(presenter), :method => 'delete'

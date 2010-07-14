@@ -1,0 +1,11 @@
+-form_for [:admin, @presenter] do |f|
+  =error_messages_for(:object => @presenter, :message => "You must fix these fields before proceeding", :header_message => nil)
+  .form-field.required
+    =f.label :first_name, "First Name"
+    =f.text_field :first_name
+  .form-field.required
+    =f.label :last_name, "Last Name"
+    =f.text_field :last_name
+
+  .form-field
+    =f.submit "Save", :class => "button"

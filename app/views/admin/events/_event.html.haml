@@ -1,0 +1,13 @@
+%tr
+  %td
+    =event.id
+  %td
+    =link_to event.display_name, admin_event_path(event)
+  %td
+    =event.short_code
+  %td
+    =event.date_occurred
+  %td
+    =link_to 'Edit', edit_admin_event_path(event)
+    |
+    =link_to 'Delete', admin_event_path(event), :method => 'Delete'

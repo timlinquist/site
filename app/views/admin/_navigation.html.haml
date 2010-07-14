@@ -1,0 +1,13 @@
+.meta-nav
+  #navigation
+    %ul
+      %li.first
+        =link_to_unless_current 'Users', admin_users_path
+      %li
+        =link_to_unless_current 'Conferences', admin_conferences_path
+      %li
+        =link_to_unless_current 'Events', admin_events_path
+      %li
+        =link_to_unless_current 'Presenters', admin_presenters_path
+      %li
+        =link_to_unless_current 'Videos', admin_videos_path

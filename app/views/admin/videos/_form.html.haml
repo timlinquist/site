@@ -1,0 +1,50 @@
+-form_for [:admin, @video] do |f|
+  =error_messages_for(:object => @video, :message => "You must fix these fields before proceeding", :header_message => nil)
+  .form-field.required
+    =f.label :title, "Title"
+    =f.text_field :title, :size => 60
+
+  .form-field
+    =f.label :event, "Event"
+    -unless @event
+      =f.collection_select :event_id, @events, :id, :display_name
+    -else
+      =f.hidden_field :event_id, :value => @event.id
+      =@event.display_name
+
+    #hint
+      Fields used for slug:
+      =@video.event.slug_format_data unless @video.event.nil?
+
+  .form-field
+    =f.label :recorded_at, "Recorded at"
+    =calendar_date_select_tag "[video]recorded_at", (@video.recorded_at unless @video.nil?), :time => true
+
+  .form-field
+    =f.label :available, "Available"
+    =f.check_box :available
+
+  .form-field
+    =f.label :display_format, "Format"
+    =f.text_field :display_format, :size => 10
+
+  .form-field
+    =f.label :prefix, "Prefix"
+    =f.text_field :prefix, :size => 15
+
+  .form-field
+    =f.label :override, "Override"
+    =f.text_field :override, :size => 25
+
+  -f.fields_for :presentations do |builder|
+    =render 'presentation_fields', :f => builder
+
+    =link_to_add_fields "Add an existing presenter", f, :presentations
+    |
+    =link_to_add_fields "Add a new presenter", f, :presentations
+    
+  -if @event
+    =hidden_field_tag "from", "Events"
+
+  .form-field
+    =f.submit "Save Changes", :class => "button"

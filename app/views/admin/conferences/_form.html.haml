@@ -1,0 +1,7 @@
+-form_for [:admin, @conference] do |f|
+  .form-field.required
+    =f.label :name, "Name"
+    =f.text_field :name
+
+  %span.submit
+    =f.submit "Save", :class => "button"

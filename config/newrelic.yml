@@ -1,0 +1,45 @@
+common: &default_settings
+  license_key: '6aedc2bf7fa68fc580525e129b55de49ec81ce1f' # Personal Key
+  # license_key: 'ea00ad00f5b45f846925bad996cc1d48e6837f1d'  # ATTI Key
+  agent_enabled: auto
+  monitor_mode: true
+  developer_mode: false
+  log_level: info
+  ssl: true
+  apdex_t: 0.35
+  capture_params: true
+
+  transaction_tracer:
+    enabled: true
+    transaction_threshold: apdex_f
+    record_sql: obfuscated
+    stack_trace_threshold: 0.500
+
+  error_collector:
+    enabled: true
+    capture_source: true
+    ignore_errors: ActionController::RoutingError, BadRequestError
+
+  # disable_samplers: true
+  # disable_view_instrumentation: true
+  # disable_activerecord_instrumentation: true
+  # disable_memcache_instrumentation: true
+  # disable_dj: true
+
+  # Certain types of instrumentation such as GC stats will not work if
+  # you are running multi-threaded.  Please let us know.
+  # multi_threaded = false
+
+development:
+  <<: *default_settings
+  developer_mode: true
+  monitor_mode: false
+  app_name: confreaks.net (development)
+
+integration:
+  <<: *default_settings
+  app_name: confreaks.net (integration)
+
+production:
+  <<: *default_settings
+  app_name: confreaks.net (production)

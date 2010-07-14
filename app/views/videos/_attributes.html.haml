@@ -1,0 +1,17 @@
+-if session.user && session.user.admin?
+  %table
+    %tr
+      %th
+        Attribute
+      %th
+        Value
+      %th
+        =link_to 'Edit', edit_admin_video_path(video)
+    -video.attributes.each do |a|
+      %tr
+        %td
+          =a[0]
+        %td
+          =a[1].nil? ? 'nil':a[1]
+        %td
+          &nbsp;

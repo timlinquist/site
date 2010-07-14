@@ -1,0 +1,28 @@
+<div class="center">
+  <h3>
+    <%=link_to @video.event.display_name, event_path(@video.event)%>
+  </h3>
+</div>
+<script type="text/javascript" src="/javascripts/swfobject.js">
+</script>
+<p id="flash-player" class="center">
+  <a href="http://www.adobe.com/shockwave/download/download.cgi?P1_Prod_Version=ShockwaveFlash">Get the Flash Player</a> to see this player.
+</p>
+<script type='text/javascript'>
+  width = <%= @video.width %>
+  height =<%= @video.height + 20%> 
+  var s1 = new SWFObject('/media/player.swf', 'mpl', width, height, '9')
+  s1.addParam('allowfullscreen', 'true')
+  s1.addParam('allowscriptaccess', 'always')
+  s1.addParam('allownetworking', 'all')
+  s1.addVariable('file', "<%="#{@video.uri(:small)}"%>")
+  s1.addVariable('image', "<%="#{@video.preview}"%>")
+  s1.addVariable('plugins', 'viral-2')
+  s1.addVariable('viral.allowmenu','true')
+  s1.write('flash-player')
+</script>
+
+<div class="center">
+  <h2><%= @video.title %></h2>
+  <span class="caption"><%= @video.display_presenters %></span>
+</div>

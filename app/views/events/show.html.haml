@@ -1,0 +1,46 @@
+.center
+  #conflogo
+    =link_to image_tag(@event.logo.url(:original), :alt => @event.display_name, :title => @event.display_name), @event.url, :class => "noborder"
+  %p.right
+    =link_to 'All Events', events_path
+    -if @event.conference.events.count > 1
+      %br
+      =link_to 'Other Conference Events', @event.conference
+    %br
+    Video Podcast:
+    =link_to 'RSS', "http://feeds.feedburner.com/#{@event.short_code}-large-confreaks"
+    =link_to 'Miro', "http://subscribe.getMiro.com/?url1=http%3A%2F%2Ffeeds.feedburner.com%2F<%=@event.short_code%>-large-confreaks", :title => 'Miro: Internet TV'
+    =link_to 'iPod', "http://feeds.feedburner.com/#{@event.short_code}-ipod-confreaks"
+  %h2
+    Conference Schedule
+  -if session.user && session.user.admin?
+    =link_to 'Add Video', new_admin_event_video_path(@event)
+  %table{:width=>"100%"}
+    %tr
+      %th
+        Time
+      %th{:colspan=>2}
+        Presentations
+      -if session.user && session.user.admin?
+        %th
+          &nbsp;
+    -@event.videos.each do |video|
+      %tr
+        %td.nowrap
+          =video.recorded_at.strftime('%d-%b-%y %H:%M')
+        %td{:style => "text-align: center"}
+          -if video.available
+            =link_to image_tag(video.thumbnail, :width => 142), video_path(video), :class => "noborder"
+          -else
+            ="... coming soon ..."
+        %td
+          %em
+            -if video.available
+              =link_to video.title, video_path(video)
+            -else
+              =video.title
+            %br
+            =display_presenters_with_links video  
+        -if session.user && session.user.admin?
+          %td
+            =link_to 'E', edit_admin_video_path(video)

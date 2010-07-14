@@ -1,0 +1,23 @@
+#home.module.login
+  =render :partial => 'shared/corners'
+  #sign-in.module-inner
+    %h1 Login
+    -form_for :login, :url => session_path do |f|
+      .form-field.required
+        %label{:for => 'login_username'} User Name
+        =f.text_field :username
+      .form-field.required
+        %label{:for => 'login_password'} Password
+        =f.password_field :password
+
+      %span.submit
+        =submit_tag "Enter", :class => "button"
+    %ul
+      %li
+        =link_to 'Forgot Password?', reset_session_path
+      %li
+        =link_to "Don't have an account, Sign Up", new_user_path
+  :javascript
+    $(document).observe("dom:loaded", function () {
+      $("login_email").select()
+    })

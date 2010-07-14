@@ -1,0 +1,31 @@
+.module
+  =render :partial => 'shared/corners'
+  .module-inner
+    %h1 Administration
+=render :partial => 'admin/navigation'
+.module
+  =render :partial => 'shared/corners'
+  .module-inner
+    %h2 Users
+
+.module
+  =render :partial => 'shared/corners'
+  .module-inner
+    =link_to 'Add User', new_admin_user_path
+    %table.admin
+      %tr
+        %th
+          ID
+        %th
+          Name
+        %th
+          Email
+        %th
+          Time Zone
+        %th
+          Admin
+        %th
+          Actions
+      =render :partial => 'user', :collection => @users
+    #pagination
+      =will_paginate @users, :params => {:controller => 'admin/users', :action => 'index'}, :class => 'not_ajax'
