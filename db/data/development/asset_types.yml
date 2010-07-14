@@ -1,0 +1,49 @@
+--- 
+asset_types_4: 
+  created_at: 2010-07-14 04:02:56
+  updated_at: 2010-07-14 04:02:56
+  streaming: 
+  id: "4"
+  description: 1280x720 Video MP4
+asset_types_5: 
+  created_at: 2010-07-14 04:03:11
+  updated_at: 2010-07-14 04:03:11
+  streaming: 
+  id: "5"
+  description: MP3 Audio File
+asset_types_6: 
+  created_at: 2010-07-14 04:03:30
+  updated_at: 2010-07-14 04:03:30
+  streaming: 
+  id: "6"
+  description: PowerPoint Presentation
+asset_types_7: 
+  created_at: 2010-07-14 04:04:23
+  updated_at: 2010-07-14 04:04:23
+  streaming: 
+  id: "7"
+  description: Keynote Presentation
+asset_types_8: 
+  created_at: 2010-07-14 04:04:30
+  updated_at: 2010-07-14 04:04:30
+  streaming: 
+  id: "8"
+  description: PDF Presentation
+asset_types_1: 
+  created_at: 2010-07-14 03:57:44
+  updated_at: 2010-07-14 03:57:44
+  streaming: t
+  id: "1"
+  description: 640x360 Streaming Video
+asset_types_2: 
+  created_at: 2010-07-14 04:02:18
+  updated_at: 2010-07-14 04:02:18
+  streaming: 
+  id: "2"
+  description: preview image
+asset_types_3: 
+  created_at: 2010-07-14 04:02:27
+  updated_at: 2010-07-14 04:02:27
+  streaming: 
+  id: "3"
+  description: thumbnail image
