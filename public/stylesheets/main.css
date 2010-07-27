@@ -195,3 +195,40 @@ ul.formatlist li { display: inline; padding: 6px; margin: 0; padding-top: 0; }
     color: #a0a0a0;
     padding-left: 25px;
 }
+
+/* ---------- Form Format ---------- */
+form {
+    font-size: .80em;
+    min-width: 500px;
+    max-width: 800px;
+}
+
+.form-field label {
+    display: block;
+    float: left;
+    width: 150px;
+    padding: 0;
+    margin: 0 10px 0 0;
+    text-align: right;
+}
+form .field-set {
+  clear: both;
+  /*note that this clear causes
+    inputs to break to left in ie5.x mac */
+  border-color: #000;
+  border-width: 1px;
+  border-style: solid;
+  padding: 10px;        /* padding in fieldset support spotty in IE */
+  margin: 0;
+}
+form .field-set .required label {
+    font-weight: bold;
+    font-style: italic;
+}
+
+.field-set .legend {
+    font-size: 1.5em;
+}
+.form-field {
+  clear: both;
+}
