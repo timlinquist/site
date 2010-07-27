@@ -1,0 +1,109 @@
+--- 
+events_1: 
+  name: 
+  created_at: 2010-05-24 01:29:14
+  end_at: 2010-03-11 08:00:00
+  updated_at: 2010-05-30 04:56:26
+  logo: comic-logo-small.png
+  url: http://mtnwestrubyconf.org
+  id: "1"
+  start_at: 2010-03-10 08:00:00
+  date_occured: 
+  year: 
+  short_code: mwrc2010
+events_2: 
+  name: 
+  created_at: 2010-05-24 04:00:36
+  end_at: 2009-03-14 00:00:00
+  updated_at: 2010-05-29 21:31:43
+  logo: mwrc-logo.png
+  url: http://mtnwestrubyconf.org
+  id: "2"
+  start_at: 2009-03-13 00:00:00
+  date_occured: 
+  year: 
+  short_code: mwrc2009
+events_3: 
+  name: 
+  created_at: 2010-05-29 17:10:17
+  end_at: 2008-03-29 00:00:00
+  updated_at: 2010-05-29 22:33:27
+  logo: mtnwestrubyconf2008.png
+  url: 
+  id: "4"
+  start_at: 2008-03-28 00:00:00
+  date_occured: 
+  year: 
+  short_code: mwrc2008
+events_4: 
+  name: 
+  created_at: 2010-05-29 22:57:25
+  end_at: 2008-04-26 07:00:00
+  updated_at: 2010-05-29 23:00:25
+  logo: 
+  url: 
+  id: "5"
+  start_at: 2008-04-26 07:00:00
+  date_occured: 
+  year: 
+  short_code: goruco2008
+events_5: 
+  name: 
+  created_at: 2010-05-29 22:57:59
+  end_at: 2009-05-30 07:00:00
+  updated_at: 2010-05-30 08:14:47
+  logo: 
+  url: 
+  id: "6"
+  start_at: 2009-05-30 07:00:00
+  date_occured: 
+  year: 
+  short_code: goruco2009
+events_6: 
+  name: 
+  created_at: 2010-05-29 23:02:35
+  end_at: 2009-04-04 07:00:00
+  updated_at: 2010-05-29 23:02:35
+  logo: 
+  url: 
+  id: "7"
+  start_at: 2009-04-04 07:00:00
+  date_occured: 
+  year: 
+  short_code: larubyconf2009
+events_7: 
+  name: 
+  created_at: 2010-05-29 23:04:05
+  end_at: 2009-11-21 08:00:00
+  updated_at: 2010-05-29 23:04:05
+  logo: 
+  url: 
+  id: "8"
+  start_at: 2009-11-19 08:00:00
+  date_occured: 
+  year: 
+  short_code: rubyconf2009
+events_8: 
+  name: 
+  created_at: 2010-05-29 23:05:57
+  end_at: 2008-11-08 08:00:00
+  updated_at: 2010-05-29 23:05:57
+  logo: 
+  url: 
+  id: "9"
+  start_at: 2008-11-06 08:00:00
+  date_occured: 
+  year: 
+  short_code: rubyconf2008
+events_9: 
+  name: 
+  created_at: 2010-06-12 16:33:19
+  end_at: 2007-11-04 07:00:00
+  updated_at: 2010-06-12 21:55:22
+  logo: 
+  url: 
+  id: "10"
+  start_at: 2007-11-02 07:00:00
+  date_occured: 
+  year: 
+  short_code: rubyconf2007

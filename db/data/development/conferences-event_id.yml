@@ -1,0 +1,26 @@
+--- 
+conferences_1: 
+  name: Mountain West Ruby Conference
+  created_at: 2010-05-29 15:55:04
+  updated_at: 2010-05-29 15:55:04
+  id: "1"
+conferences_2: 
+  name: LA Ruby Conference
+  created_at: 2010-05-29 22:55:49
+  updated_at: 2010-05-29 22:55:49
+  id: "2"
+conferences_3: 
+  name: GoRuCo
+  created_at: 2010-05-29 22:56:10
+  updated_at: 2010-05-29 22:56:10
+  id: "3"
+conferences_4: 
+  name: Ruby Hoedown
+  created_at: 2010-05-29 22:56:19
+  updated_at: 2010-05-29 22:56:19
+  id: "4"
+conferences_5: 
+  name: Ruby Conference
+  created_at: 2010-05-29 22:56:28
+  updated_at: 2010-05-29 22:56:28
+  id: "5"

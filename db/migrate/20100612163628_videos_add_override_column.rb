@@ -6,7 +6,7 @@ class VideosAddOverrideColumn < ActiveRecord::Migration
   end
 
   def self.down
-    save_table_to_fixture "video", "_override"
+    save_table_to_fixture "videos", "_override"
 
     remove_column :videos, :override
   end

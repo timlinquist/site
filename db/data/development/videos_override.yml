@@ -6,8 +6,10 @@ videos_15:
   event_id: "6"
   available: f
   display_format: ""
+  prefix: ""
   extension: 
   updated_at: 2010-06-23 20:07:56
+  override: ""
   id: "22"
 videos_9: 
   created_at: 2010-05-30 00:22:43
@@ -16,8 +18,10 @@ videos_9:
   event_id: "1"
   available: t
   display_format: 
+  prefix: 
   extension: 
   updated_at: 2010-05-30 00:22:43
+  override: 
   id: "9"
 videos_16: 
   created_at: 2010-06-23 20:08:20
@@ -26,8 +30,10 @@ videos_16:
   event_id: "6"
   available: f
   display_format: ""
+  prefix: ""
   extension: 
   updated_at: 2010-06-23 20:08:20
+  override: ""
   id: "23"
 videos_17: 
   created_at: 2010-06-23 20:13:14
@@ -36,8 +42,10 @@ videos_17:
   event_id: "7"
   available: f
   display_format: ""
+  prefix: ""
   extension: 
   updated_at: 2010-06-23 20:13:14
+  override: ""
   id: "24"
 videos_18: 
   created_at: 2010-06-23 20:13:58
@@ -46,8 +54,10 @@ videos_18:
   event_id: "7"
   available: f
   display_format: ""
+  prefix: ""
   extension: 
   updated_at: 2010-06-23 20:13:58
+  override: ""
   id: "25"
 videos_1: 
   created_at: 2010-05-29 16:25:32
@@ -56,8 +66,10 @@ videos_1:
   event_id: "1"
   available: t
   display_format: 
+  prefix: 
   extension: 
   updated_at: 2010-05-29 21:22:12
+  override: 
   id: "1"
 videos_19: 
   created_at: 2010-06-23 20:14:30
@@ -66,8 +78,10 @@ videos_19:
   event_id: "7"
   available: f
   display_format: ""
+  prefix: ""
   extension: 
   updated_at: 2010-06-23 20:14:30
+  override: ""
   id: "26"
 videos_2: 
   created_at: 2010-05-29 20:35:00
@@ -76,8 +90,10 @@ videos_2:
   event_id: "1"
   available: t
   display_format: 
+  prefix: 
   extension: 
   updated_at: 2010-05-29 23:24:47
+  override: 
   id: "2"
 videos_20: 
   created_at: 2010-06-23 20:14:57
@@ -86,8 +102,10 @@ videos_20:
   event_id: "7"
   available: f
   display_format: ""
+  prefix: ""
   extension: 
   updated_at: 2010-06-23 20:14:57
+  override: ""
   id: "27"
 videos_3: 
   created_at: 2010-05-29 20:38:24
@@ -96,8 +114,10 @@ videos_3:
   event_id: "1"
   available: t
   display_format: HD
+  prefix: 
   extension: 
   updated_at: 2010-06-12 16:00:54
+  override: 
   id: "3"
 videos_21: 
   created_at: 2010-06-23 20:15:16
@@ -106,8 +126,10 @@ videos_21:
   event_id: "7"
   available: f
   display_format: ""
+  prefix: ""
   extension: 
   updated_at: 2010-06-23 20:15:16
+  override: ""
   id: "28"
 videos_10: 
   created_at: 2010-05-30 00:25:58
@@ -116,8 +138,10 @@ videos_10:
   event_id: "1"
   available: t
   display_format: 
+  prefix: 
   extension: 
   updated_at: 2010-06-12 01:50:50
+  override: 
   id: "10"
 videos_4: 
   created_at: 2010-05-29 20:40:10
@@ -126,8 +150,10 @@ videos_4:
   event_id: "2"
   available: t
   display_format: 
+  prefix: 
   extension: 
   updated_at: 2010-06-12 01:51:45
+  override: 
   id: "4"
 videos_22: 
   created_at: 2010-06-23 20:15:34
@@ -136,8 +162,10 @@ videos_22:
   event_id: "7"
   available: f
   display_format: ""
+  prefix: ""
   extension: 
   updated_at: 2010-06-23 20:15:34
+  override: ""
   id: "29"
 videos_11: 
   created_at: 2010-05-30 08:15:32
@@ -146,8 +174,10 @@ videos_11:
   event_id: "6"
   available: t
   display_format: 
+  prefix: 
   extension: 
   updated_at: 2010-05-30 08:15:32
+  override: 
   id: "17"
 videos_5: 
   created_at: 2010-05-29 22:28:35
@@ -156,8 +186,10 @@ videos_5:
   event_id: "4"
   available: t
   display_format: DW
+  prefix: 
   extension: 
   updated_at: 2010-06-12 03:59:52
+  override: 
   id: "5"
 videos_23: 
   created_at: 2010-06-23 20:16:03
@@ -166,8 +198,10 @@ videos_23:
   event_id: "7"
   available: f
   display_format: ""
+  prefix: ""
   extension: 
   updated_at: 2010-06-23 20:16:03
+  override: ""
   id: "30"
 videos_12: 
   created_at: 2010-06-12 16:34:46
@@ -176,8 +210,10 @@ videos_12:
   event_id: "10"
   available: t
   display_format: DW
+  prefix: ""
   extension: 
   updated_at: 2010-06-12 17:44:10
+  override: d2t1p8_keynote
   id: "19"
 videos_6: 
   created_at: 2010-05-29 23:41:32
@@ -186,8 +222,10 @@ videos_6:
   event_id: "4"
   available: t
   display_format: DW
+  prefix: 
   extension: 
   updated_at: 2010-06-12 04:01:36
+  override: 
   id: "6"
 videos_24: 
   created_at: 2010-06-23 20:16:22
@@ -196,8 +234,10 @@ videos_24:
   event_id: "7"
   available: f
   display_format: ""
+  prefix: ""
   extension: 
   updated_at: 2010-06-23 20:16:22
+  override: ""
   id: "31"
 videos_13: 
   created_at: 2010-06-23 20:04:34
@@ -206,8 +246,10 @@ videos_13:
   event_id: "6"
   available: f
   display_format: ""
+  prefix: ""
   extension: 
   updated_at: 2010-06-23 20:04:34
+  override: ""
   id: "20"
 videos_7: 
   created_at: 2010-05-30 00:06:33
@@ -216,8 +258,10 @@ videos_7:
   event_id: "2"
   available: t
   display_format: 
+  prefix: 
   extension: 
   updated_at: 2010-05-30 00:12:25
+  override: 
   id: "7"
 videos_25: 
   created_at: 2010-07-14 04:18:43
@@ -226,8 +270,10 @@ videos_25:
   event_id: "6"
   available: t
   display_format: HD
+  prefix: ""
   extension: 
   updated_at: 2010-07-14 04:18:43
+  override: ""
   id: "32"
 videos_14: 
   created_at: 2010-06-23 20:06:16
@@ -236,8 +282,10 @@ videos_14:
   event_id: "6"
   available: f
   display_format: ""
+  prefix: ""
   extension: 
   updated_at: 2010-06-23 20:06:16
+  override: ""
   id: "21"
 videos_8: 
   created_at: 2010-05-30 00:16:55
@@ -246,6 +294,8 @@ videos_8:
   event_id: "2"
   available: t
   display_format: 
+  prefix: 
   extension: 
   updated_at: 2010-05-30 00:19:07
+  override: 
   id: "8"
