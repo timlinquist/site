@@ -2,12 +2,14 @@
   %td
     =event.id
   %td
+    =image_tag(event.logo.url(:small))
+  %td
     =link_to event.display_name, admin_event_path(event)
   %td
     =event.short_code
   %td
     =event.date_occurred
   %td
-    =link_to 'Edit', edit_admin_event_path(event)
+    =link_to edit_image_tag, edit_admin_event_path(event)
     |
-    =link_to 'Delete', admin_event_path(event), :method => 'Delete'
+    =link_to delete_image_tag, admin_event_path(event), :method => 'Delete'

@@ -1,10 +1,7 @@
-%tr
-  %td
-    =image_tag(display_event.logo.url(:small))
-  %td
-    =link_to display_event.display_name, event_path(display_event)
-  %td
-    =display_event.date_occurred
-  -if session.user && session.user.admin?
-    %td
-      =link_to image_tag("edit.png"), edit_admin_event_path(display_event)
+%li.event-box
+  .event-box-outer
+    .event-box-inner
+      =link_to image_tag(display_event.logo.url(:small)), event_path(display_event), :class => 'noborder'
+      %br
+      %span.small
+        =link_to display_event.date_occurred, event_path(display_event), :class => 'noborder'
