@@ -6,12 +6,12 @@ class CreateConferences < ActiveRecord::Migration
 
       t.timestamps
 
-      restore_table_from_fixture "conferences","-original"
+      restore_table_from_fixture "conferences"
     end
   end
 
   def self.down
-    save_table_to_fixture "conferences","-original"
+    save_table_to_fixture "conferences"
 
     drop_table :conferences
   end
