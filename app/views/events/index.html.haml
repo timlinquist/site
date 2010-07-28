@@ -1,0 +1,12 @@
+This is a list of all the conference we have recorded listed in chronological order, most recent at the top.
+.center
+%table
+  %tr
+    %th{:colspan => "2"}
+      Conference
+    %th
+      Date
+    -if session.user && session.user.admin?
+      %th
+        Actions
+  =render :partial => "display_event", :collection => @events

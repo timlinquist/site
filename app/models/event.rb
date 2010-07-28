@@ -6,10 +6,12 @@ class Event < ActiveRecord::Base
   has_event_calendar
 
   has_attached_file :logo,
-    :path => ":rails_root/public/system/:class/:attachment/:id/:style/:basename.:extension",
-    :url => "/system/:class/:attachment/:id/:style/:basename.:extension",
+    :path => ":rails_root/public/system/:class/:attachment/:id/:basename-:style.:extension",
+    :url => "/system/:class/:attachment/:id/:basename-:style.:extension",
     :styles => {
-      :default_url => '/events/:style/missing.png'}
+      :small => '100x100'
+      },
+    :default_url => '/system/:class/:attachment/missing-:style.png'
 
   cattr_reader :per_page
 
