@@ -4,14 +4,17 @@ begin; deploy_env; rescue NameError; set :deploy_env, 'integration' end
 
 set :user, 'confreakadmin'
 set :domain, 'confreaks.net'
-set :project, 'v2a'
 set :use_sudo, false
 
 # version control config
-set :scm, :subversion
+
+ssh_options[:forward_agent] = true
+
+set :scm, 'git'
 set :scm_username, 'deploy'
 set :scm_password, 'confreaks-deploy'
-set :repository, "http://svn.confreaks.com/#{project}/trunk"
+set :repository, "git@github.com:confreaks/site"
+set :branch, 'master'
 
 set :application, "confreaks.net"
 
