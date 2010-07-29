@@ -1,11 +1,18 @@
 require 'test_helper'
 
 class EventTest < ActiveSupport::TestCase
+  fixtures :events, :conferences
+
+  model_template_for Event do
+    {
+      :conference_id => 1,
+      :name_suffix => 2010
+    }
+  end
+
   def test_new_event
-    e = Event.new
-    e.name = "Ruby Conference"
-    e.year = 2007
-    
+    e = create_event
+
     assert e.save
   end
 end

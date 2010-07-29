@@ -1,7 +1,17 @@
 # Read about fixtures at http://ar.rubyonrails.org/classes/Fixtures.html
 
-# one:
-#   column: value
-#
-# two:
-#   column: value
+default:
+  username: default
+  email: default@default.org
+  time_zone: Pacific Time (US & Canada)
+  admin: false
+  password_hash: "c78e1b4bc6164f9a67f9b0d34d87b0d56ad9cc61" # 123456
+  password_salt: "b306b6932789247b5414501b1a52f47012807a62"
+
+admin:
+  username: administrator
+  email: admin@default.org
+  admin: true
+  time_zone: Pacific Time (US & Canada)
+  password_hash: "c78e1b4bc6164f9a67f9b0d34d87b0d56ad9cc61" # 123456
+  password_salt: "b306b6932789247b5414501b1a52f47012807a62"

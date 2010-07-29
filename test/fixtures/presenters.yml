@@ -1,11 +1,9 @@
 # Read about fixtures at http://ar.rubyonrails.org/classes/Fixtures.html
 
-one:
-  display_name: MyString
-  first_name: MyString
-  last_name: MyString
+coby_randquist:
+  first_name: Coby
+  last_name: Randquist
 
-two:
-  display_name: MyString
-  first_name: MyString
-  last_name: MyString
+gregory_brown:
+  first_name: Gregory
+  last_name: brown

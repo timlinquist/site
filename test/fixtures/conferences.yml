@@ -1,9 +1,9 @@
 # Read about fixtures at http://ar.rubyonrails.org/classes/Fixtures.html
 
-one:
-  event_id: 1
-  name: MyString
+mwrc2010:
+  id: 1
+  name: Mountain West Ruby Conference
 
-two:
-  event_id: 1
-  name: MyString
+larubyconf2010:
+  id: 2
+  name: LA Ruby Conference
