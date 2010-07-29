@@ -3,9 +3,8 @@ class Admin::EventsController < Admin::Controller
 
   def index
     @events = Event.paginate(:all,
-                             :order => 'conferences.name, start_at desc',
-                             :joins => 'left outer join conferences on events.conference_id = conferences.id',
-                             :page => params[:page])
+               :order => 'start_at desc',
+               :page => params[:page])
   end
 
   def new
