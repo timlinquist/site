@@ -4,8 +4,9 @@
       %span.small
         %strong
           =link_to display_event.display_name, event_path(display_event), :class => 'noborder'
-      %br
-      =link_to image_tag(display_event.logo.url(:medium)), event_path(display_event), :class => 'noborder'
+      -unless display_event.logo_file_name.blank?
+        %br
+        =link_to image_tag(display_event.logo.url(:medium)), event_path(display_event), :class => 'noborder'
       %br
       %span.small
         =link_to display_event.date_occurred, event_path(display_event), :class => 'noborder'

@@ -1,5 +1,4 @@
-class Admin::VideosController < ApplicationController
-
+class Admin::VideosController < Admin::Controller
   layout "admin"
 
   def index
@@ -9,7 +8,6 @@ class Admin::VideosController < ApplicationController
   end
 
   def edit
-    # TODO: Sort by Conference.name then Year desc
     @events = Event.find(:all,
                          :order => "start_at desc")
 

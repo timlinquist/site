@@ -1,4 +1,4 @@
-class Admin::EventsController < ApplicationController
+class Admin::EventsController < Admin::Controller
   layout  'admin'
 
   def index

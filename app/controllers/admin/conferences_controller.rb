@@ -1,4 +1,4 @@
-class Admin::ConferencesController < ApplicationController
+class Admin::ConferencesController < Admin::Controller
   layout "admin"
 
   def index

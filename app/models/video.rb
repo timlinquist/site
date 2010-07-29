@@ -23,7 +23,7 @@ class Video < ActiveRecord::Base
 
   cattr_reader :per_page
 
-  @@per_page = 10
+  @@per_page = 25
 
   def self.random
     if Rails.env == "production"

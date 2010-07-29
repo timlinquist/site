@@ -245,9 +245,11 @@ li.event-box {
 
 div.event-box-outer {
     display: table;
-    width: 200px;
+    width: 240px;
     height: 150px;
     float: left;
+    padding: 0 15px 0 15px;
+    border: #c0c0c0 dotted 1px;
 }
 
 div.event-box-inner {
