@@ -20,7 +20,7 @@ class Event < ActiveRecord::Base
 
   cattr_reader :per_page
 
-  @@per_page = 10
+  @@per_page = 25
 
   def display_name
     "#{name_prefix} #{conference.name} #{name_suffix}".strip! unless conference.nil?
