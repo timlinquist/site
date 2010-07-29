@@ -9,7 +9,12 @@ class Event < ActiveRecord::Base
     :path => ":rails_root/public/system/:class/:attachment/:id/:basename-:style.:extension",
     :url => "/system/:class/:attachment/:id/:basename-:style.:extension",
     :styles => {
-      :small => '100x100'
+      :small  => '100x100',
+      :medium => '200x200',
+      :large  => '300x300',
+      :xl     => '400x400',
+      :xxl    => '500x500',
+      :xxxl    => '600x600'
       },
     :default_url => '/system/:class/:attachment/missing-:style.png'
 

@@ -245,15 +245,15 @@ li.event-box {
 
 div.event-box-outer {
     display: table;
-    width: 150px;
-    height: 100px;
+    width: 200px;
+    height: 150px;
     float: left;
 }
 
 div.event-box-inner {
     display: table-cell;
     #position: absolute;
-    vertical-align: middle;
+    vertical-align: top;
 }
 
 div.event-box-inner a:link {
