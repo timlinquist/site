@@ -6,4 +6,9 @@ gem "paperclip",     "= 2.3.1.1"
 
 env :development, :test do
   gem "modelizer"
+  gem "sqlite3-ruby"
+end
+
+env :production do
+  gem "mysql"
 end
