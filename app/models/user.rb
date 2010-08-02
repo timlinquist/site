@@ -13,6 +13,8 @@ class User < ActiveRecord::Base
 
   has_many :votes
 
+  has_one :presenter
+
   has_one :profile
 
   before_save :hash_and_salt_password, :if => :password
