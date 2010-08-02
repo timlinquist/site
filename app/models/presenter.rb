@@ -6,7 +6,7 @@ class Presenter < ActiveRecord::Base
 
   validates_uniqueness_of :first_name, :scope => :last_name
 
-  @@per_page = 25
+  @@per_page = 24
 
   def display_name
     aka_name.nil? ? "#{first_name} #{last_name}" : aka_name
