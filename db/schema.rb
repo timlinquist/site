@@ -9,7 +9,7 @@
 #
 # It's strongly recommended to check this file into your version control system.
 
-ActiveRecord::Schema.define(:version => 20100714031628) do
+ActiveRecord::Schema.define(:version => 20100802025945) do
 
   create_table "asset_types", :force => true do |t|
     t.string   "description"
@@ -107,6 +107,7 @@ ActiveRecord::Schema.define(:version => 20100714031628) do
     t.string   "display_format"
     t.string   "prefix"
     t.string   "override"
+    t.boolean  "include_random", :default => true
   end
 
 end

@@ -32,7 +32,9 @@ class Video < ActiveRecord::Base
       order = 'random()'
     end
       Video.find(:first,
-                 :conditions => ["available = ?",true],
+                 :conditions => ["available = ? and  include_random = ?",
+                                 true,
+                                 true],
                  :order => order)
   end
 
