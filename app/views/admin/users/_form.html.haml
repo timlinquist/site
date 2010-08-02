@@ -11,6 +11,9 @@
   .form-field.required
     =f.label :email, 'Email'
     =f.text_field :email
+  .form-field
+    =f.label :admin, 'Administrator'
+    =f.check_box :admin
 
   .form-field.required
     =f.label :time_zone, "Time Zone"
