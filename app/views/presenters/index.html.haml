@@ -1,4 +1,5 @@
 .center
+%ul.presenter-list
   =render :partial => 'presenter', :collection => @presenters
 #pagination
   =will_paginate @presenters, :params => {:controller => 'presenters', :action => 'index'}, :class => 'not_ajax'

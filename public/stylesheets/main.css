@@ -265,3 +265,31 @@ div.event-box-inner a:link {
 .small {
     font-size: 75%;
 }
+
+/* Presenter Box */
+ul.presenter-list {
+    list-style: none;
+}
+
+li.presenter-box {
+    text-align: center;
+}
+
+div.presenter-box-outer {
+    display: table;
+    width: 240px;
+    height: 220px;
+    float: left;
+    padding: 0 15px 0 15px;
+    border: #c0c0c0 dotted 1px;
+}
+
+div.presenter-box-inner {
+    display: table-cell;
+    #position: absolute;
+    vertical-align: top;
+}
+
+div.presenter-box-inner a:link {
+    text-decoration: none;
+}

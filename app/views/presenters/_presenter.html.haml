@@ -1,3 +1,6 @@
-=link_to presenter.display_name, presenter
-=" (#{presenter.videos.count})"
-%br
+%li.presenter-box
+  .presenter-box-outer
+    .presenter-box-inner
+      =link_to presenter.display_name, presenter
+      %br
+      ="Videos: #{presenter.videos.count}"
