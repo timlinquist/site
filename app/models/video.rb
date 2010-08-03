@@ -1,6 +1,7 @@
-require 'iconv'
-
 class Video < ActiveRecord::Base
+
+  attr_accessible :available, :title, :recorded_at, :event_id,
+    :presentations_attributes, :assets_attributes, :include_random
 
   belongs_to :event
 
@@ -51,6 +52,10 @@ class Video < ActiveRecord::Base
   end
 
   def streaming_video_url
+    # TODO figure out how to remove the need for this stupid hack
+    # paperclip adds the cache buster to the URL automatically, I need
+    # it to go away, probably a really easy paperclip option, but not
+    # finding it at the moment.
     unless streaming_video.nil?
       streaming_video.data.url.split("?")[0]
     else

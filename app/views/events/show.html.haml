@@ -1,3 +1,5 @@
+-content_for :title do
+  ="#{@event.display_name} Schedule - Confreaks, LLC"
 .center
   #conflogo
     =link_to image_tag(@event.logo.url(:original), :alt => @event.display_name, :title => @event.display_name), @event.url, :class => "noborder"
@@ -15,7 +17,8 @@
       %br
       =link_to 'Edit this Event', edit_admin_event_path(@event)
   %h2
-    Conference Schedule
+    =@event.display_name
+    Schedule
   -if session.user && session.user.admin?
     =link_to 'Add Video', new_admin_event_video_path(@event)
   %table{:width=>"100%"}
@@ -32,7 +35,7 @@
         %td.nowrap
           =video.recorded_at.strftime('%d-%b-%y %H:%M')
         %td{:style => "width: 150px;"}
-          -if video.available
+          -if video.available?
             -if video.thumbnail_image
               =link_to image_tag(video.thumbnail_image.data.url, :width => 142, :class => 'noborder'), video_path(video)
           -else

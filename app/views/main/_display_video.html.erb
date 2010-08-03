@@ -4,14 +4,16 @@
   <a href="http://www.adobe.com/shockwave/download/download.cgi?P1_Prod_Version=ShockwaveFlash">Get the Flash Player</a> to see this player.
 </p>
 <script type='text/javascript'>
-  width = <%= video.width %>
-  height =<%= video.height + 20%> 
+  width = <%= video.streaming_video.asset_type.width %>
+  height =<%= video.streaming_video.asset_type.height + 20 %> 
   var s1 = new SWFObject('media/player.swf', 'mpl', width, height, '9')
   s1.addParam('allowfullscreen', 'true')
   s1.addParam('allowscriptaccess', 'always')
   s1.addParam('allownetworking', 'all')
-  s1.addVariable('file', "<%="#{video.uri(:small)}"%>")
-  s1.addVariable('image', "<%="#{video.preview}"%>")
+  s1.addVariable('file', "<%="#{request.protocol}#{request.host_with_port}#{video.streaming_video_url}"%>")
+  <%-if video.preview_image%>
+  s1.addVariable('image', "<%="#{request.protocol}#{request.host_with_port}#{video.preview_image.data.url}"%>")
+  <%-end%>
   s1.addVariable('plugins', 'viral-1')
   s1.write('flash-player')
 </script>

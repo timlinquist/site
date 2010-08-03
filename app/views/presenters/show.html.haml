@@ -20,7 +20,10 @@
           =v.recorded_at.strftime("%d-%b-%y %H:%M")
         %td
           -if v.available
-            =link_to image_tag(v.thumbnail, :width => 142), video_path(v), :class => "noborder"
+            -if v.thumbnail_image
+              =link_to image_tag(v.thumbnail_image.data.url, :width => 142), video_path(v), :class => "noborder"
+          -else
+            ="... coming soon ..."
         %td
           %em
             -if v.available
@@ -29,5 +32,6 @@
               =v.title
         -if session.user && session.user.admin?
           %td
-            =link_to 'E', edit_admin_video_path(v)
-
+            =link_to edit_image_tag, edit_admin_video_path(v)
+            |
+            =link_to delete_image_tag, admin_video_path(v), :method => "Delete"
