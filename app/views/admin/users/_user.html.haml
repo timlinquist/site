@@ -7,8 +7,10 @@
     =user.email
   %td
     =user.time_zone
-  %td
+  %td.center
     =user.admin ? 'Yes' : 'No'
+  %td
+    =user.presenter ? user.presenter.display_name : '&nbsp;'
   %td
     =link_to edit_image_tag, edit_admin_user_path(user)
     |

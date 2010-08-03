@@ -55,6 +55,11 @@ table th.numeric, table td.numeric {
 table th.program, table td.program {
   width: 30%;
 }
+
+table tr td.center {
+    text-align: center;
+}
+
 a.rss {
   border-bottom: 0;
   text-decoration: none;
@@ -124,7 +129,6 @@ a.rss {
 
 .center {
   line-height: 1.3em;
-  width: 100%;
   margin: 0 auto;
   text-align: center;
   padding-top: 10px;

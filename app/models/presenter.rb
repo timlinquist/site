@@ -2,7 +2,7 @@ class Presenter < ActiveRecord::Base
   has_many :presentations
   has_many :videos, :through => :presentations
 
-  belongs_to :user
+  has_one :user
 
   cattr_reader :per_page
 
@@ -11,6 +11,14 @@ class Presenter < ActiveRecord::Base
   @@per_page = 24
 
   def display_name
-    aka_name.nil? ? "#{first_name} #{last_name}" : aka_name
+    if aka_name.nil?
+      if user.nil?
+        "#{first_name} #{last_name}"
+      else
+        "#{user.first_name} #{user.last_name}"
+      end
+    else
+      aka_name
+    end
   end
 end

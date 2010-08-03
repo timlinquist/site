@@ -1,0 +1,233 @@
+--- 
+presenters_20: 
+  created_at: 2010-05-29 21:18:51
+  updated_at: 2010-05-29 21:38:28
+  id: "20"
+  user_id: 
+  last_name: Grey II
+  aka_name: 
+  first_name: James Edward
+presenters_3: 
+  created_at: 2010-05-29 21:12:28
+  updated_at: 2010-05-29 21:12:28
+  id: "3"
+  user_id: 
+  last_name: Golick
+  aka_name: 
+  first_name: James
+presenters_21: 
+  created_at: 2010-05-29 23:42:13
+  updated_at: 2010-05-29 23:42:13
+  id: "21"
+  user_id: 
+  last_name: Phoenix
+  aka_name: 
+  first_name: Evan
+presenters_10: 
+  created_at: 2010-05-29 21:14:43
+  updated_at: 2010-05-29 21:14:43
+  id: "10"
+  user_id: 
+  last_name: Presenters
+  aka_name: 
+  first_name: Various
+presenters_22: 
+  created_at: 2010-05-30 00:09:59
+  updated_at: 2010-05-30 00:09:59
+  id: "22"
+  user_id: 
+  last_name: Crosby
+  aka_name: 
+  first_name: Jon
+presenters_11: 
+  created_at: 2010-05-29 21:15:05
+  updated_at: 2010-05-29 21:15:05
+  id: "11"
+  user_id: 
+  last_name: Matsumoto
+  aka_name: 
+  first_name: Yukihiro 'Matz'
+presenters_4: 
+  created_at: 2010-05-29 21:12:50
+  updated_at: 2010-05-29 21:12:50
+  id: "4"
+  user_id: 
+  last_name: Jackson
+  aka_name: 
+  first_name: Michael J. I.
+presenters_23: 
+  created_at: 2010-05-30 00:32:39
+  updated_at: 2010-05-30 00:32:39
+  id: "23"
+  user_id: 
+  last_name: Haines
+  aka_name: 
+  first_name: Kirk
+presenters_12: 
+  created_at: 2010-05-29 21:15:22
+  updated_at: 2010-05-29 21:15:22
+  id: "12"
+  user_id: 
+  last_name: Clausen
+  aka_name: 
+  first_name: Caleb
+presenters_5: 
+  created_at: 2010-05-29 21:13:07
+  updated_at: 2010-05-29 21:13:07
+  id: "5"
+  user_id: 
+  last_name: Katz
+  aka_name: 
+  first_name: Yehuda
+presenters_24: 
+  created_at: 2010-05-30 00:32:56
+  updated_at: 2010-05-30 00:32:56
+  id: "24"
+  user_id: 
+  last_name: Shafer
+  aka_name: 
+  first_name: Andrew
+presenters_13: 
+  created_at: 2010-05-29 21:15:33
+  updated_at: 2010-05-29 21:15:33
+  id: "13"
+  user_id: 
+  last_name: Evans
+  aka_name: 
+  first_name: Jeremy
+presenters_6: 
+  created_at: 2010-05-29 21:13:27
+  updated_at: 2010-05-29 21:13:27
+  id: "6"
+  user_id: 
+  last_name: Sadauskas
+  aka_name: 
+  first_name: Paul
+presenters_25: 
+  created_at: 2010-05-30 00:33:16
+  updated_at: 2010-05-30 00:33:16
+  id: "25"
+  user_id: 
+  last_name: Hinegardner
+  aka_name: 
+  first_name: Jeremy
+presenters_14: 
+  created_at: 2010-05-29 21:15:44
+  updated_at: 2010-05-29 21:15:44
+  id: "14"
+  user_id: 
+  last_name: Britt
+  aka_name: 
+  first_name: James
+presenters_7: 
+  created_at: 2010-05-29 21:13:56
+  updated_at: 2010-05-29 21:13:56
+  id: "7"
+  user_id: 
+  last_name: Brown
+  aka_name: 
+  first_name: Gregory
+presenters_26: 
+  created_at: 2010-05-30 00:33:33
+  updated_at: 2010-05-30 00:33:33
+  id: "26"
+  user_id: 
+  last_name: Marick
+  aka_name: 
+  first_name: Brian
+presenters_15: 
+  created_at: 2010-05-29 21:15:56
+  updated_at: 2010-05-29 21:15:56
+  id: "15"
+  user_id: 
+  last_name: Allen
+  aka_name: 
+  first_name: Sarah
+presenters_8: 
+  created_at: 2010-05-29 21:14:15
+  updated_at: 2010-05-29 21:14:15
+  id: "8"
+  user_id: 
+  last_name: Segal
+  aka_name: 
+  first_name: Loren
+presenters_27: 
+  created_at: 2010-05-30 06:10:37
+  updated_at: 2010-08-02 23:22:02
+  id: "30"
+  user_id: "1"
+  last_name: Randquist
+  aka_name: 
+  first_name: "Coby "
+presenters_16: 
+  created_at: 2010-05-29 21:16:08
+  updated_at: 2010-05-29 21:16:08
+  id: "16"
+  user_id: 
+  last_name: Banker
+  aka_name: 
+  first_name: Kyle
+presenters_9: 
+  created_at: 2010-05-29 21:14:28
+  updated_at: 2010-05-29 21:14:28
+  id: "9"
+  user_id: 
+  last_name: Casimir
+  aka_name: 
+  first_name: Jeff
+presenters_28: 
+  created_at: 2010-06-13 01:31:49
+  updated_at: 2010-06-13 01:31:49
+  id: "32"
+  user_id: 
+  last_name: Hodel
+  aka_name: 
+  first_name: Eric
+presenters_17: 
+  created_at: 2010-05-29 21:16:33
+  updated_at: 2010-05-29 21:16:33
+  id: "17"
+  user_id: 
+  last_name: Damato
+  aka_name: 
+  first_name: Joe
+presenters_29: 
+  created_at: 2010-06-13 01:32:33
+  updated_at: 2010-06-13 01:32:33
+  id: "33"
+  user_id: 
+  last_name: test
+  aka_name: 
+  first_name: Eric
+presenters_18: 
+  created_at: 2010-05-29 21:16:49
+  updated_at: 2010-05-29 21:16:49
+  id: "18"
+  user_id: 
+  last_name: Maddox
+  aka_name: 
+  first_name: Pat
+presenters_1: 
+  created_at: 2010-05-29 16:25:32
+  updated_at: 2010-05-29 16:25:32
+  id: "1"
+  user_id: 
+  last_name: Bowkett
+  aka_name: 
+  first_name: Giles
+presenters_19: 
+  created_at: 2010-05-29 21:16:59
+  updated_at: 2010-05-29 21:16:59
+  id: "19"
+  user_id: 
+  last_name: Gupta
+  aka_name: 
+  first_name: Aman
+presenters_2: 
+  created_at: 2010-05-29 21:11:18
+  updated_at: 2010-05-29 21:11:18
+  id: "2"
+  user_id: 
+  last_name: Seguin
+  aka_name: 
+  first_name: Wayne E.

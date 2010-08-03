@@ -9,10 +9,12 @@ class Admin::UsersController < Admin::Controller
 
   def new
     @user = User.new
+    @presenters = Presenter.find(:all, :order => 'last_name, first_name')
   end
 
   def edit
     @user = User.find(params[:id])
+    @presenters = Presenter.find(:all, :order => 'last_name, first_name')
   end
 
   def create

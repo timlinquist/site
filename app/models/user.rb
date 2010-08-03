@@ -1,6 +1,7 @@
 class User < ActiveRecord::Base
   attr_accessible :username, :time_zone, :email, :session_token, :admin,
-    :password, :password_confirmation, :first_name, :last_name
+    :password, :password_confirmation, :first_name, :last_name,
+    :presenter_id
 
   attr_accessor :password, :password_confirmation
 
@@ -13,7 +14,7 @@ class User < ActiveRecord::Base
 
   has_many :votes
 
-  has_one :presenter
+  belongs_to :presenter
 
   has_one :profile
 
