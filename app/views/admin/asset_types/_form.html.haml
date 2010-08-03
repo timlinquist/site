@@ -1,0 +1,15 @@
+-form_for [:admin, @asset_type] do |f|
+  .form-field
+    =f.label :description, "Description"
+    =f.text_field :description
+
+  .form-field
+    =f.label :streaming, "Streaming"
+    =f.check_box :streaming
+
+  .form-field
+    =f.label :downloadable, "Downloadable"
+    =f.check_box :downloadable
+
+  %span.submit
+    =f.submit "Save", :class => "button"

@@ -1,0 +1,13 @@
+%tr
+  %td
+    =asset_type.id
+  %td
+    =asset_type.description
+  %td.center
+    =asset_type.streaming ? 'Yes' : 'No'
+  %td.center
+    =asset_type.downloadable ? 'Yes' : 'No'
+  %td
+    =link_to edit_image_tag, edit_admin_asset_type_path(asset_type)
+    |
+    =link_to delete_image_tag, admin_asset_type_path(asset_type), :method => 'Delete'

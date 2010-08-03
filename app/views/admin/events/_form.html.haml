@@ -27,26 +27,6 @@
     =calendar_date_select_tag "[event]end_at", (@event.end_at unless @event.nil?), :time => false
 
   .form-field
-    =f.label :slug_date_format, "Date Format"
-    =f.text_field :slug_date_format
-
-  .form-field
-    =f.label :slug_format_data, "Slug Data"
-    =f.text_field :slug_format_data
-
-  .form-field
-    =f.label :joiner, "Joined by"
-    =f.text_field :joiner, :size => 3
-
-  .form-field
-    =f.label :image_extension, "Preview/Thumb Extension"
-    =f.text_field :image_extension, :size => 5
-
-  .form-field
-    =f.label :video_extension, "Video Extension"
-    =f.text_field :video_extension, :size => 5
-
-  .form-field
     =f.label :logo, "Logo"
     =f.file_field :logo
 

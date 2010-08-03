@@ -34,10 +34,6 @@ class Event < ActiveRecord::Base
     end
   end
 
-  def slug_format
-    parts = slug_format_data.split(",")
-  end
-
   def date_occurred
     unless start_at.nil?
       unless start_at == end_at

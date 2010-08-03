@@ -25,7 +25,7 @@ class Admin::EventsController < Admin::Controller
   def create
     @event = Event.create params[:event]
 
-    redirect_to admin_events_path
+    redirect_to events_path
   end
 
   def update
@@ -40,7 +40,7 @@ class Admin::EventsController < Admin::Controller
         @event.errors.full_messages.to_sentence
     end
 
-    redirect_to admin_events_path
+    redirect_to events_path
   end
 
   def destroy

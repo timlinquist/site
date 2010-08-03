@@ -297,3 +297,20 @@ div.presenter-box-inner {
 div.presenter-box-inner a:link {
     text-decoration: none;
 }
+
+/* Asset Box */
+ul.asset-list {
+    list-style: none;
+}
+
+li.asset-box {
+    text-align: center;
+}
+
+.asset-form-data {
+    border-bottom: 1px dotted #c0c0c0;
+}
+
+.add-new {
+    margin-left: 200px;
+}

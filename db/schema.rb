@@ -9,13 +9,14 @@
 #
 # It's strongly recommended to check this file into your version control system.
 
-ActiveRecord::Schema.define(:version => 20100802235710) do
+ActiveRecord::Schema.define(:version => 20100803075339) do
 
   create_table "asset_types", :force => true do |t|
     t.string   "description"
     t.boolean  "streaming"
     t.datetime "created_at"
     t.datetime "updated_at"
+    t.boolean  "downloadable", :default => true
   end
 
   create_table "assets", :force => true do |t|
@@ -25,10 +26,9 @@ ActiveRecord::Schema.define(:version => 20100802235710) do
     t.string   "data_content_type"
     t.integer  "data_file_size"
     t.datetime "data_updated_at"
-    t.integer  "width"
-    t.integer  "height"
     t.datetime "created_at"
     t.datetime "updated_at"
+    t.string   "description"
   end
 
   create_table "conferences", :force => true do |t|
@@ -43,10 +43,7 @@ ActiveRecord::Schema.define(:version => 20100802235710) do
     t.datetime "end_at"
     t.datetime "created_at"
     t.datetime "updated_at"
-    t.string   "logo"
     t.string   "url"
-    t.string   "slug_date_format",  :default => "%Y-%m-%d-%H-%M-"
-    t.string   "slug_format_data",  :default => "display_presenters, title"
     t.integer  "conference_id"
     t.string   "name_suffix"
     t.string   "name_prefix"
@@ -54,9 +51,6 @@ ActiveRecord::Schema.define(:version => 20100802235710) do
     t.string   "logo_content_type"
     t.integer  "logo_file_size"
     t.datetime "logo_updated_at"
-    t.string   "joiner",            :default => "-"
-    t.string   "image_extension",   :default => "png"
-    t.string   "video_extension"
   end
 
   create_table "presentations", :force => true do |t|
@@ -105,9 +99,6 @@ ActiveRecord::Schema.define(:version => 20100802235710) do
     t.datetime "created_at"
     t.datetime "updated_at"
     t.boolean  "available"
-    t.string   "display_format"
-    t.string   "prefix"
-    t.string   "override"
     t.boolean  "include_random", :default => true
   end
 

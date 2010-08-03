@@ -1,0 +1,29 @@
+.module
+  =render :partil => 'shared/corners'
+  .module-inner
+    %h1 Administration
+=render :partial => 'admin/navigation'
+.module
+  =render :partial => 'shared/corners'
+  .module-inner
+    %h2 Asset Types
+
+.module
+  =render :partial => 'shared/corners'
+  .module-inner
+  =link_to 'Add Asset Type', new_admin_asset_type_path
+  %table.admin
+    %tr
+      %th
+        ID
+      %th
+        Description
+      %th
+        Streaming
+      %th
+        Downloadable
+      %th
+        Actions
+    =render :partial => 'asset_type', :collection => @asset_types
+  #pagination
+    =will_paginate @asset_types, :params => {:controller => 'admin/asset_types', :action => 'index'}, :class => 'not_ajax'

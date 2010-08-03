@@ -2,7 +2,7 @@
   #navigation
     %ul
       %li.first
-        =link_to_unless_current 'Users', admin_users_path
+        =link_to_unless_current 'Asset Types', admin_asset_types_path
       %li
         =link_to_unless_current 'Conferences', admin_conferences_path
       %li
@@ -11,3 +11,5 @@
         =link_to_unless_current 'Presenters', admin_presenters_path
       %li
         =link_to_unless_current 'Videos', admin_videos_path
+      %li
+        =link_to_unless_current 'Users', admin_users_path

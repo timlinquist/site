@@ -8,8 +8,7 @@ class VideoTest < ActiveSupport::TestCase
       :title => 'Writing Modular Ruby Code: Lessons Learned from Rails 3',
       :event_id => events(:mwrc2010).id,
       :recorded_at => Time.zone.now,
-      :available => true,
-      :display_format => 'HD'
+      :available => true
     }
   end
 

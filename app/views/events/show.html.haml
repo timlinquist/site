@@ -31,9 +31,10 @@
       %tr
         %td.nowrap
           =video.recorded_at.strftime('%d-%b-%y %H:%M')
-        %td{:style => "text-align: center"}
+        %td{:style => "width: 150px;"}
           -if video.available
-            =link_to image_tag(video.thumbnail, :width => 142), video_path(video), :class => "noborder"
+            -if video.thumbnail_image
+              =link_to image_tag(video.thumbnail_image.data.url, :width => 142, :class => 'noborder'), video_path(video)
           -else
             ="... coming soon ..."
         %td
@@ -46,4 +47,6 @@
             =display_presenters_with_links video  
         -if session.user && session.user.admin?
           %td
-            =link_to 'E', edit_admin_video_path(video)
+            =link_to edit_image_tag, edit_admin_video_path(video)
+            |
+            =link_to delete_image_tag, admin_video_path(video), :method => 'Delete'

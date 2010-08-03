@@ -1,5 +1,7 @@
 -form_for [:admin, @video], :html => { :multipart => true } do |f|
   =error_messages_for(:object => @video, :message => "You must fix these fields before proceeding", :header_message => nil)
+  %h3
+    Basic Info
   .form-field.required
     =f.label :title, "Title"
     =f.text_field :title, :size => 60
@@ -12,13 +14,9 @@
       =f.hidden_field :event_id, :value => @event.id
       =@event.display_name
 
-    #hint
-      Fields used for slug:
-      =@video.event.slug_format_data unless @video.event.nil?
-
   .form-field
     =f.label :recorded_at, "Recorded at"
-    =calendar_date_select_tag "[video]recorded_at", (@video.recorded_at unless @video.nil?), :time => true
+    =calendar_date_select_tag "[video]recorded_at", (@video.recorded_at unless @video.nil?), :time => true, :size => 28
 
   .form-field
     =f.label :available, "Available"
@@ -28,32 +26,16 @@
     =f.label :include_random, "Include in Random Videos"
     =f.check_box :available
 
-  .form-field
-    =f.label :display_format, "Format"
-    =f.text_field :display_format, :size => 10
-
-  .form-field
-    =f.label :prefix, "Prefix"
-    =f.text_field :prefix, :size => 15
-
-  .form-field
-    =f.label :override, "Override"
-    =f.text_field :override, :size => 25
-
+  %h3 Presenter(s)
   -f.fields_for :presentations do |builder|
     =render 'presentation_fields', :f => builder
+  =link_to_add_fields "Add a presenter", f, :presentations
 
-    =link_to_add_fields "Add an existing presenter", f, :presentations
-    |
-    =link_to_add_fields "Add a new presenter", f, :presentations
-  
+  %h3 Asset(s)
   -f.fields_for :assets do |assetbuilder|
     =render 'asset_fields', :f => assetbuilder
 
-    =link_to_add_fields "Add an asset", f, :assets
-
-  -if @event
-    =hidden_field_tag "from", "Events"
+  =link_to_add_fields "Add an asset", f, :assets
 
   .form-field
     =f.submit "Save Changes", :class => "button"

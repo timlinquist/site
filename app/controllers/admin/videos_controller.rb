@@ -13,6 +13,9 @@ class Admin::VideosController < Admin::Controller
 
     @video = Video.find(params[:id])
     @presenters = Presenter.find(:all, :order => 'last_name, first_name')
+    if @video.assets.count == 0
+      @video.assets.build
+    end
     @asset_types = AssetType.find(:all, :order => 'description')
   end
 
@@ -36,11 +39,7 @@ class Admin::VideosController < Admin::Controller
     if @video.save then
       flash[:success] = "The video was created successfully."
 
-      if params[:from] == "Events"
-        redirect_to admin_event_path @video.event
-      else
-        redirect_to admin_videos_path
-      end
+      redirect_to event_path @video.event
     else
       flash[:error] = "An error occured while creating the video: " +
         @video.errors.full_messages.to_sentence
@@ -60,11 +59,13 @@ class Admin::VideosController < Admin::Controller
         @video.errors.full_messages.to_sentence
     end
 
-    redirect_to admin_videos_path
+    redirect_to event_path @video.event
   end
 
   def destroy
     @video = Video.find(params[:id])
+
+    event = @video.event
 
     if @video.destroy
       flash[:success]="The video was successfully deleted."
@@ -72,6 +73,6 @@ class Admin::VideosController < Admin::Controller
       flash[:error]="The video could not be deleted: " +
         @video.errors.full_messages.to_sentence
     end
-    redirect_to admin_videos_path
+    redirect_to admin_event_path event
   end
 end

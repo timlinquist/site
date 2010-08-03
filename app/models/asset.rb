@@ -5,12 +5,15 @@ class Asset < ActiveRecord::Base
 
   has_attached_file :data,
     :path => ":rails_root/public/system/:class/:attachment/:id/:style/:basename.:extension",
-    :url => "/system/:class/:attachment/:id/:style/:basename.:extension",
-    :styles => {
-      :default_url => "/assets/:style/missing.png"}
+    :url => "/system/:class/:attachment/:id/:style/:basename.:extension"
 
-  cattr_reader :per_page
+  named_scope :downloadable, 
+    :joins => :asset_type, 
+    :conditions => ['asset_types.downloadable = ?', true],
+    :order => 'data_file_size desc'
 
-  @@per_page = 10
+  def display_description
+    description.blank? ? asset_type.description : description
+  end
 
 end
