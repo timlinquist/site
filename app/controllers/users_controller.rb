@@ -4,6 +4,7 @@ class UsersController < ApplicationController
   def new
     redirect_to user_path(session.user) if session.authenticated?
     @user = User.new
+    @presenters = Presenter.find(:all,:order => 'last_name, first_name')
   end
 
   def create
@@ -26,6 +27,7 @@ class UsersController < ApplicationController
 
   def edit
     @user = session.user
+    @presenters = Presenter.find(:all,:order => 'last_name, first_name')
   end
 
   def settings
@@ -34,6 +36,7 @@ class UsersController < ApplicationController
 
   def show
     @user = User.find(params[:id])
+    @presenters = Presenter.find(:all,:order => 'last_name, first_name')
   end
 
   def update

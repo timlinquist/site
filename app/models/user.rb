@@ -1,7 +1,7 @@
 class User < ActiveRecord::Base
   attr_accessible :username, :time_zone, :email, :session_token, :admin,
     :password, :password_confirmation, :first_name, :last_name,
-    :presenter_id
+    :presenter_id, :avatar
 
   attr_accessor :password, :password_confirmation
 
@@ -21,6 +21,20 @@ class User < ActiveRecord::Base
   before_save :hash_and_salt_password, :if => :password
 
   after_create :welcome_email
+
+  has_attached_file :avatar,
+    :path => ":rails_root/public/system/:class/:attachment/:id/:basename-:style.:extension",
+    :url => "/system/:class/:attachment/:id/:basename-:style.:extension",
+    :styles => {
+      :tiny => '50x50',
+      :small => '100x100',
+      :medium => '200x200',
+      :large  => '300x300',
+      :xl     => '400x400',
+      :xxl    => '500x500',
+      :xxxl    => '600x600'
+      },
+    :default_url => '/system/:class/:attachment/missing-:style.png'
 
   cattr_reader :per_page
 
@@ -67,5 +81,13 @@ class User < ActiveRecord::Base
 
   def welcome_email
     UserMailer.deliver_welcome_email(self)
+  end
+
+  def full_name
+    if first_name && username
+      "#{first_name} #{last_name} (#{username})"
+    else
+      "#{user_name}"
+    end
   end
 end

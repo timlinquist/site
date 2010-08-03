@@ -5,3 +5,5 @@ db/*.sqlite3
 .#*
 public/system/events/logos/*/
 public/system/assets/datas/*/
+public/system/users/avatars/*/
+.DS_Store

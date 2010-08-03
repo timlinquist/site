@@ -1,21 +1,26 @@
--form_for @user do |f|
+-form_for @user, :html => { :multipart => true } do |f|
   .form-field.required
-    %label{:for => 'user_username'} User Name
+    =f.label :username, "Username"
     =f.text_field :username
 
   .form-field.required
-    %label{:for => 'user_email'} Email
+    =f.label :email, "Email"
     =f.text_field :email
 
   .form-field.required
-    %label{:for => 'user_time_zone'} Time Zone
+    =f.label :time_zone, "Time Zone"
     =f.time_zone_select :time_zone, ActiveSupport::TimeZone.us_zones
 
+  .form-field
+    =f.label :avatar, "Picture"
+    =f.file_field :avatar
+
   .form-field.required
-    %label{:for => 'user_password'} Password
+    =f.label :password, "Password"
     =f.password_field :password
+
   .form-field.required
-    %label{:for => 'user_password_confirmation'} Confirm Password
+    =f.label :password_confirmation, "Confirm Password"
     =f.password_field :password_confirmation
 
   %span.submit

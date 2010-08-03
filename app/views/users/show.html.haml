@@ -1,3 +1,9 @@
-%h2
-  User Information
-=render :partial => 'admin/users/form'
+.profile_header
+  .profile_picture
+    =image_tag(@user.avatar.url(:small))
+  .profile_actions
+    -if @user == session.user
+      =link_to edit_image_tag, edit_user_path(@user)
+  .profile_name
+    =@user.full_name
+.clear
