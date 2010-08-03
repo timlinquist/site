@@ -1,0 +1,8 @@
+-unless flash.empty?
+  .flash_container
+    %ul#flash
+      -flash.keys.each do |k|
+        %li{:class => k}
+          =h flash[k]
+    -javascript_tag do
+      setTimeout("new Effect.Fade('flash');", 60000)

@@ -22,6 +22,13 @@ class Admin::AssetTypesController < Admin::Controller
   def create
     @asset_type = AssetType.create params[:asset_type]
 
+    # TODO clean up the flash messages these are quick and dirty hacks
+    if @asset_type.valid?
+      flash[:success] = "Your new asset type was created successfully."
+    else
+      flash[:error] = "Your asset type failed to save... damn!!!"
+    end
+
     redirect_to admin_asset_types_path
   end
 

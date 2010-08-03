@@ -26,7 +26,8 @@ class UsersController < ApplicationController
   end
 
   def edit
-    @user = session.user
+    @user = User.find(params[:id])
+    require_session_user @user
     @presenters = Presenter.find(:all,:order => 'last_name, first_name')
   end
 
@@ -40,12 +41,14 @@ class UsersController < ApplicationController
   end
 
   def update
-    @user = session.user
+    @user = User.find(params[:id])
+
+    require_session_user @user
 
     @user.attributes = params[:user]
 
     if @user.save then
-      flash[:success] = "Changes saved successfully."
+      flash[:success] = "Your user profile changes have been saved successfully."
     else
       flash[:error] = "Failed to save your changes: " +
         @user.errors.full_messages.to_sentence
@@ -53,4 +56,14 @@ class UsersController < ApplicationController
 
     redirect_to user_path @user
   end
+
+  private
+
+  def require_session_user user
+    if session.anonymous? || session.user != user
+      flash[:error] = "You can not do this to another persons profile!"
+      redirect_to user_path session.user
+    end
+  end
+
 end
