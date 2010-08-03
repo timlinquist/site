@@ -11,7 +11,7 @@ class Presenter < ActiveRecord::Base
   @@per_page = 24
 
   def display_name
-    if aka_name.nil?
+    if aka_name.blank?
       if user.nil?
         "#{first_name} #{last_name}"
       else
