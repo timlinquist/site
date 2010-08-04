@@ -2,7 +2,7 @@ module VideosHelper
   def display_presenters_with_links video
     out = ""
     video.presenters.each do | presenter |
-      out += link_to(presenter.display_name, presenter_path(presenter)) + ", "
+      out += link_to_unless_current(presenter.display_name, presenter_path(presenter)) + ", "
     end
     out = out [0,out.length-2]
   end

@@ -15,3 +15,11 @@
           =a[1].nil? ? 'nil':a[1]
         %td
           &nbsp;
+    -video.assets.each do |a|
+      %tr
+        %td
+          Asset
+        %td
+          =a.data_file_name
+          %br
+          =number_to_human_size(a.data_file_size)

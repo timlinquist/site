@@ -7,3 +7,5 @@
   .profile_name
     =@user.full_name
 .clear
+=render :partial => 'presenters/videos', :locals => {:presenter => @user.presenter}
+

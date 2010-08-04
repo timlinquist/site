@@ -1,37 +1,14 @@
-.center
-  %h2
+.profile_header
+  .profile_picture
+    -unless @presenter.user.nil?
+      =image_tag(@presenter.user.avatar.url(:small))
+  .profile_actions
+    -if @presenter.user == session.user  && !session.anonymous?
+      =link_to edit_image_tag, edit_user_path(@presenter.user)
+  .profile_name
     =@presenter.display_name
   %br
     %span.small
       =link_to "View All Presenters", presenters_path
-  %table{:width => '100%'}
-    %tr
-      %th
-        Conference
-      %th
-        Time
-      %th{:colspan => 2}
-        Presentation
-    -@presenter.videos.each do |v|
-      %tr
-        %td
-          =link_to v.event.display_name, event_path(v.event)
-        %td
-          =v.recorded_at.strftime("%d-%b-%y %H:%M")
-        %td
-          -if v.available
-            -if v.thumbnail_image
-              =link_to image_tag(v.thumbnail_image.data.url, :width => 142), video_path(v), :class => "noborder"
-          -else
-            ="... coming soon ..."
-        %td
-          %em
-            -if v.available
-              =link_to v.title, video_path(v)
-            -else
-              =v.title
-        -if session.user && session.user.admin?
-          %td
-            =link_to edit_image_tag, edit_admin_video_path(v)
-            |
-            =link_to delete_image_tag, admin_video_path(v), :method => "Delete"
+=render :partial => 'videos', :locals => {:presenter => @presenter}
+
