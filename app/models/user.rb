@@ -18,6 +18,10 @@ class User < ActiveRecord::Base
 
   has_one :profile
 
+  has_many :activities,
+           :order => 'created_at desc',
+           :conditions => ['suppressed = ?', false]
+
   before_save :hash_and_salt_password, :if => :password
 
   after_create :welcome_email
@@ -45,6 +49,7 @@ class User < ActiveRecord::Base
     if user && user.password?(password)
       user.last_login_date = Time.zone.now
       user.save
+      record_activity "logged in successfully."
       user
     end
   end
@@ -89,5 +94,11 @@ class User < ActiveRecord::Base
     else
       "#{user_name}"
     end
+  end
+
+  private
+
+  def record_activity message
+    self.user.activities.create!(:message => message)
   end
 end
