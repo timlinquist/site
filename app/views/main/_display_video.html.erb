@@ -1,3 +1,4 @@
+<%-unless video.streaming_video.nil? %>
 <script type="text/javascript" src="/javascripts/swfobject.js">
 </script>
 <p id="flash-player" class="center">
@@ -17,6 +18,9 @@
   s1.addVariable('plugins', 'viral-1')
   s1.write('flash-player')
 </script>
+<%-else%>
+<h3 class="center">No Streaming Video available at this time</h3>
+<%-end%>
 <br />
 <div class="center">
   <h3>
@@ -24,7 +28,7 @@
       <%=video.event.display_name%>
     </a>
   </h3>
-  <h2><%= video.title %></h2>
+  <h2><%= link_to video.title, video_path(video) %></h2>
   <span class="caption"><%= display_presenters_with_links video %></span>
 </div>
 <div>

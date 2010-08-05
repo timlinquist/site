@@ -39,13 +39,16 @@ class Video < ActiveRecord::Base
   @@per_page = 25
 
   def self.random
-    if Rails.env == "production"
-      order = 'rand()'
-    else
-      order = 'random()'
-    end
+      if Rails.env == "production"
+        order = 'rand()'
+      else
+        order = 'random()'
+      end
+
       Video.find(:first,
-                 :conditions => ["available = ? and  include_random = ?",
+                 :joins => "inner join assets on assets.video_id = videos.id inner join asset_types on assets.asset_type_id = 'asset_types'.id",
+                 :conditions => ["available = ? and include_random = ? and asset_types.streaming = ?",
+                                 true,
                                  true,
                                  true],
                  :order => order)
@@ -70,6 +73,5 @@ class Video < ActiveRecord::Base
     end
     out = out [0,out.length-2]
   end
-
 end
 

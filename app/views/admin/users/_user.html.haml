@@ -2,6 +2,8 @@
   %td
     =user.id
   %td
+    =image_tag(user.avatar.url(:tiny))
+  %td
     ="#{user.first_name} #{user.last_name} (#{user.username})"
   %td
     =user.email

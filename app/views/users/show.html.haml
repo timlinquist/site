@@ -1,11 +1,32 @@
 .profile_header
-  .profile_picture
-    =image_tag(@user.avatar.url(:small))
   .profile_actions
     -if @user == session.user
       =link_to edit_image_tag, edit_user_path(@user)
+  .badge_data_left.center
+    .big
+      happy
+    .small
+      sentiment
+  .badge_data_left.center
+    .number
+      =@user.rep_score
+    .small
+      rep score
+  .badge_data_left.center
+    .number
+      0
+    .small
+      was there
+  .profile_picture
+    =image_tag(@user.avatar.url(:small))
   .profile_name
     =@user.full_name
+  .profile_location
+    =@user.location || "Location not revealed"
+  .profile_title
+    =@user.title || "No title"
+
+      
 .clear
 =render :partial => 'presenters/videos', :locals => {:presenter => @user.presenter}
 

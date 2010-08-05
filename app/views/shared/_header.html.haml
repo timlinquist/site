@@ -11,14 +11,20 @@
       %li.first=link_to_unless_current 'Home', root_path
       %li=link_to_unless_current "Events", events_path
       %li=link_to_unless_current "Presenters", presenters_path
+    %ul.personal
       -unless session.authenticated?
-        %li=link_to_unless_current 'Login', new_session_path
-        %li=link_to_unless_current 'Sign Up', new_user_path
-      -else
+        %li.first
+          =link_to_unless_current 'Login', new_session_path
         %li
+          =link_to_unless_current 'Sign Up', new_user_path
+      -else
+        %li.first
           Welcome 
           =link_to_unless_current session.user.username, user_path(session.user)
         %li
           =link_to 'Logout', session_path, :method => :delete
         -if session.user.admin?
           %li=link_to_unless_current 'Administration', admin_path
+      %li
+        =text_field_tag :search, :terms
+        =submit_tag "Search"

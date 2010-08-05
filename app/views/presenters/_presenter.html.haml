@@ -1,6 +1,9 @@
 %li.presenter-box
   .presenter-box-outer
     .presenter-box-inner
+      -unless presenter.user.nil?
+        .profile_picture
+          =image_tag(presenter.user.avatar.url(:tiny))
       =link_to presenter.display_name, presenter
       %br
       ="Videos: #{presenter.videos.count}"

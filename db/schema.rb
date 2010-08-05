@@ -9,7 +9,7 @@
 #
 # It's strongly recommended to check this file into your version control system.
 
-ActiveRecord::Schema.define(:version => 20100803075339) do
+ActiveRecord::Schema.define(:version => 20100805041712) do
 
   create_table "asset_types", :force => true do |t|
     t.string   "description"
@@ -90,6 +90,8 @@ ActiveRecord::Schema.define(:version => 20100803075339) do
     t.datetime "created_at"
     t.datetime "updated_at"
     t.integer  "presenter_id"
+    t.integer  "rep_score",           :default => 0
+    t.string   "title"
   end
 
   create_table "videos", :force => true do |t|

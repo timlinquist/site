@@ -75,4 +75,9 @@ class UserTest < ActiveSupport::TestCase
     refute_equal original_hash, u.password_hash,
       "password_hash remained the same"
   end
+
+  test "password_confirmation is required to change password" do
+    # TODO - write this test, currently from script/console I 
+    # can set password and save successfully.
+  end
 end

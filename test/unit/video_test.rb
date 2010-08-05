@@ -12,15 +12,23 @@ class VideoTest < ActiveSupport::TestCase
     }
   end
 
-  def test_new_with_validations
-    v = Video.new
-    assert_equal false, v.save
+  test_validations_for :title, :presence
+  test_validations_for :recorded_at, :presence
 
-    v = Video.new
-    v.event = events(:mwrc2010)
-    v.title = "presentation title"
-    v.recorded_at = Time.zone.now
+  test "random should return video with a streaming_video" do
+    v = videos(:valid)
 
-    assert v.save
+    a = Asset.new
+    a.asset_type = asset_types(:streaming)
+
+    v.assets << a
+
+    v = Video.random
+
+    assert v.streaming_video
+
+    v = videos(:no_streaming)
+
+    refute v.streaming_video
   end
 end

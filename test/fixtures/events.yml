@@ -1,9 +1,11 @@
 # Read about fixtures at http://ar.rubyonrails.org/classes/Fixtures.html
 
 mwrc2010:
+  id: 1
   conference_id: 1
   name_suffix: 2010
 
 larubyconf2010:
+  id: 2
   conference_id: 2
   name_suffix: 2010
