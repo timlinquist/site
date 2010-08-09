@@ -9,7 +9,15 @@
 #
 # It's strongly recommended to check this file into your version control system.
 
-ActiveRecord::Schema.define(:version => 20100805041712) do
+ActiveRecord::Schema.define(:version => 20100805052305) do
+
+  create_table "activities", :force => true do |t|
+    t.string   "message"
+    t.integer  "user_id"
+    t.boolean  "suppressed", :default => false
+    t.datetime "created_at"
+    t.datetime "updated_at"
+  end
 
   create_table "asset_types", :force => true do |t|
     t.string   "description"
