@@ -62,13 +62,27 @@ class Asset < ActiveRecord::Base
 
       @raw_response = tmp1.raw_response
 
-      @duration = tmp1.raw_response[((tmp1.raw_response =~ /Duration:/)+10),8]
+      pos1 = (tmp1.raw_response =~ /Duration:/)
 
-      tmp2 = tmp1.raw_response[tmp1.raw_response =~ /Video:/,50]
+      unless pos1.nil?
+        @duration = tmp1.raw_response[(pos1 + 10),8]
+      else
+        @duration =""
+      end
 
-      @width, @height = tmp2[(tmp2 =~ /x/) - 3, 7].split('x')
+      pos2 = (tmp1.raw_response =~ /Video:/)
 
-      @streaming = false
+      unless pos2.nil?
+        tmp2 = tmp1.raw_response[pos2,50]
+        @width, @height = tmp2[(tmp2 =~ /x/) - 3, 7].split('x')
+      else
+        @width = 0
+        @height = 0
+      end
+
+      tmp3 = tmp1.raw_response =~ /rtp/ || data_file_name =~ /flv/
+
+      @streaming = !!tmp3
 
       true
     else

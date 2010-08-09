@@ -1,0 +1,18 @@
+%h2 Assets
+%table.assets
+  %tr
+    %th
+      ID
+    %th
+      File Name
+    %th
+      Content Type
+    %th
+      Duration
+    %th
+      Size
+    %th
+      Streaming
+    %th
+      Raw Response
+  =render :partial => 'asset', :collection => @assets

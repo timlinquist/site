@@ -3,6 +3,9 @@
 .center
   #conflogo
     =link_to image_tag(@event.logo.url(:original), :alt => @event.display_name, :title => @event.display_name), @event.url, :class => "noborder"
+  #confnotes
+    %em
+      =@event.notes
   %p.right
     =link_to 'All Events', events_path
     -if @event.conference.events.count > 1

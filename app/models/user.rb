@@ -1,7 +1,7 @@
 class User < ActiveRecord::Base
   attr_accessible :username, :time_zone, :email, :session_token, :admin,
     :password, :password_confirmation, :first_name, :last_name,
-    :presenter_id, :avatar
+    :presenter_id, :avatar, :location, :title
 
   attr_accessor :password, :password_confirmation
 
@@ -49,7 +49,7 @@ class User < ActiveRecord::Base
     if user && user.password?(password)
       user.last_login_date = Time.zone.now
       user.save
-      record_activity "logged in successfully."
+      self.record_activity user, "logged in successfully."
       user
     end
   end
@@ -98,7 +98,7 @@ class User < ActiveRecord::Base
 
   private
 
-  def record_activity message
-    self.user.activities.create!(:message => message)
+  def self.record_activity user, message
+    user.activities.create!(:message => message)
   end
 end

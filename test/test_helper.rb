@@ -11,7 +11,7 @@ class ActiveSupport::TestCase
   self.use_instantiated_fixtures  = false
 
   fixtures :all
-  
+
   def refute expr, message = nil
     assert !expr, message
   end

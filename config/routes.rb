@@ -30,5 +30,6 @@ ActionController::Routing::Routes.draw do |map|
     admin.resources :conferences
     admin.resources :users
     admin.resources :asset_types
+    admin.resources :assets
   end
 end

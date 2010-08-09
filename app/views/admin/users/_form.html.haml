@@ -2,22 +2,30 @@
   .form-field.required
     =f.label :username, 'User Name'
     =f.text_field :username
+
   .form-field
     =f.label :first_name, 'First Name'
     =f.text_field :first_name
+
   .form-field
     =f.label :last_name, 'Last Name'
     =f.text_field :last_name
+
   .form-field.required
     =f.label :email, 'Email'
     =f.text_field :email
+
+  .form-field
+    =f.label :title, "Title"
+    =f.text_field :title
+
+  .form-field
+    =f.label :location, "Location"
+    =f.text_field :location
+
   .form-field
     =f.label :admin, 'Administrator'
     =f.check_box :admin
-
-  .form-field
-    =f.label :avatar, "Picture"
-    =f.file_field :avatar
 
   .form-field
     =f.label :presenter_id, 'Presenter'
@@ -26,6 +34,20 @@
   .form-field.required
     =f.label :time_zone, "Time Zone"
     =f.time_zone_select :time_zone, ActiveSupport::TimeZone.us_zones
+
+  .form-field
+    =f.label :avatar, "Picture"
+    =f.file_field :avatar
+    %span.image-display
+      =image_tag(@user.avatar.url(:tiny))
+
+  .form-field.required
+    =f.label :password, "Password"
+    =f.password_field :password
+
+  .form-field.required
+    =f.label :password_confirmation, "Confirm Password"
+    =f.password_field :password_confirmation
 
   %span.submit
     =submit_tag "Save", :class => "button"

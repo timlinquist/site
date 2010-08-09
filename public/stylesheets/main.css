@@ -18,6 +18,7 @@ h1, h2, h3 {
   font-weight: normal;
   font-family: Tahoma, Verdana, Helvetica, sans-serif;
 }
+
 table {
   margin: 0 auto;
   border-collapse: collapse;
@@ -25,6 +26,11 @@ table {
   margin-top: 10px;
   margin-bottom: 30px;
 }
+table.assets {
+    width: 100%;
+    font-size: .6em;
+}
+
 table caption {
   margin: 0;
   padding: 2px;
@@ -79,7 +85,7 @@ a.rss {
 }
 #primary-content {
   float: left;
-  width: 75%;
+  width: 70%;
   padding-right: 10px;
 }
 #secondary-content {
@@ -368,12 +374,17 @@ ul#flash li.success {
     padding: 5px;;
 }
 
+.spacer {
+    padding-bottom: 10px;
+}
+
 .badge {
     background: #c0c0c0;
     border: 1px dotted black;
     padding: 5px;
     float: right;
     width: 250px;
+    margin-bottom: 15px;
 }
 
 .badge_data_left {
@@ -410,4 +421,13 @@ ul#flash li.success {
 .badge .number {
     padding: 3px;
     font-size: 3em;
+}
+
+#conflogo {
+    margin-bottom: 10px;
+}
+
+#confnotes {
+    text-align: center;
+    padding: 5px;
 }

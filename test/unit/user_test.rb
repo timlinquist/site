@@ -76,6 +76,14 @@ class UserTest < ActiveSupport::TestCase
       "password_hash remained the same"
   end
 
+  test "login should generate activity" do
+    u = create_user
+
+    assert_difference('Activity.count') do
+      User.authenticate 'tester', '123456'
+    end
+  end
+
   test "password_confirmation is required to change password" do
     # TODO - write this test, currently from script/console I 
     # can set password and save successfully.
