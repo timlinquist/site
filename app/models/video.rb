@@ -47,9 +47,8 @@ class Video < ActiveRecord::Base
 
 
       Video.find(:first,
-                 :joins => "inner join assets on assets.video_id = videos.id inner join asset_types on assets.asset_type_id = asset_types.id",
-                 :conditions => ["available = ? and include_random = ? and asset_types.streaming = ?",
-                                 true,
+                 :joins => "inner join assets on assets.video_id = videos.id",
+                 :conditions => ["available = ? and include_random = ?",
                                  true,
                                  true],
                  :order => order)
