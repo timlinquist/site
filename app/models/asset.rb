@@ -46,7 +46,15 @@ class Asset < ActiveRecord::Base
   end
 
   def display_description
-    description.blank? ? asset_type.description : description
+    if description.blank?
+      if asset_type.nil?
+        "no description available"
+      else
+        asset_type.description
+      end
+    else
+      description
+    end
   end
 
   def get_metadata
