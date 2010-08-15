@@ -40,7 +40,7 @@ set :deploy_to, applicationdir
 # New Relic deployment notification
 after 'deploy:update', "newrelic:notice_deployment"
 
-after "deploy", "deploy:cleanup"
+after "deploy", "deploy:cleanup", "deploy:isolate"
 
 namespace :deploy do
   task :start do
@@ -49,5 +49,9 @@ namespace :deploy do
   end
   task :restart, :roles => :app, :except => {:no_release => true} do
     run "touch #{File.join(current_path, 'tmp','restart.txt')}"
+  end
+  task :isolate do
+    run "cd #{deploy_to}/current && /usr/bin/env rake environment RAILS_ENV=production"
+    run "cd #{deploy_to}/current && /usr/bin/env rake environment RAILS_ENV=production"
   end
 end
