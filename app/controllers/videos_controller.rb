@@ -18,10 +18,13 @@ class VideosController < ApplicationController
   end
 
   def destroy
-    @v
+    @video = Video.find(params[:id])
   end
 
   def show
     @video = Video.find(params[:id])
+    @videos = Video.find(:all, :conditions => ['event_id = ?', @video.event_id],
+                        :order => 'recorded_at')
+
   end
 end
