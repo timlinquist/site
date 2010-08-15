@@ -2,7 +2,6 @@
   %h2
     =@conference.name
   -@conference.events.each do |e|
-    =e.display_name
-    %br
     =link_to image_tag(e.logo.url, :alt => "#{e.display_name}"), e, :class=>'noborder'
     %br
+    =link_to e.display_name, e
