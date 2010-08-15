@@ -40,7 +40,7 @@ set :deploy_to, applicationdir
 # New Relic deployment notification
 after 'deploy:update', "newrelic:notice_deployment"
 
-after "deploy", "deploy:cleanup", "deploy:isolate"
+after "deploy", "deploy:cleanup"
 
 namespace :deploy do
   task :start do
