@@ -7,6 +7,8 @@ class User < ActiveRecord::Base
 
   attr_accessor :signup
 
+  before_validation :check_admin
+
   validates_length_of :username, :within => 3..40
   validates_presence_of :username, :email, :time_zone
   validates_uniqueness_of :username, :email
@@ -52,6 +54,11 @@ class User < ActiveRecord::Base
       self.record_activity user, "logged in successfully."
       user
     end
+  end
+
+  def check_admin
+    self.admin = (User.count == 0) unless admin
+    true
   end
 
   def self.signup params
