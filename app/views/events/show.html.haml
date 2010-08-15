@@ -39,8 +39,8 @@
           =video.recorded_at.strftime('%d-%b-%y %H:%M')
         %td{:style => "width: 150px;"}
           -if video.available?
-            -if video.thumbnail_image
-              =link_to image_tag(video.thumbnail_image.data.url, :width => 142, :class => 'noborder'), video_path(video)
+            -if video.image
+              =link_to image_tag(video.image.url(:thumb), :width => 142, :class => 'noborder'), video_path(video)
           -else
             ="... coming soon ..."
         %td

@@ -1,10 +1,12 @@
 require 'rvideo'
 
 class Asset < ActiveRecord::Base
-  
+
   belongs_to :asset_type
 
   belongs_to :video
+
+  has_many :streaming_for, :class_name => 'Video'
 
   has_attached_file :data,
     :path => ":rails_root/public/system/:class/:attachment/:id/:style/:basename.:extension",
@@ -22,25 +24,18 @@ class Asset < ActiveRecord::Base
     @raw_response
   end
 
-  def streaming
-    if @streaming.nil?
-      get_metadata
-    end
-    @streaming
-  end
-
   def width
     if @width.nil?
       get_metadata
     end
-    @width
+    @width.to_i
   end
 
   def height
     if @height.nil?
       get_metadta
     end
-    @height
+    @height.to_i
   end
 
   def duration
@@ -74,15 +69,11 @@ class Asset < ActiveRecord::Base
 
       unless pos2.nil?
         tmp2 = tmp1.raw_response[pos2,50]
-        @width, @height = tmp2[(tmp2 =~ /x/) - 3, 7].split('x')
+        @width, @height = tmp2[(tmp2 =~ /x/) - 4, 9].split(',')[0].split('x')
       else
         @width = 0
         @height = 0
       end
-
-      tmp3 = tmp1.raw_response =~ /rtp/ || data_file_name =~ /flv/
-
-      @streaming = !!tmp3
 
       true
     else

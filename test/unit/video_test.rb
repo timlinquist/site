@@ -16,16 +16,9 @@ class VideoTest < ActiveSupport::TestCase
   test_validations_for :recorded_at, :presence
 
   test "random should return video with a streaming_video" do
-    v = videos(:valid)
-
-    a = Asset.new
-    a.asset_type = asset_types(:streaming)
-
-    v.assets << a
-
     v = Video.random
 
-    assert v.streaming_video
+    assert_not_nil v.streaming_video
 
     v = videos(:no_streaming)
 

@@ -19,19 +19,33 @@
     =calendar_date_select_tag "[video]recorded_at", (@video.recorded_at unless @video.nil?), :time => true, :size => 28
 
   .form-field
+    =f.label :streaming_asset_id, "Streaming Video"
+    =f.collection_select :streaming_asset_id, @video.assets, :id, :display_description, :include_blank => true
+
+  .form-field
     =f.label :available, "Available"
     =f.check_box :available
 
   .form-field
     =f.label :include_random, "Include in Random Videos"
     =f.check_box :include_random
+  %h3 Image
+  .form-field
+    =f.label :image, "Image"
+    =f.file_field :image
+  .form-field
+    %label
+      Attached Image Preview
+    =image_tag(@video.image.url(:thumb))
 
   %h3 Presenter(s)
   -f.fields_for :presentations do |builder|
     =render 'presentation_fields', :f => builder
   =link_to_add_fields "Add a presenter", f, :presentations
 
-  %h3 Asset(s)
+  %h3 
+    Asset(s) - 
+    =@video.assets.count
   -f.fields_for :assets do |assetbuilder|
     =render 'asset_fields', :f => assetbuilder
 
@@ -39,3 +53,5 @@
 
   .form-field
     =f.submit "Save Changes", :class => "button"
+
+  

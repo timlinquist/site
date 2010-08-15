@@ -1,23 +1,16 @@
 class Video < ActiveRecord::Base
 
   attr_accessible :available, :title, :recorded_at, :event_id,
-    :presentations_attributes, :assets_attributes, :include_random
+    :presentations_attributes, :assets_attributes, :include_random,
+    :streaming_asset_id, :image
 
   belongs_to :event
 
+  belongs_to :streaming_video,
+             :class_name => 'Asset',
+             :foreign_key => "streaming_asset_id"
+
   has_many :assets
-
-  has_one :thumbnail_image,
-          :class_name => 'Asset',
-          :conditions => ["asset_type_id in (select id from asset_types where description = 'Thumbnail')"]
-
-  has_one :streaming_video,
-          :class_name => 'Asset',
-          :conditions => ['asset_type_id in (select id from asset_types where streaming = ?)',true]
-
-  has_one :preview_image,
-          :class_name => 'Asset',
-          :conditions => ["asset_type_id in (select id from asset_types where description = 'Preview')"]
 
   validates_presence_of :title
   validates_presence_of :recorded_at
@@ -34,6 +27,14 @@ class Video < ActiveRecord::Base
     :reject_if => lambda { |a| a[:asset_type_id].blank? },
     :allow_destroy => true
 
+  has_attached_file :image,
+    :path => ":rails_root/public/system/:class/:attachment/:id/:style/:basename.:extension",
+    :url => "/system/:class/:attachment/:id/:style/:basename.:extension",
+    :styles => {
+      :thumb => '180x101',
+      :preview => '640x360'
+    }
+
   cattr_reader :per_page
 
   @@per_page = 25
@@ -47,10 +48,7 @@ class Video < ActiveRecord::Base
 
 
       Video.find(:first,
-                 :joins => "inner join assets on assets.video_id = videos.id",
-                 :conditions => ["available = ? and include_random = ?",
-                                 true,
-                                 true],
+                 :conditions => ["streaming_asset_id is not null"],
                  :order => order)
   end
 

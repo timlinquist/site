@@ -1,1 +1,7 @@
 # Read about fixtures at http://ar.rubyonrails.org/classes/Fixtures.html
+
+streaming:
+  id: 1
+  video_id: 1
+  asset_type_id: 1
+  
