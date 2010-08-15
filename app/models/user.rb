@@ -99,7 +99,7 @@ class User < ActiveRecord::Base
     if first_name && username
       "#{first_name} #{last_name} (#{username})"
     else
-      "#{user_name}"
+      "#{username}"
     end
   end
 
