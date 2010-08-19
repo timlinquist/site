@@ -8,6 +8,9 @@ Rails::Initializer.run do |config|
   config.time_zone = 'Pacific Time (US & Canada)'
   config.action_mailer.raise_delivery_errors = false
   config.action_mailer.default_url_options = { :host => 'localhost' }
+
+  config.gem "ruby-mysql", :lib => "mysql"
+
 end
 
 require 'will_paginate'
