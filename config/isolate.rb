@@ -11,5 +11,5 @@ env :development, :test do
 end
 
 env :production do
-  gem "mysql"
+  gem "mysql", :lib => 'mysql'
 end
