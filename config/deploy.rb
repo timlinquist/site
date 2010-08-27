@@ -2,7 +2,7 @@ fail_message = "\nInvalid deploy_env specified\n\tUsage: cap {command} -S deploy
 
 begin; deploy_env; rescue NameError; set :deploy_env, 'integration' end
 
-set :user, 'confreakadmin'
+set :user, 'odzadmin'
 set :domain, 'confreaks.net'
 set :use_sudo, false
 
@@ -16,6 +16,8 @@ set :scm_password, 'confreaks-deploy'
 set :repository, "git@github.com:confreaks/site"
 set :branch, 'master'
 
+set :deploy_via, :copy
+
 set :application, "confreaks.net"
 
 set :home_dir, "/home/#{user}"
@@ -26,7 +28,7 @@ when 'integration'
   role :web, domain
   role :app, domain
 when 'production'
-  set :application, "www.#{domain}"
+  set :application, "ps29351.dreamhost.com"
   role :web, domain
   role :app, domain
 else
@@ -49,9 +51,5 @@ namespace :deploy do
   end
   task :restart, :roles => :app, :except => {:no_release => true} do
     run "touch #{File.join(current_path, 'tmp','restart.txt')}"
-  end
-  task :isolate do
-    run "cd #{deploy_to}/current && /usr/bin/env rake environment RAILS_ENV=production"
-    run "cd #{deploy_to}/current && /usr/bin/env rake environment RAILS_ENV=production"
   end
 end

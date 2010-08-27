@@ -251,7 +251,7 @@ form .field-set .required label {
 /* Event Box */
 ul.event-list {
     list-style: none;
-    
+
 }
 
 li.event-box {
@@ -261,7 +261,7 @@ li.event-box {
 div.event-box-outer {
     display: table;
     width: 220px;
-    height: 220px;
+    height: 240px;
     float: left;
     padding: 0 5px 0 5px;
     border: #c0c0c0 dotted 1px;
