@@ -1,4 +1,4 @@
-require 'RDiscount'
+require 'rdiscount'
 
 class VideosController < ApplicationController
   def index
