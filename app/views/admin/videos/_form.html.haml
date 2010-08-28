@@ -29,6 +29,15 @@
   .form-field
     =f.label :include_random, "Include in Random Videos"
     =f.check_box :include_random
+
+  .form-field
+    =f.label :rating, "Rating"
+    =f.select :rating, Video::RATINGS
+
+  .form-field
+    =f.label :abstract, "Abstract"
+    =f.text_area :abstract, :cols => 60, :rows => 5
+
   %h3 Image
   .form-field
     =f.label :image, "Image"

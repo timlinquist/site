@@ -3,7 +3,7 @@ fail_message = "\nInvalid deploy_env specified\n\tUsage: cap {command} -S deploy
 begin; deploy_env; rescue NameError; set :deploy_env, 'integration' end
 
 set :user, 'odzadmin'
-set :domain, 'confreaks.net'
+set :domain, 'ps29351.dreamhost.com'
 set :use_sudo, false
 
 # version control config
@@ -28,7 +28,7 @@ when 'integration'
   role :web, domain
   role :app, domain
 when 'production'
-  set :application, "ps29351.dreamhost.com"
+  set :application, "#{domain}"
   role :web, domain
   role :app, domain
 else

@@ -4,8 +4,19 @@
 .center
   %em.small
     Listed alphabetically by last name.
+.center
+  .small
+    =link_to "All", presenters_path()
+    -("A".."Z").each do |letter|
+      -unless letter == @alpha
+        =link_to letter, presenters_path()+"?alpha=#{letter}"
+      -else
+        =letter
 %ul.presenter-list
   =render :partial => 'presenter', :collection => @presenters
+  -if @presenters.count == 0
+    .center
+      ="No presenters available for '#{@alpha}'"
 .clear
 .center
   #pagination

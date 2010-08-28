@@ -2,7 +2,7 @@ class Video < ActiveRecord::Base
 
   attr_accessible :available, :title, :recorded_at, :event_id,
     :presentations_attributes, :assets_attributes, :include_random,
-    :streaming_asset_id, :image
+    :streaming_asset_id, :image, :abstract
 
   belongs_to :event
 
@@ -36,6 +36,8 @@ class Video < ActiveRecord::Base
     }
 
   cattr_reader :per_page
+
+  RATINGS = [ "Everyone", "Language", "Strong Language" ]
 
   @@per_page = 25
 

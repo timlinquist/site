@@ -4,6 +4,7 @@ gem "will_paginate", "= 2.3.14"
 gem "haml",          "= 3.0.6"
 gem "paperclip",     "= 2.3.1.1"
 gem "rvideo"
+gem "rdiscount"
 
 env :development, :test do
   gem "modelizer"
@@ -11,5 +12,5 @@ env :development, :test do
 end
 
 env :production do
-  #gem "ruby-mysql", :lib => 'mysql'
+  gem "ruby-mysql", :lib => 'mysql'
 end

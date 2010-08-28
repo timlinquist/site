@@ -50,9 +50,13 @@
             -else
               =video.title
             %br
-            =display_presenters_with_links video  
+            =display_presenters_with_links video 
+          %br
+          %span.small
+            Rated:
+            %strong
+              =video.rating
         -if session.user && session.user.admin?
-          %td
+          %td{:nowrap => true}
             =link_to edit_image_tag, edit_admin_video_path(video)
-            |
             =link_to delete_image_tag, admin_video_path(video), :method => 'Delete'
