@@ -26,8 +26,12 @@
             =v.title
           %br
           =display_presenters_with_links v
+        %br
+        .small
+          Rated:
+          %strong
+            =v.rating
       -if session.user && session.user.admin?
         %td
           =link_to edit_image_tag, edit_admin_video_path(v)
-          |
           =link_to delete_image_tag, admin_video_path(v), :method => "Delete"

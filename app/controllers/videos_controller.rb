@@ -1,3 +1,5 @@
+require 'RDiscount'
+
 class VideosController < ApplicationController
   def index
     @videos = Video.find(:all, :order => 'recorded_at desc')
