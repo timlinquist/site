@@ -2,7 +2,8 @@ class Event < ActiveRecord::Base
 
   belongs_to :conference
   has_many :videos, :order => 'recorded_at asc'
-
+  has_many :available_videos, :class_name => 'Video', 
+           :order => 'recorded_at desc', :conditions => ['available = ?',true]
   has_event_calendar
 
   has_attached_file :logo,

@@ -7,6 +7,10 @@
     =link_to event.display_name, admin_event_path(event)
   %td
     =event.short_code
+  %td.center
+    =event.available_videos.count
+    ="/"
+    =event.videos.count
   %td
     =event.date_occurred
   %td
