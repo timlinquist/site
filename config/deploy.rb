@@ -2,8 +2,8 @@ fail_message = "\nInvalid deploy_env specified\n\tUsage: cap {command} -S deploy
 
 begin; deploy_env; rescue NameError; set :deploy_env, 'integration' end
 
-set :user, 'odzadmin'
-set :domain, 'ps29351.dreamhost.com'
+set :user, 'confreakadmin'
+set :domain, 'confreaks.net'
 set :use_sudo, false
 
 # version control config
@@ -16,25 +16,19 @@ set :scm_password, 'confreaks-deploy'
 set :repository, "git@github.com:confreaks/site"
 set :branch, 'master'
 
-set :deploy_via, :copy
+#set :deploy_via, :copy
 
 set :application, "confreaks.net"
 
 set :home_dir, "/home/#{user}"
 
 case deploy_env
-when 'shared'
-  set :user, 'confreakadmin'
-  set :domain, 'confreaks.net'
-  set :application, "www.#{domain}"
-  role :web, domain
-  role :app, domain
 when 'integration'
   set :application, "beta.#{domain}"
   role :web, domain
   role :app, domain
 when 'production'
-  set :application, "#{domain}"
+  set :application, "www.#{domain}"
   role :web, domain
   role :app, domain
 else

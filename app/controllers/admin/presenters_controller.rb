@@ -2,8 +2,14 @@ class Admin::PresentersController < Admin::Controller
   layout "admin"
 
   def index
+    @alpha = params[:alpha].blank? ? "%" : params[:alpha]
+    
+    conditions = []
+    params[:alpha] ? (conditions << "last_name like '#{params[:alpha]}%'") : nil
+
     @presenters = Presenter.paginate(:all,
                                      :order => 'last_name, first_name',
+                                     :conditions => conditions.join(" and"),
                                      :page => params[:page])
   end
 

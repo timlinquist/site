@@ -1,0 +1,8 @@
+.center 
+  .small
+    =link_to "All", admin_presenters_path()
+    -("A".."Z").each do |letter|
+      -unless letter == @alpha
+        =link_to letter, admin_presenters_path()+"?alpha=#{letter}"
+      -else
+        =letter
