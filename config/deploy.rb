@@ -23,6 +23,12 @@ set :application, "confreaks.net"
 set :home_dir, "/home/#{user}"
 
 case deploy_env
+when 'shared'
+  set :user, 'confreakadmin'
+  set :domain, 'confreaks.net'
+  set :application, "www.#{domain}"
+  role :web, domain
+  role :app, domain
 when 'integration'
   set :application, "beta.#{domain}"
   role :web, domain
