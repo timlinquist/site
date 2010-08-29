@@ -10,9 +10,13 @@
   .clear
   %ul
     %li.first
-      =link_to 'Privacy Policy', privacy_policy_path
+      =link_to_unless_current 'Privacy Policy', privacy_policy_path
     %li
-      =link_to 'Terms of Service', terms_of_service_path
+      =link_to_unless_current 'Terms of Service', terms_of_service_path
+    %li
+      =link_to_unless_current 'Contact Us', contact_us_path
+    %li
+      =link_to_unless_current 'About Us', about_us_path
 .center
   .small
     Version:

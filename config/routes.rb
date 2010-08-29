@@ -1,16 +1,22 @@
 ActionController::Routing::Routes.draw do |map|
 
-  map.dispcal '/calendar/:year/:month', 
-    :controller => 'calendar', 
-    :action => 'index', 
-    :year => Time.zone.now.year, 
+  map.dispcal '/calendar/:year/:month',
+    :controller => 'calendar',
+    :action => 'index',
+    :year => Time.zone.now.year,
     :month => Time.zone.now.month
 
   map.root :controller => "main", :action => "home_page"
-  map.terms_of_service '/terms-of-service', :controller => "main", 
+  map.terms_of_service '/terms-of-service', :controller => "main",
                                             :action     => "tos"
-  map.privacy_policy   '/privacy-policy',   :controller => "main", 
+  map.privacy_policy   '/privacy-policy',   :controller => "main",
                                             :action     => "privacy"
+  map.contact_us       '/contact-us',       :controller => "main",
+                                            :action     => "contact_us"
+  map.about_us         '/about-us',         :controller => "main",
+                                            :action     => "about_us"
+
+  map.blog '/blog', :controller => 'blog',  :action => 'index'
 
   map.resource  :session, :member => { :reset => [:get, :post] }
 
