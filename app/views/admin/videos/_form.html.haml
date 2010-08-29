@@ -2,10 +2,6 @@
   =error_messages_for(:object => @video, :message => "You must fix these fields before proceeding", :header_message => nil)
   %h3
     Basic Info
-  .form-field.required
-    =f.label :title, "Title"
-    =f.text_field :title, :size => 60
-
   .form-field
     =f.label :event, "Event"
     -unless @event
@@ -18,6 +14,25 @@
     =f.label :recorded_at, "Recorded at"
     =calendar_date_select_tag "[video]recorded_at", (@video.recorded_at unless @video.nil?), :time => true, :size => 28
 
+  .form-field.required
+    =f.label :title, "Title"
+    =f.text_field :title, :size => 60
+
+  %h3 Presenter(s)
+  -f.fields_for :presentations do |builder|
+    =render 'presentation_fields', :f => builder
+  =link_to_add_fields "Add a presenter", f, :presentations
+
+  %h3 Content Information
+  .form-field
+    =f.label :abstract, "Abstract"
+    =f.text_area :abstract, :cols => 60, :rows => 8
+
+  .form-field
+    =f.label :rating, "Rating"
+    =f.select :rating, Video::RATINGS
+
+  %h3 Site behavior details
   .form-field
     =f.label :streaming_asset_id, "Streaming Video"
     =f.collection_select :streaming_asset_id, @video.assets, :id, :display_description, :include_blank => true
@@ -30,14 +45,6 @@
     =f.label :include_random, "Include in Random Videos"
     =f.check_box :include_random
 
-  .form-field
-    =f.label :rating, "Rating"
-    =f.select :rating, Video::RATINGS
-
-  .form-field
-    =f.label :abstract, "Abstract"
-    =f.text_area :abstract, :cols => 60, :rows => 5
-
   %h3 Image
   .form-field
     =f.label :image, "Image"
@@ -46,11 +53,6 @@
     %label
       Attached Image Preview
     =image_tag(@video.image.url(:thumb))
-
-  %h3 Presenter(s)
-  -f.fields_for :presentations do |builder|
-    =render 'presentation_fields', :f => builder
-  =link_to_add_fields "Add a presenter", f, :presentations
 
   %h3 
     Asset(s) - 
