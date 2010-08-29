@@ -13,6 +13,8 @@ class ApplicationController < ActionController::Base
 
   before_filter :set_time_zone
 
+  before_filter :log_history
+
   protected
 
   def require_user
@@ -30,5 +32,25 @@ class ApplicationController < ActionController::Base
     unless session.anonymous? || session.user.time_zone.blank?
       Time.zone = session.user.time_zone
     end
+  end
+
+  def log_history
+    h = History.new
+
+    h.controller = params[:controller]
+    h.action = params[:action]
+    h.ip_address = request.remote_ip
+    h.referrer = request.referrer
+    unless session.anonymous?
+      h.user_id = session.user.id
+    end
+    h.param_id = params[:id]
+    h.uri = request.request_uri
+    h.url = request.url
+    h.http_method = request.request_method
+    h.query_string = request.query_string
+    h.protocol = request.protocol
+    h.user_agent = request.user_agent
+    h.save
   end
 end

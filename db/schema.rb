@@ -9,7 +9,7 @@
 #
 # It's strongly recommended to check this file into your version control system.
 
-ActiveRecord::Schema.define(:version => 20100828182918) do
+ActiveRecord::Schema.define(:version => 20100829073830) do
 
   create_table "activities", :force => true do |t|
     t.string   "message"
@@ -60,6 +60,24 @@ ActiveRecord::Schema.define(:version => 20100828182918) do
     t.integer  "logo_file_size"
     t.datetime "logo_updated_at"
     t.text     "notes"
+  end
+
+  create_table "histories", :force => true do |t|
+    t.string   "controller"
+    t.string   "action"
+    t.integer  "user_id"
+    t.integer  "param_id"
+    t.string   "ip_address"
+    t.string   "referrer"
+    t.string   "url"
+    t.string   "uri"
+    t.string   "http_method"
+    t.string   "query_string"
+    t.string   "session_token"
+    t.string   "user_agent"
+    t.string   "protocol"
+    t.datetime "created_at"
+    t.datetime "updated_at"
   end
 
   create_table "presentations", :force => true do |t|
