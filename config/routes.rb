@@ -7,6 +7,10 @@ ActionController::Routing::Routes.draw do |map|
     :month => Time.zone.now.month
 
   map.root :controller => "main", :action => "home_page"
+  map.terms_of_service '/terms-of-service', :controller => "main", 
+                                            :action     => "tos"
+  map.privacy_policy   '/privacy-policy',   :controller => "main", 
+                                            :action     => "privacy"
 
   map.resource  :session, :member => { :reset => [:get, :post] }
 

@@ -77,12 +77,22 @@ a.rss {
   max-width: 1024px;
   margin-bottom: 0px;
 }
+
+#content {
+  margin-bottom: 20px;
+}
+
 #content, #footer {
   border-top: 1px solid #333;
   clear: both;
   padding-top: 20px;
   padding-bottom: 20px;
 }
+
+#footer ul {
+    list-style: none;
+}
+
 #primary-content {
   float: left;
   width: 70%;
@@ -251,7 +261,6 @@ form .field-set .required label {
 /* Event Box */
 ul.event-list {
     list-style: none;
-
 }
 
 li.event-box {
