@@ -4,6 +4,11 @@ class Video < ActiveRecord::Base
     :presentations_attributes, :assets_attributes, :include_random,
     :streaming_asset_id, :image, :abstract
 
+
+  validates_presence_of :title
+  validates_presence_of :recorded_at
+  validates_uniqueness_of :title, :scope => [ :event_id]
+
   belongs_to :event
 
   belongs_to :streaming_video,
@@ -11,9 +16,6 @@ class Video < ActiveRecord::Base
              :foreign_key => "streaming_asset_id"
 
   has_many :assets
-
-  validates_presence_of :title
-  validates_presence_of :recorded_at
 
   has_many :presentations
 
@@ -37,7 +39,7 @@ class Video < ActiveRecord::Base
 
   cattr_reader :per_page
 
-  RATINGS = [ "Everyone", "Language", "Strong Language" ]
+  RATINGS = [ "Not yet Rated", "Everyone", "Language", "Strong Language" ]
 
   @@per_page = 25
 
@@ -52,6 +54,17 @@ class Video < ActiveRecord::Base
       Video.find(:first,
                  :conditions => ["streaming_asset_id is not null"],
                  :order => order)
+  end
+
+  def to_param
+    "#{id}-#{slug}"
+  end
+
+  def slug
+    parts = Array.new
+    parts << event.short_code
+    parts << title.parameterize.to_s
+    parts.join("-")
   end
 
   def streaming_video_url

@@ -2,7 +2,7 @@ class Event < ActiveRecord::Base
 
   belongs_to :conference
   has_many :videos, :order => 'recorded_at asc'
-  has_many :available_videos, :class_name => 'Video', 
+  has_many :available_videos, :class_name => 'Video',
            :order => 'recorded_at desc', :conditions => ['available = ?',true]
   has_event_calendar
 
@@ -19,9 +19,21 @@ class Event < ActiveRecord::Base
       },
     :default_url => '/system/:class/:attachment/missing-:style.png'
 
+  validates_uniqueness_of :short_code
+  validates_presence_of   :short_code
+
   cattr_reader :per_page
 
   @@per_page = 25
+
+  def to_param
+    short_code || id
+  end
+
+  def self.find_by_identifier(identifier)
+    find(:first,
+         :conditions => ['id = ? or short_code = ?',identifier,identifier])
+  end
 
   def display_name
     "#{name_prefix} #{conference.name} #{name_suffix}".strip! unless conference.nil?

@@ -6,7 +6,8 @@ class EventTest < ActiveSupport::TestCase
   model_template_for Event do
     {
       :conference_id => 1,
-      :name_suffix => 2010
+      :name_suffix => 2010,
+      :short_code => 'test2010'
     }
   end
 

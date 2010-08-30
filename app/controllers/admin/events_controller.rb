@@ -13,12 +13,12 @@ class Admin::EventsController < Admin::Controller
   end
 
   def edit
-    @event = Event.find(params[:id])
+    @event = Event.find_by_identifier(params[:id])
     @conferences = Conference.find(:all, :order => 'name')
   end
 
   def show
-    @event = Event.find(params[:id])
+    @event = Event.find_by_identifier(params[:id])
     render :template => 'events/show'
   end
 
@@ -29,7 +29,7 @@ class Admin::EventsController < Admin::Controller
   end
 
   def update
-    @event = Event.find(params[:id])
+    @event = Event.find_by_identifier(params[:id])
 
     @event.attributes = params[:event]
 

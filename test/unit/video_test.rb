@@ -24,4 +24,10 @@ class VideoTest < ActiveSupport::TestCase
 
     refute v.streaming_video
   end
+
+  test "slug should return" do
+    v = videos(:valid)
+
+    assert v.slug
+  end
 end
