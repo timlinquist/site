@@ -1,3 +1,5 @@
+require 'rdiscount'
+
 class EventsController < ApplicationController
 
   def index

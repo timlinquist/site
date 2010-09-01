@@ -3,7 +3,7 @@
     <%=link_to @video.event.display_name, event_path(@video.event)%>
   </h3>
 </div>
-<%=render :partial => 'videos/video_player', :locals => { :video => @video} %>
+<%=render :partial => 'videos/video_player_html5', :locals => { :video => @video} %>
 <div class="center">
   <h2>
     <%= @video.title %>

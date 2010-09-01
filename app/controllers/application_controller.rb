@@ -44,7 +44,7 @@ class ApplicationController < ActionController::Base
     unless session.anonymous?
       h.user_id = session.user.id
     end
-    h.param_id = params[:id]
+    h.param_id = params[:id].to_i
     h.uri = request.request_uri
     h.url = request.url
     h.http_method = request.request_method
