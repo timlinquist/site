@@ -29,7 +29,7 @@ class Admin::VideosController < Admin::Controller
     @presenters = Presenter.find(:all, :order => 'last_name, first_name')
     @asset_types = AssetType.find(:all, :order => 'description')
 
-    @event = Event.find(params[:event_id])
+    @event = Event.find_by_identifier(params[:event_id])
 
   end
 
