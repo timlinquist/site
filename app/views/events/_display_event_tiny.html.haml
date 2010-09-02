@@ -1,0 +1,10 @@
+.event-box
+  .event-box-outer.tiny
+    .event-box-inner
+      .event-title
+        =link_to display_event_tiny.display_name, event_path(display_event_tiny), :class => 'noborder'
+      .event-image
+        -unless display_event_tiny.logo_file_name.blank?
+          =link_to image_tag(display_event_tiny.logo.url(:small)), event_path(display_event_tiny), :class => 'noborder'
+      .event-date
+        =link_to display_event_tiny.date_occurred, event_path(display_event_tiny), :class => 'noborder'

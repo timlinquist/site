@@ -25,6 +25,3 @@
           =link_to 'Logout', session_path, :method => :delete
         -if session.user.admin?
           %li=link_to_unless_current 'Administration', admin_path
-      %li
-        =text_field_tag :search, :terms
-        =submit_tag "Search"

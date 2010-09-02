@@ -15,6 +15,8 @@ class ApplicationController < ActionController::Base
 
   before_filter :log_history
 
+  before_filter :recents
+
   protected
 
   def require_user
@@ -52,5 +54,10 @@ class ApplicationController < ActionController::Base
     h.protocol = request.protocol
     h.user_agent = request.user_agent
     h.save
+  end
+
+  def recents
+    @recent_events = Event.find(:all, :order => 'start_at desc', :limit =>5)
+    @recent_videos = @recent_events.map {|event| event.videos.first}
   end
 end

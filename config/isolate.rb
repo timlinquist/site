@@ -5,6 +5,7 @@ gem "haml",          "= 3.0.6"
 gem "paperclip",     "= 2.3.1.1"
 gem "rvideo"
 gem "rdiscount"
+gem "disqus"
 
 env :development, :test do
   gem "modelizer"

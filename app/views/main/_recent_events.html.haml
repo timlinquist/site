@@ -1,0 +1,7 @@
+
+%h3.center Our five most recent conferences.
+
+=render :partial => 'events/display_event_tiny', :collection => events
+.clear
+%h4.center
+  =link_to 'More Conferences...', events_path

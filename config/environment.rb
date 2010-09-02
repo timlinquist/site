@@ -8,6 +8,15 @@ Rails::Initializer.run do |config|
   config.time_zone = 'Pacific Time (US & Canada)'
   config.action_mailer.raise_delivery_errors = false
   config.action_mailer.default_url_options = { :host => 'localhost' }
+
+  config.gem "disqus"
+
+  config.after_initialize do
+    Disqus::defaults[:account]="confreaks"
+    Disqus::defaults[:container_id]="disqus_thread"
+    Disqus::defaults[:developer] = true
+    Disqus::defaults[:show_powered_by] = false
+  end
 end
 
 require 'will_paginate'
