@@ -31,3 +31,11 @@
   %ul.asset-list
     =render :partial => 'asset_display', :collection => @video.assets.downloadable
 .clear
+.small
+  Operating System
+  =@p.ostype
+  =@p.os_version
+  %br
+  Browser
+  =@p.browser
+  =@p.browser_version_major

@@ -1,4 +1,8 @@
+<%-unless video.streaming_video.nil?%>
 <video id="html5-player" controls poster="<%="#{request.protocol}#{request.host_with_port}#{video.image.url(:preview)}"%>">
 <source src="<%=video.streaming_video_url%>" />
 <%=render :partial => 'videos/video_player', :locals => { :video => @video} %>
 </video>
+<%-else%>
+  <h3 class="center">There is no streaming video available for this presentation at this time.</h4>
+<%-end%>

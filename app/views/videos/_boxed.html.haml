@@ -1,9 +1,10 @@
-.event-box
-  .event-box-outer.tiny
-    .event-box-inner
-      .event-title
-        =link_to boxed.title, video_path(boxed)
-      .event-image
-        =link_to image_tag(boxed.image.url(:thumb)), video_path(boxed), :class => 'noborder'
-      .event-date
-        =link_to boxed.display_presenters, video_path(boxed)
+-unless boxed.image_file_name.nil?
+  .event-box
+    .event-box-outer.tiny
+      .event-box-inner
+        .event-title
+          =link_to boxed.title, video_path(boxed)
+        .event-image
+          =link_to image_tag(boxed.image.url(:thumb)), video_path(boxed), :class => 'noborder'
+        .event-date
+          =link_to boxed.display_presenters, video_path(boxed)

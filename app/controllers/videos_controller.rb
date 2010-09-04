@@ -24,6 +24,10 @@ class VideosController < ApplicationController
   end
 
   def show
+    @p = Confreaks::ParseUserAgent.new
+
+    @p.parse request.env["HTTP_USER_AGENT"]
+
     @player = params[:player] || "html5"
 
     @video = Video.find(params[:id])
