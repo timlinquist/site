@@ -1,0 +1,7 @@
+=content_for :secondary_content do
+  =render :partial => 'main/recent_events', :locals => {:events => @recent_events}
+
+.center
+  .em
+    Featured Video
+=render :partial => 'display_video', :locals => { :video => @random_video }

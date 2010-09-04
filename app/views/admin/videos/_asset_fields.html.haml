@@ -1,6 +1,10 @@
 .form-field-set
   .asset-form-fields
     .form-field
+      %label
+        &nbsp;
+      =link_to_remove_fields "Remove this asset", f
+    .form-field
       =f.label :description, "Description"
       =f.text_field :description
     .form-field
@@ -9,7 +13,6 @@
     .form-field
       =f.label :asset_type_id, "Asset Type"
       =f.collection_select :asset_type_id, @asset_types, :id, :description, :include_blank => true
-      =link_to_remove_fields "Remove", f
   .asset-form-data
     -if f.object.data_file_name
       .form-field
@@ -32,4 +35,4 @@
         %label
           Size
         ="#{f.object.width}x#{f.object.height}"
-  .clear
+.clear
