@@ -3,7 +3,7 @@ class Admin::PresentersController < Admin::Controller
 
   def index
     @alpha = params[:alpha].blank? ? "%" : params[:alpha]
-    
+
     conditions = []
     params[:alpha] ? (conditions << "last_name like '#{params[:alpha]}%'") : nil
 
@@ -24,7 +24,18 @@ class Admin::PresentersController < Admin::Controller
   def create
     @presenter = Presenter.create params[:presenter]
 
-    redirect_to admin_presenters_path
+    if @presenter
+      flash[:success] = "Presenter has been created."
+    else
+      flash[:error] = "Presenter was not created: " +
+        @presenter.errors.full_messages.to_sentence
+    end
+
+    if params[:commit] == "Save"
+      redirect_to admin_presenters_path
+    else
+      redirect_to new_admin_presenter_path
+    end
   end
 
   def update

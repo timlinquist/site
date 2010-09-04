@@ -34,7 +34,7 @@
         <%-unless session.anonymous?%>
         <%=render :partial => 'users/badge', :locals => {:user => session.user}%>
         <%-end%>
-        <%=render :partial => 'main/recent_events', :locals => {:events => @recent_events}%>
+        <%=yeild(:secondary_content)%>
       </div>
     </div>
     <div class="clear">
