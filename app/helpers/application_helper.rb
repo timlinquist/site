@@ -19,4 +19,9 @@ module ApplicationHelper
   def delete_image_tag
     image_tag('delete.png', :alt => 'Delete', :title => 'Delete')
   end
+
+  def iphone_user_agent?
+    request.env["HTTP_USER_AGENT"] && request.env["HTTP_USER_AGENT"][/(Mobile\/.+Safari)/]
+
+  end
 end

@@ -3,14 +3,18 @@
 .center
   %h3
     =link_to @video.event.display_name, event_path(@video.event)
-  .small
-    Change video player:
-    =link_to_unless_current 'HTML5', video_path(@video) + "?player=html5"
-    ="/"
-    =link_to_unless_current 'Flash', video_path(@video) + "?player=flash"
+  -if iphone_user_agent?
+    .small
+      Sorry the HTML5 player is not yet working on the iPhone. I need to finish a few conferences before I spend time figuring out the codec issues, that are preventing the videos from playing properly
+  -unless (@p.browser == "Firefox" && @p.browser_version_major.to_i < 4) || iphone_user_agent?
+    .small
+      Change video player:
+      =link_to_unless_current 'HTML5', video_path(@video) + "?player=html5"
+      ="/"
+      =link_to_unless_current 'Flash', video_path(@video) + "?player=flash"
 
   .video-frame
-    -if @player == "flash"
+    -if @player == "flash" || (@p.browser == "Firefox" && @p.browser_version_major.to_i < 4)
       #flash_player
         =render :partial => 'videos/video_player', :locals => { :video => @video }
     -else
@@ -24,18 +28,20 @@
     =@video.display_presenters
   .video-abstract
     =RDiscount.new(@video.abstract).to_html
-  #disqus_thread
-    =disqus_thread
-  =javascript_include_tag "http://disqus.com/forums/rapexegesis/embed.js"
 .center
   %ul.asset-list
     =render :partial => 'asset_display', :collection => @video.assets.downloadable
 .clear
-.small
-  Operating System
-  =@p.ostype
-  =@p.os_version
-  %br
-  Browser
-  =@p.browser
-  =@p.browser_version_major
+.center
+  .small
+    Operating System
+    =@p.ostype
+    =@p.os_version
+    %br
+    Browser
+    =@p.browser
+    =@p.browser_version_major
+    =@p.browser_version_major.to_i
+    %br
+    iphone?
+    =iphone_user_agent? ? "yes":"no"
