@@ -1,9 +1,9 @@
 <%-unless video.streaming_video.nil? %>
 <script type="text/javascript" src="/javascripts/swfobject.js">
 </script>
-<p id="flash-player" class="center">
+<div id="flash-player">
   <a href="http://www.adobe.com/shockwave/download/download.cgi?P1_Prod_Version=ShockwaveFlash">Get the Flash Player</a> to see this player.
-</p>
+</div>
 <script type='text/javascript'>
   width = <%= video.streaming_video.width %>
   height =<%= video.streaming_video.height + 20 %> 
@@ -20,5 +20,5 @@
   s1.write('flash-player')
 </script>
 <%-else%>
-  <h3 class="center">No Streaming Video Available at this time</h3>
+  <h3 class="center">There is no streaming video available for this presentation at this time.</h3>
 <%-end%>

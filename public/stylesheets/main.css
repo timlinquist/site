@@ -168,8 +168,6 @@ a.rss {
   line-height: 1.3em;
   margin: 0 auto;
   text-align: center;
-  padding-top: 10px;
-  padding-bottom: 10px;
 }
 .center p {
   text-align: left;
@@ -479,5 +477,37 @@ ul#flash li.success {
 
 #confnotes {
     text-align: center;
+    padding: 5px;
+}
+
+.video-frame {
+    padding: 6px;
+    text-align: center;
+}
+
+#flash_player {
+    text-align: center;
+    margin: 0 auto 0;
+}
+
+#html5_player {
+}
+
+.hidden {
+    display: none;
+}
+
+.video-title {
+    font-size: 1.4em;
+    line-height: 1.8em;
+}
+
+.video-presenters {
+    font-size: 1.2em;
+    line-height: 1.6em;
+}
+
+.video-abstract {
+    font-size: 1em;
     padding: 5px;
 }

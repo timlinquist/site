@@ -1,0 +1,33 @@
+=content_for :secondary_content do
+  =render :partial => 'videos/video_column', :locals => {:videos => @videos}
+.center
+  %h3
+    =link_to @video.event.display_name, event_path(@video.event)
+  .small
+    Change video player:
+    =link_to_unless_current 'HTML5', video_path(@video) + "?player=html5"
+    ="/"
+    =link_to_unless_current 'Flash', video_path(@video) + "?player=flash"
+
+  .video-frame
+    -if @player == "flash"
+      #flash_player
+        =render :partial => 'videos/video_player', :locals => { :video => @video }
+    -else
+      #html5_player
+        =render :partial => 'videos/video_player_html5', :locals => { :video => @video }
+  .video-title
+    =@video.title
+    -if session.user && session.user.admin?
+      =link_to edit_image_tag, edit_admin_video_path(@video)
+  .video-presenters
+    =@video.display_presenters
+  .video-abstract
+    =RDiscount.new(@video.abstract).to_html
+  #disqus_thread
+    =disqus_thread
+  =javascript_include_tag "http://disqus.com/forums/rapexegesis/embed.js"
+.center
+  %ul.asset-list
+    =render :partial => 'asset_display', :collection => @video.assets.downloadable
+.clear
