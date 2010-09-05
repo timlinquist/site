@@ -9,4 +9,7 @@ class MainController < ApplicationController
     @player = params[:player] || "html5"
 
   end
+  def contact
+    redirect_to '/contact-us', :status => 301
+  end
 end

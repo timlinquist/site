@@ -13,6 +13,8 @@ ActionController::Routing::Routes.draw do |map|
                                             :action     => "privacy"
   map.contact_us       '/contact-us',       :controller => "main",
                                             :action     => "contact_us"
+  map.contact          '/contact',          :controller => "main",
+                                            :action     => "contact"
   map.about_us         '/about-us',         :controller => "main",
                                             :action     => "about_us"
   map.services         '/services',         :controller => "main",

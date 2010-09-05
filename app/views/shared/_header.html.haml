@@ -11,6 +11,7 @@
       %li.first=link_to_unless_current 'Home', root_path
       %li=link_to_unless_current "Events", events_path
       %li=link_to_unless_current "Presenters", presenters_path
+      %li=link_to_unless_current "Blog", blog_path
     %ul.personal
       -unless session.authenticated?
         %li.first
