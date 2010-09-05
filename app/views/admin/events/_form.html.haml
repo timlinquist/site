@@ -31,6 +31,10 @@
     =f.text_area :notes, :rows => 5, :cols => 60
 
   .form-field
+    =f.label :ready, "Ready for use on confreaks.net?"
+    =f.check_box :ready
+
+  .form-field
     =f.label :logo, "Logo"
     =f.file_field :logo
 

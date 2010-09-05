@@ -38,12 +38,21 @@ class Admin::VideosController < Admin::Controller
 
     if @video.save then
       flash[:success] = "The video was created successfully."
+    end
 
-      redirect_to event_path @video.event
+    if params[:commit] == "Save" && @video.errors.nil?
+      redirect_to event_path(@video.event)
     else
-      flash[:error] = "An error occured while creating the video: " +
-        @video.errors.full_messages.to_sentence
-      redirect_to new_admin_video_path
+      @events = Event.find(:all,
+                         :order => "start_at desc")
+      @video.presentations.build
+      @video.assets.build
+      @presenters = Presenter.find(:all, :order => 'last_name, first_name')
+      @asset_types = AssetType.find(:all, :order => 'description')
+
+      @event = Event.find_by_identifier(params[:event_id])
+
+      render :action => 'new'
     end
   end
 

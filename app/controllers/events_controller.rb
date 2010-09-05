@@ -10,5 +10,9 @@ class EventsController < ApplicationController
 
   def show
     @event = Event.find_by_identifier(params[:id])
+
+    unless @event.ready
+      redirect_to "http://#{@event.short_code}.confreaks.com", :status => 302
+    end
   end
 end

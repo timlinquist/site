@@ -422,6 +422,12 @@ ul#flash li.success {
     padding: 5px;;
 }
 
+.errorExplanation {
+   border: 3px red solid;
+    background: pink;
+    padding: 5px;
+}
+
 .spacer {
     padding-bottom: 10px;
 }

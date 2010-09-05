@@ -63,6 +63,9 @@
   =link_to_add_fields "Add an asset", f, :assets
 
   .form-field
-    =f.submit "Save Changes", :class => "button"
-
-  
+    =f.submit "Save", :class => "button"
+    =f.submit "Save and add another", :class => "button"
+    -if @event
+      =link_to "Discard", event_path(@event), :class => "button"
+    -else
+      =link_to "Discard", admin_videos_path, :class => "button"
