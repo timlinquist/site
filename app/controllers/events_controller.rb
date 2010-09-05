@@ -4,6 +4,8 @@ class EventsController < ApplicationController
 
   def index
     @events = Event.find(:all, :order => 'start_at desc')
+    render :layout => 'admin'
+
   end
 
   def show

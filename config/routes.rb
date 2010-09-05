@@ -15,6 +15,8 @@ ActionController::Routing::Routes.draw do |map|
                                             :action     => "contact_us"
   map.about_us         '/about-us',         :controller => "main",
                                             :action     => "about_us"
+  map.services         '/services',         :controller => "main",
+                                            :action     => "services"
 
   map.blog '/blog', :controller => 'blog',  :action => 'index'
 

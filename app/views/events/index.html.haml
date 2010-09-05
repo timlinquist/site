@@ -1,7 +1,7 @@
 -content_for :title do
   ="All Events Recorded by Confreaks, LLC"
 This is a list of all the conferences that have agreed to release their content under the creative commons share alike with attribution.
-.center
+.center{:style => "margin: 0px auto;"}
 %ul.event-list
   =render :partial => "display_event", :collection => @events
 .clear
