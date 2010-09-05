@@ -12,6 +12,8 @@
     ="/"
     =event.videos.count
   %td
+    =event.ready ? "yes":"no"
+  %td
     =event.date_occurred
   %td
     =link_to edit_image_tag, edit_admin_event_path(event)
