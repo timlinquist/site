@@ -54,6 +54,17 @@
       Attached Image Preview
     =image_tag(@video.image.url(:thumb))
 
+  %h3
+    Announce Information
+  .form-field
+    =f.label :announce, "Announce ?"
+    =f.check_box :announce
+  .form-field
+    =f.label :announce_date, "Announce on"
+    =calendar_date_select_tag "[video]announce_date", (@video.announce_date unless @video.nil?), :time => true
+  .form-field
+    =f.label :post_date, "Date Posted"
+    =calendar_date_select_tag "[video]post_date", (@video.post_date unless @video.nil?), :time => false
   %h3 
     Asset(s) - 
     =@video.assets.count

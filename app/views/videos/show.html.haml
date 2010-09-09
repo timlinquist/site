@@ -25,23 +25,28 @@
     -if session.user && session.user.admin?
       =link_to edit_image_tag, edit_admin_video_path(@video)
   .video-presenters
-    =@video.display_presenters
+    =display_presenters_with_links @video
   .video-abstract
     =RDiscount.new(@video.abstract).to_html
+  .video-information
+    .video-rating
+      Rated:
+      =@video.rating
 .center
   %ul.asset-list
     =render :partial => 'asset_display', :collection => @video.assets.downloadable
 .clear
-.center
-  .small
-    Operating System
-    =@p.ostype
-    =@p.os_version
-    %br
-    Browser
-    =@p.browser
-    =@p.browser_version_major
-    =@p.browser_version_major.to_i
-    %br
-    iphone?
-    =iphone_user_agent? ? "yes":"no"
+-if session.user && session.user.admin?
+  .center
+    .small
+      Operating System
+      =@p.ostype
+      =@p.os_version
+      %br
+      Browser
+      =@p.browser
+      =@p.browser_version_major
+      =@p.browser_version_major.to_i
+      %br
+      iphone?
+      =iphone_user_agent? ? "yes":"no"

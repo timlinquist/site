@@ -9,7 +9,7 @@
 #
 # It's strongly recommended to check this file into your version control system.
 
-ActiveRecord::Schema.define(:version => 20100905044555) do
+ActiveRecord::Schema.define(:version => 20100909003611) do
 
   create_table "activities", :force => true do |t|
     t.string   "message"
@@ -137,6 +137,9 @@ ActiveRecord::Schema.define(:version => 20100905044555) do
     t.integer  "streaming_asset_id"
     t.string   "rating",             :default => "Everyone"
     t.text     "abstract",           :default => ""
+    t.datetime "post_date"
+    t.boolean  "announce",           :default => false
+    t.datetime "announce_date"
   end
 
 end
