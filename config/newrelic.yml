@@ -6,7 +6,7 @@ common: &default_settings
   developer_mode: false
   log_level: info
   ssl: true
-  apdex_t: 0.5
+  apdex_t: 1.0
   capture_params: true
 
   transaction_tracer:
