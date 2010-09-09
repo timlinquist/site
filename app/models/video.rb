@@ -3,7 +3,7 @@ class Video < ActiveRecord::Base
   attr_accessible :available, :title, :recorded_at, :event_id,
     :presentations_attributes, :assets_attributes, :include_random,
     :streaming_asset_id, :image, :abstract, :announce, :announce_date,
-    :post_date, :note
+    :post_date, :note, :rating
 
   validates_presence_of :title
   validates_presence_of :recorded_at
