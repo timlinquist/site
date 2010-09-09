@@ -19,7 +19,6 @@ ActionController::Routing::Routes.draw do |map|
                                             :action     => "about_us"
   map.services         '/services',         :controller => "main",
                                             :action     => "services"
-
   map.blog '/blog', :controller => 'blog',  :action => 'index'
 
   map.resource  :session, :member => { :reset => [:get, :post] }

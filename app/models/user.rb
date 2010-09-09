@@ -103,6 +103,7 @@ class User < ActiveRecord::Base
     end
   end
 
+
   private
 
   def self.record_activity user, message

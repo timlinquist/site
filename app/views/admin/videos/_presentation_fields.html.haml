@@ -1,5 +1,5 @@
 .form-field-set
   .form-field
     =f.label :presenter_id, "Presenter"
-    =f.collection_select :presenter_id, @presenters, :id, :display_name, {:include_blank => true}
+    =f.collection_select :presenter_id, @presenters, :id, :last_first, {:include_blank => true}
     =link_to_remove_fields "Remove", f
