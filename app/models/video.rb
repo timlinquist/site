@@ -2,12 +2,14 @@ class Video < ActiveRecord::Base
 
   attr_accessible :available, :title, :recorded_at, :event_id,
     :presentations_attributes, :assets_attributes, :include_random,
-    :streaming_asset_id, :image, :abstract
+    :streaming_asset_id, :image, :abstract, :announce, :announce_date,
+    :post_date
 
+  acts_as_taggable
 
   validates_presence_of :title
   validates_presence_of :recorded_at
-  validates_uniqueness_of :title, :scope => [ :event_id]
+  validates_uniqueness_of :title, :scope => [ :event_id ]
 
   belongs_to :event
 
@@ -42,6 +44,15 @@ class Video < ActiveRecord::Base
   RATINGS = [ "Not yet Rated", "Everyone", "Language", "Strong Language" ]
 
   @@per_page = 25
+
+  def self.search(search)
+    if search
+      find(:all, :conditions => ['title like ?', "%#{search}%"],
+           :order => 'recorded_at')
+    else
+      find(:all, :order => 'recorded_at')
+    end
+  end
 
   def self.random
       if Rails.env == "production"

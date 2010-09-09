@@ -15,12 +15,24 @@ class Presenter < ActiveRecord::Base
 
   @@per_page = 24
 
+  def to_param
+    "#{id}-#{name_slug}"
+  end
+
+  def name_slug
+    display_name.gsub('.','').gsub(' ','-').gsub("'",'').downcase
+  end
+
   def display_name
     if aka_name.blank?
       if user.nil?
         "#{first_name} #{last_name}"
       else
-        "#{user.first_name} #{user.last_name}"
+        if user.first_name  || user.last_name
+          "#{user.first_name} #{user.last_name}"
+        else
+          "#{first_name} #{last_name}"
+        end
       end
     else
       aka_name

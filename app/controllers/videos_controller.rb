@@ -2,7 +2,7 @@ require 'rdiscount'
 
 class VideosController < ApplicationController
   def index
-    @videos = Video.find(:all, :order => 'recorded_at desc')
+    @videos = Video.search(params[:search])
   end
 
   def new

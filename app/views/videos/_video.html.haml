@@ -1,0 +1,32 @@
+%tr
+  %td.nowrap
+    =video.recorded_at.strftime('%d-%b-%y %H:%M')
+  %td{:style => "width: 150px;"}
+    -if video.available?
+      -if video.image
+        =link_to image_tag(video.image.url(:thumb), :width => 142, :class => 'noborder'), video_path(video)
+      -else
+        ="... coming soon ..."
+  %td
+    %em
+      -if video.available
+        =link_to video.title, video_path(video)
+      -else
+        =video.title
+      %br
+      =display_presenters_with_links video 
+      %br
+      %span.small
+        Rated:
+        %strong
+          =video.rating
+      -if video.post_date
+        %br
+        %span.small
+          Posted on:
+          %strong
+            =video.post_date.strftime("%b %d, %Y")
+  -if session.user && session.user.admin?
+    %td{:nowrap => true}
+      =link_to edit_image_tag, edit_admin_video_path(video)
+      =link_to delete_image_tag, admin_video_path(video), :method => 'Delete'

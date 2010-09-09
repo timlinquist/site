@@ -1,0 +1,12 @@
+%h1
+  Videos
+-form_tag videos_path, :method => 'get'  do
+  %p
+    =text_field_tag :search, params[:search]
+    =submit_tag "Search", :name => nil
+  %p
+    =@videos.count 
+    results matching your query
+    ="'#{params[:search]}'"
+%table
+  =render :partial => 'video', :collection => @videos

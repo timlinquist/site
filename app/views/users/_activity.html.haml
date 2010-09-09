@@ -1,6 +1,6 @@
 %tr
   %td.date-column
-    =time_ago_in_words activity.created_at.strftime("%Y-%m-%d %H:%M:%S")
+    =time_ago_in_words activity.created_at
     ago
   %td{:style => "width: 80%"}
     =activity.message

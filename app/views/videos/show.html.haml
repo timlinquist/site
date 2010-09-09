@@ -32,6 +32,11 @@
     .video-rating
       Rated:
       =@video.rating
+    .video-posted-on
+      Posted on:
+      =@video.post_date.strftime("%b %d, %Y")
+    .video-tags
+      Tagged:
 .center
   %ul.asset-list
     =render :partial => 'asset_display', :collection => @video.assets.downloadable

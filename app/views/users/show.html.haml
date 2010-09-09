@@ -27,6 +27,7 @@
     =@user.title || "No title"
 
 .clear
-=render :partial => 'presenters/videos', :locals => {:presenter => @user.presenter}
+-if @user.presenter
+  =render :partial => 'presenters/videos', :locals => {:presenter => @user.presenter}
 %hr
 =render :partial => 'users/activities', :locals => {:activities => @user.activities}
