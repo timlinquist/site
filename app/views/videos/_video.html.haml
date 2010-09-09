@@ -26,6 +26,12 @@
           Posted on:
           %strong
             =video.post_date.strftime("%b %d, %Y")
+      -if video.note
+        %br
+        %span.small
+          %strong
+            =RDiscount.new(video.note).to_html
+
   -if session.user && session.user.admin?
     %td{:nowrap => true}
       =link_to edit_image_tag, edit_admin_video_path(video)

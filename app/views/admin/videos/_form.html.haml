@@ -32,6 +32,14 @@
     =f.label :rating, "Rating"
     =f.select :rating, Video::RATINGS
 
+  .form-field
+    =f.label :post_date, "Date Posted"
+    =calendar_date_select_tag "[video]post_date", (@video.post_date unless @video.nil?), :time => false
+
+  .form-field
+    =f.label :note, "Note"
+    =f.text_area :note, :cols => 60, :rows => 4
+
   %h3 Site behavior details
   .form-field
     =f.label :streaming_asset_id, "Streaming Video"
@@ -62,9 +70,6 @@
   .form-field
     =f.label :announce_date, "Announce on"
     =calendar_date_select_tag "[video]announce_date", (@video.announce_date unless @video.nil?), :time => true
-  .form-field
-    =f.label :post_date, "Date Posted"
-    =calendar_date_select_tag "[video]post_date", (@video.post_date unless @video.nil?), :time => false
   %h3 
     Asset(s) - 
     =@video.assets.count

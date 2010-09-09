@@ -35,4 +35,4 @@
       -if session.user && session.user.admin?
         %th
           &nbsp;
-    =render :partial => video, :collection => @events.videos
+    =render :partial => 'videos/video', :collection => @event.videos

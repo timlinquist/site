@@ -9,7 +9,7 @@
 #
 # It's strongly recommended to check this file into your version control system.
 
-ActiveRecord::Schema.define(:version => 20100909003611) do
+ActiveRecord::Schema.define(:version => 20100909093010) do
 
   create_table "activities", :force => true do |t|
     t.string   "message"
@@ -140,6 +140,7 @@ ActiveRecord::Schema.define(:version => 20100909003611) do
     t.datetime "post_date"
     t.boolean  "announce",           :default => false
     t.datetime "announce_date"
+    t.text     "note"
   end
 
 end
