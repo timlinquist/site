@@ -5,8 +5,6 @@ class Video < ActiveRecord::Base
     :streaming_asset_id, :image, :abstract, :announce, :announce_date,
     :post_date
 
-  acts_as_taggable
-
   validates_presence_of :title
   validates_presence_of :recorded_at
   validates_uniqueness_of :title, :scope => [ :event_id ]
