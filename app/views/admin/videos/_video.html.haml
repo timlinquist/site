@@ -14,3 +14,5 @@
   %td{:nowrap => true}
     =link_to edit_image_tag, edit_admin_video_path(video)
     =link_to delete_image_tag, admin_video_path(video), :method => 'delete'
+    %br
+    =video.assets.count
