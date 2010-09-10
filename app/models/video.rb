@@ -49,9 +49,9 @@ class Video < ActiveRecord::Base
     if available_only
       if search
         available.find(:all, :conditions => ['title like ?', "%#{search}%"],
-                       :order => 'recorded_at')
+                       :order => 'recorded_at desc')
       else
-        available.find(:all, :order => 'recorded_at')
+        available.find(:all, :order => 'recorded_at desc')
       end
     else
       if search
