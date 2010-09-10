@@ -553,6 +553,10 @@ ul#flash li.success {
     width: 550px;
 }
 
+.search_result .secondary-info {
+    float: left;
+}
+
 .search_result .main-info .title {
     font-size: 1.2em;
     font-weight: bold;
