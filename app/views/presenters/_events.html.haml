@@ -1,0 +1,6 @@
+%h3.center 
+  =@presenter.display_name
+  .small
+    has presented at
+=render :partial => 'events/display_event_tiny', :collection => events
+.clear

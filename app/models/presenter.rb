@@ -42,4 +42,8 @@ class Presenter < ActiveRecord::Base
   def last_first
     "#{last_name}, #{first_name}"
   end
+
+  def events
+    videos.collect {|video| video.event}.uniq
+  end
 end

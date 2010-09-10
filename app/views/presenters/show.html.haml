@@ -1,3 +1,7 @@
+-content_for :title do
+  ="#{@presenter.display_name}'s Presentations on Confreaks"
+-content_for :secondary_content do
+  =render :partial => 'presenters/events', :locals => { :events => @presenter.events }
 .profile_header
   .profile_picture
     -unless @presenter.user.nil?
