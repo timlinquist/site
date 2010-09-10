@@ -33,7 +33,7 @@ class Asset < ActiveRecord::Base
 
   def height
     if @height.nil?
-      get_metadta
+      get_metadata
     end
     @height.to_i
   end
