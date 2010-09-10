@@ -23,4 +23,28 @@ class AssetTest < ActiveSupport::TestCase
     assert_not_nil a.raw_response, "raw response is nil"
   end
 
+  test "validate height" do
+    a = Asset.new
+    a.data = File.new('test/fixtures/jeff-patton-small.mp4')
+    a.save
+
+    assert_not_nil a.height
+  end
+
+  test "validate width" do
+    a = Asset.new
+    a.data = File.new('test/fixtures/jeff-patton-small.mp4')
+    a.save
+    
+    assert_not_nil a.width
+  end
+
+  test "validate duration" do
+    a = Asset.new
+    a.data = File.new('test/fixtures/jeff-patton-small.mp4')
+    a.save
+
+    assert_not_nil a.duration
+  end
+
 end
