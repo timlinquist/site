@@ -37,18 +37,29 @@ class Video < ActiveRecord::Base
       :preview => '640x360'
     }
 
+  named_scope :available, :conditions => ['available = ?', true]
+
   cattr_reader :per_page
 
   RATINGS = [ "Not yet Rated", "Everyone", "Language", "Strong Language" ]
 
   @@per_page = 25
 
-  def self.search(search)
-    if search
-      find(:all, :conditions => ['title like ?', "%#{search}%"],
-           :order => 'recorded_at')
+  def self.search(search, available_only)
+    if available_only
+      if search
+        available.find(:all, :conditions => ['title like ?', "%#{search}%"],
+                       :order => 'recorded_at')
+      else
+        available.find(:all, :order => 'recorded_at')
+      end
     else
-      find(:all, :order => 'recorded_at')
+      if search
+        find(:all, :conditions => ['title like ?', "%#{search}%"],
+             :order => 'recorded_at desc')
+      else
+        find(:all, :order => 'recorded_at desc')
+      end
     end
   end
 
@@ -58,7 +69,6 @@ class Video < ActiveRecord::Base
       else
         order = 'random()'
       end
-
 
       Video.find(:first,
                  :conditions => ["streaming_asset_id is not null"],

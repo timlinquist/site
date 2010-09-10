@@ -1,0 +1,49 @@
+.search_result[search_result]
+  .recorded-at
+    =search_result.recorded_at.strftime('%d-%b-%y %H:%M')
+  .thumbnail
+    -if search_result.available?
+      -if search_result.image
+        =link_to image_tag(search_result.image.url(:thumb), :width => 142, :class => 'noborder'), video_path(search_result)
+    -else
+      ="... coming soon ..."
+  .main-info
+    .title
+      -if search_result.available
+        =link_to search_result.title, video_path(search_result)
+      -else
+        =search_result.title
+    .presenters
+      =display_presenters_with_links search_result
+    -if search_result.note
+      .note
+        =RDiscount.new(search_result.note).to_html
+
+  .rating
+    %span.small
+      Rated:
+      %strong
+        =search_result.rating
+  -if search_result.post_date
+    .post-date
+      %span.small
+        Posted on:
+        %strong
+          =search_result.post_date.strftime('%d-%b-%y')
+
+  -if session.user && session.user.admin?
+    .admin-tools
+      =link_to edit_image_tag, edit_admin_search_result_path(search_result)
+      =link_to delete_image_tag, admin_search_result_path(search_result), :method => 'Delete'
+      %br
+      =search_result.assets.count
+      %br
+      Available:
+      %strong
+        =search_result.available
+  .clear
+  .abstract
+    -unless search_result.abstract.empty?
+      =RDiscount.new(search_result.abstract.split("\n").first).to_html
+
+.clear

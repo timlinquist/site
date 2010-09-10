@@ -517,3 +517,52 @@ ul#flash li.success {
     font-size: 1em;
     padding: 5px;
 }
+/**************************************************/
+/* Search Results                                 */
+/**************************************************/
+
+.search_results {
+    border-top: #c0c0c0 1px solid;
+    margin: 10px 0 10px 0;
+    padding: 10px;
+}
+
+.search_result {
+    border-bottom: #c0c0c0 1px dotted;
+    margin-bottom: 5px;
+    font-size: .9em;
+}
+
+.search_result:hover {
+    background-color: #cecef2;
+}
+
+.search_result .recorded-at {
+    width: 100px;
+    font-size: .8em;
+    float: left;
+    }
+
+.search_result .thumbnail {
+    float: left;
+    width: 150px;
+}
+
+.search_result .main-info {
+    float: left;
+    width: 550px;
+}
+
+.search_result .main-info .title {
+    font-size: 1.2em;
+    font-weight: bold;
+}
+
+.search_result .main-info .presenters {
+    font-style: italic;
+}
+.search_result .abstract {
+    margin: 5px 50px 5px 250px;
+}
+
+.search_results-message

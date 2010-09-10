@@ -2,7 +2,14 @@ require 'rdiscount'
 
 class VideosController < ApplicationController
   def index
-    @videos = Video.search(params[:search])
+    if params[:search]
+      @videos = Video.search(params[:search],params[:available_only])
+      @message = "#{@videos.count} results matching your query '#{params[:search]}'"
+    else
+      @videos = Video.find(:all, :order => 'recorded_at desc', :limit => 5)
+      @message = "The five most recent videos"
+    end
+    render :layout => 'admin'
   end
 
   def new
