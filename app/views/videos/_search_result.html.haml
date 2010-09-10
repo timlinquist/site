@@ -8,6 +8,8 @@
     -else
       ="... coming soon ..."
   .main-info
+    .conference
+      =link_to search_result.event.display_name, event_path(search_result.event)
     .title
       -if search_result.available
         =link_to search_result.title, video_path(search_result)
