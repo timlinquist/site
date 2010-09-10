@@ -1,5 +1,7 @@
 class MainController < ApplicationController
   def home_page
+    recents
+
     @video = Video.random
 
     @p = Confreaks::ParseUserAgent.new

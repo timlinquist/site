@@ -4,10 +4,12 @@
   %p
     =text_field_tag :search, params[:search]
     =submit_tag "Search", :name => nil
-
     %br
-    =check_box_tag :available_only, params[:available_only]
-    Include only available videos?
+    -if params[:all] == "1"
+      =check_box_tag :all, "1", :checked => true
+    -else
+      =check_box_tag :all
+    Include presentations not yet available for viewing.
 .search-results-message
   =@message
 .search_results

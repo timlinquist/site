@@ -8,6 +8,8 @@ class EventsController < ApplicationController
   end
 
   def show
+    recents
+
     @event = Event.find_by_identifier(params[:id])
 
     if session.user && session.user.admin?

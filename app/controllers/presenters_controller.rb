@@ -1,5 +1,7 @@
 class PresentersController < ApplicationController
   def index
+    recents 
+
     @alpha = params[:alpha].blank? ? "%" : params[:alpha]
 
     conditions = []

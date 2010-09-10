@@ -15,8 +15,6 @@ class ApplicationController < ActionController::Base
 
   before_filter :log_history
 
-  before_filter :recents
-
   protected
 
   def require_user

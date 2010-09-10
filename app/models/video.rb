@@ -35,7 +35,8 @@ class Video < ActiveRecord::Base
     :styles => {
       :thumb => '180x101',
       :preview => '640x360'
-    }
+    },
+  :default_url => '/system/:class/:attachment/missing-:style.png'
 
   named_scope :available, :conditions => ['available = ?', true]
 
@@ -45,20 +46,20 @@ class Video < ActiveRecord::Base
 
   @@per_page = 25
 
-  def self.search(search, available_only)
-    if available_only
+  def self.search(search, all)
+    if all == "1"
       if search
-        available.find(:all, :conditions => ['title like ?', "%#{search}%"],
+        find(:all, :conditions => ['title like ?', "%#{search}%"],
                        :order => 'recorded_at desc')
       else
-        available.find(:all, :order => 'recorded_at desc')
+        find(:all, :order => 'recorded_at desc')
       end
     else
       if search
-        find(:all, :conditions => ['title like ?', "%#{search}%"],
+        available.find(:all, :conditions => ['title like ?', "%#{search}%"],
              :order => 'recorded_at desc')
       else
-        find(:all, :order => 'recorded_at desc')
+        available.find(:all, :order => 'recorded_at desc')
       end
     end
   end
