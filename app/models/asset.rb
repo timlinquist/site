@@ -56,14 +56,14 @@ class Asset < ActiveRecord::Base
   def display_description
     hlp = Object.new.extend(ActionView::Helpers::NumberHelper)
     elements = Array.new
-    if asset_type.description == "Video" then
+    if asset_type && asset_type.description == "Video" then
       elements << (description.blank? ? nil : description)
       elements << size
       elements << data_content_type
       elements << hlp.number_to_human_size(data_file_size)
       elements << duration
       elements.compact.join(" - ")
-    elsif asset_type.description == "Audio" then
+    elsif asset_type && asset_type.description == "Audio" then
       elements << (description.blank? ? nil : description)
       elements << data_content_type
       elements << hlp.number_to_human_size(data_file_size)
