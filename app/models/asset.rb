@@ -64,7 +64,7 @@ class Asset < ActiveRecord::Base
       elements << duration
       elements.compact.join(" - ")
     elsif asset_type.description == "Audio" then
-      elements << description.blank? ? nil : description
+      elements << (description.blank? ? nil : description)
       elements << data_content_type
       elements << hlp.number_to_human_size(data_file_size)
       elements << duration
