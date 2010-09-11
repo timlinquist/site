@@ -8,14 +8,14 @@ class EventsController < ApplicationController
   end
 
   def show
-    recents
-
     @event = Event.find_by_identifier(params[:id])
+
+    recents
 
     if session.user && session.user.admin?
       # do not redirect
     else
-      # redirect if envet is not ready
+      # redirect if event is not ready
       unless @event.ready
         redirect_to "http://#{@event.short_code}.confreaks.com", :status => 302
       end
