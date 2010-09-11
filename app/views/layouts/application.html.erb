@@ -30,9 +30,6 @@
         <%= yield %>
       </div>
       <div id="secondary-content">
-        <%-unless session.anonymous?%>
-        <%=render :partial => 'users/badge', :locals => {:user => session.user}%>
-        <%-end%>
         <%=yield(:secondary_content)%>
       </div>
     </div>

@@ -11,8 +11,7 @@
       =link_to edit_image_tag, edit_user_path(@presenter.user)
   .profile_name
     =@presenter.display_name
-  %br
-    %span.small
-      =link_to "View All Presenters", presenters_path
-=render :partial => 'videos', :locals => {:presenter => @presenter}
+.clear
+.videos
+  =render :partial => 'videos/video', :collection => @presenter.videos
 

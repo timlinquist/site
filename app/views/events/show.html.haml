@@ -26,13 +26,5 @@
     Schedule
   -if session.user && session.user.admin?
     =link_to 'Add Video', new_admin_event_video_path(@event)
-  %table{:width=>"100%"}
-    %tr
-      %th
-        Time
-      %th{:colspan=>2}
-        Presentations
-      -if session.user && session.user.admin?
-        %th
-          &nbsp;
-    =render :partial => 'videos/video', :collection => @event.videos
+.videos
+  =render :partial => 'videos/video', :collection => @event.videos

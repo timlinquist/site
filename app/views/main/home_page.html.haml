@@ -25,11 +25,11 @@
       #html5_player
         =render :partial => 'videos/video_player_html5', :locals => { :video => @video }
   .video-title
-    =@video.title
+    =link_to @video.title, video_path(@video)
     -if session.user && session.user.admin?
       =link_to edit_image_tag, edit_admin_video_path(@video)
   .video-presenters
-    =@video.display_presenters
+    =display_presenters_with_links @video
   .video-abstract
     =RDiscount.new(@video.abstract).to_html
 .clear
