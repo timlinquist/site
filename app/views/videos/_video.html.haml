@@ -4,6 +4,9 @@
   .thumbnail
     =link_to image_tag(video.image.url(:thumb), :width => 142, :class => 'noborder'), video_path(video)
   .main-info
+    -if @controller.controller_name == "presenters"
+      .conference
+        =link_to video.event.display_name, event_path(video.event)
     .title
       -if video.available
         =link_to video.title, video_path(video)
