@@ -1,6 +1,6 @@
 class Presenter < ActiveRecord::Base
   has_many :presentations
-  has_many :videos, :through => :presentations
+  has_many :videos, :through => :presentations, :order => 'recorded_at desc'
 
   has_one :user
 
