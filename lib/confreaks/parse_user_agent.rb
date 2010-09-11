@@ -50,6 +50,7 @@ module Confreaks
               @browser_version_major = parts[1].slice(0,1)
             else
               @browser_version_major = "X"
+            end
           end
 
           break if @browser == "Chrome"
