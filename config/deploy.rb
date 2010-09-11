@@ -41,6 +41,7 @@ set :deploy_to, applicationdir
 
 # New Relic deployment notification
 after 'deploy:update', "newrelic:notice_deployment"
+after 'deploy:update', "deploy:isolate_symlink"
 
 after "deploy", "deploy:cleanup"
 
@@ -51,5 +52,10 @@ namespace :deploy do
   end
   task :restart, :roles => :app, :except => {:no_release => true} do
     run "touch #{File.join(current_path, 'tmp','restart.txt')}"
+  end
+  task :isolate_symlink do
+    run <<-CMD
+      ln -s #{shared_path}/isolate #{latest_release}/tmp/isolate
+    CMD
   end
 end

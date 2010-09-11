@@ -1,5 +1,3 @@
-require 'rdiscount'
-
 class VideosController < ApplicationController
   def index
     if params[:search]
