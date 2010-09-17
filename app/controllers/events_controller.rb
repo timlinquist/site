@@ -24,7 +24,7 @@ class EventsController < ApplicationController
         end
       end
     else
-      render :template => 'events/missing_event'
+      redirect_to '/events/missing'
     end
   end
 end

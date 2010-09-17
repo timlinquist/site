@@ -3,10 +3,12 @@ ActionController::Routing::Routes.draw do |map|
   map.dispcal '/calendar/:year/:month',
     :controller => 'calendar',
     :action => 'index',
+    :requirements => {:year => /\d{4}/, :month => /\d{1,2}/}, 
     :year => Time.zone.now.year,
     :month => Time.zone.now.month
 
   map.root :controller => "main", :action => "home_page"
+
   map.terms_of_service '/terms-of-service', :controller => "main",
                                             :action     => "tos"
   map.privacy_policy   '/privacy-policy',   :controller => "main",
@@ -23,7 +25,11 @@ ActionController::Routing::Routes.draw do |map|
 
   map.resource  :session, :member => { :reset => [:get, :post] }
 
-  map.resources :events
+  map.missing_event    '/events/missing',   :controller => "events",
+                                            :action     => "missing_event"
+
+  map.resources :events, :member => { :missing_event => [:get] }
+
   map.resources :videos do | video |
     video.resources :assets
   end
