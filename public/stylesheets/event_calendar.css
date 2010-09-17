@@ -28,21 +28,27 @@
   padding: 5px 0;
   width: 100%;
   table-layout: fixed;
+  margin: 0;
+  text-align: center;
 }
 
 .ec-month-name {
   font-size: 16px;
   font-weight: bold;
+  text-align: center;
+  border: 0px;
+  padding: 0px;
 }
 
 .ec-month-nav {
-
+  text-align: center;
+  border: 0px;
+  padding: 0px;
 }
 
 /* Containers */
 .ec-body {
   position: relative;
-  border-right: 1px solid #303030;
   white-space: nowrap;
 }
 
@@ -60,6 +66,9 @@
 
 .ec-day-name {
   font-weight: normal;
+  background: black;
+  padding: 0;
+  text-align: center;
 }
 
 /* Rows container and Row */
