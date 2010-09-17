@@ -16,4 +16,20 @@ class EventTest < ActiveSupport::TestCase
 
     assert e.save
   end
+
+  def test_find_by_identifier
+    a = Event.find_by_identifier('mwrc2010')
+
+    assert_equal 1, a.id
+  end
+
+  def test_find_by_identifier_failure
+    a = Event.find_by_identifier('wrong')
+
+    refute a
+
+    b = Event.find_by_identifier(49494)
+
+    refute b
+  end
 end

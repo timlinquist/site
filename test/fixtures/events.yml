@@ -4,8 +4,10 @@ mwrc2010:
   id: 1
   conference_id: 1
   name_suffix: 2010
+  short_code: mwrc2010
 
 larubyconf2010:
   id: 2
   conference_id: 2
   name_suffix: 2010
+  short_code: larubyconf2010

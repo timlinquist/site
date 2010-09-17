@@ -2,7 +2,7 @@ class Admin::VideosController < Admin::Controller
   layout "admin"
 
   def index
-    @videos = Video.paginate(:all, 
+    @videos = Video.paginate(:all,
                              :order => "recorded_at desc",
                              :page => params[:page])
   end
@@ -38,22 +38,29 @@ class Admin::VideosController < Admin::Controller
 
     if @video.save then
       flash[:success] = "The video was created successfully."
-    end
+      if params[:commit] == "Save" && @video.errors.nil?
+        redirect_to event_path(@video.event)
+      else
+        flash[:success] += "<br>Adding another..."
+        @events = Event.find(:all,
+                             :order => "start_at desc")
+        @video = Video.new
+        @video.presentations.build
+        @video.assets.build
+        @presenters = Presenter.find(:all, :order => 'last_name, first_name')
+        @asset_types = AssetType.find(:all, :order => 'description')
 
-    if params[:commit] == "Save" && @video.errors.nil?
-      redirect_to event_path(@video.event)
+        @event = Event.find_by_identifier(params[:event_id])
+
+        render :action => 'new'
+      end
     else
-      @events = Event.find(:all,
-                         :order => "start_at desc")
-      @video.presentations.build
-      @video.assets.build
-      @presenters = Presenter.find(:all, :order => 'last_name, first_name')
-      @asset_types = AssetType.find(:all, :order => 'description')
-
-      @event = Event.find_by_identifier(params[:event_id])
-
+      flash[:error] = "The video was not saved..."
+      
+      new
       render :action => 'new'
     end
+
   end
 
   def update

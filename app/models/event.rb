@@ -32,8 +32,11 @@ class Event < ActiveRecord::Base
   end
 
   def self.find_by_identifier(identifier)
-    find(:first,
-         :conditions => ['id = ? or short_code = ?',identifier,identifier])
+    unless identifier.to_i == 0
+      find_by_id(identifier)
+    else
+      find_by_short_code(identifier)
+    end
   end
 
   def display_name

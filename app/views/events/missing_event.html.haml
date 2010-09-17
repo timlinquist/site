@@ -1,0 +1,10 @@
+-content_for :title do
+  ="event not found - Confreaks, LLC"
+-content_for :secondary_content do
+  =render :partial => 'main/recent_events', :locals => {:events => @recent_events}
+.center
+  #confnotes
+    %h2
+      The event you were looking for 
+      ="'#{params[:id]}'"
+      could not be found.

@@ -12,13 +12,19 @@ class EventsController < ApplicationController
 
     recents
 
-    if session.user && session.user.admin?
-      # do not redirect
-    else
-      # redirect if event is not ready
-      unless @event.ready
-        redirect_to "http://#{@event.short_code}.confreaks.com", :status => 302
+    if @event
+
+
+      if session.user && session.user.admin?
+        # do not redirect
+      else
+        # redirect if event is not ready
+        unless @event.nil? || @event.ready
+          redirect_to "http://#{@event.short_code}.confreaks.com", :status => 302
+        end
       end
+    else
+      render :template => 'events/missing_event'
     end
   end
 end
