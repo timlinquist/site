@@ -2,7 +2,7 @@ fail_message = "\nInvalid deploy_env specified\n\tUsage: cap {command} -S deploy
 
 begin; deploy_env; rescue NameError; set :deploy_env, 'integration' end
 
-set :user, 'cfroot'
+set :user, 'cfprod'
 set :domain, 'confreaks.net'
 set :use_sudo, false
 
@@ -23,6 +23,10 @@ set :application, "confreaks.net"
 set :home_dir, "/home/#{user}"
 
 case deploy_env
+when 'linode'
+  set :application, "#{domain}"
+  role :web, '74.82.5.122'
+  role :app, '74.82.5.122'
 when 'integration'
   set :application, "beta.#{domain}"
   role :web, domain
