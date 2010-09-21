@@ -2,9 +2,15 @@ class Admin::EventsController < Admin::Controller
   layout  'admin'
 
   def index
-    @events = Event.paginate(:all,
-               :order => 'start_at desc',
-               :page => params[:page])
+    if session.user && session.user.admin?
+      @events = Event.paginate(:all,
+                               :order => 'start_at desc',
+                               :page => params[:page])
+    else
+      @events = Event.active.paginate(:all,
+                                      :order => 'start_at desc',
+                                      :page => params[:page])
+    end
   end
 
   def new

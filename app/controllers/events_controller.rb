@@ -3,7 +3,11 @@ require 'rdiscount'
 class EventsController < ApplicationController
 
   def index
-    @events = Event.find(:all, :order => 'start_at desc')
+    if session.user && session.user.admin?
+      @events = Event.find(:all, :order => 'start_at desc')
+    else
+      @events = Event.active.find(:all, :order => 'start_at desc')
+    end
     render :layout => 'admin'
   end
 
