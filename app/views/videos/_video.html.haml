@@ -20,19 +20,20 @@
     .rating
       %span.small
         Rated:
-        %strong
-          =video.rating
-    .rating
-      %span.small
-        Views:
+      %strong
+        =video.rating
+    -if video.available
+      .rating
+        %span.small
+          Views:
         %strong
           =number_with_delimiter(video.views, :delimiter => ',')
     -if video.post_date
       .post-date
         %span.small
           Posted on:
-          %strong
-            =video.post_date.strftime("%b %d, %Y")
+        %strong
+          =video.post_date.strftime("%b %d, %Y")
 
   -if session.user && session.user.admin?
     .admin-tools

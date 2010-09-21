@@ -26,9 +26,10 @@
         Rated:
       %strong
         =search_result.rating
-    .rating
-      %span.small
-        Views:
+    -if search_result.available
+      .rating
+        %span.small
+          Views:
         %strong
           =number_with_delimiter(search_result.views, :delimiter => ',')
     -if search_result.post_date
