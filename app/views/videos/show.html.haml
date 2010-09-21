@@ -40,6 +40,10 @@
       Rated:
       %strong
         =@video.rating
+    .video-rating
+      Views:
+      %strong
+        =number_with_delimiter(@video.views, :delimiter => ",")
     -if @video.post_date
       .video-posted-on
         Posted on:
