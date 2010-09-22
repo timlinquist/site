@@ -95,7 +95,7 @@ namespace :attach do
     puts "File has been attached."
   end
 
-  desc "Attach a set of HD older video Files"
+  desc "Attach a set of older HD video Files"
   task :old_hd, [:video_id, :file_name_prefix] => :environment do | t, args |
 
     v = Video.find(args[:video_id])
@@ -113,6 +113,26 @@ namespace :attach do
       v.save
       puts "\t#{size} video has been attached."
 
+    end
+  end
+
+  desc "Attach original flv & avi files with DW size"
+  task :old_flv, [:video_id, :file_name_prefix] => :environment do | t, args |
+
+    v = Video.find(args[:video_id])
+
+    base_dir = "#{RAILS_ROOT}/../../../source/"
+    file = "#{args[:file_name_prefix]}"
+
+    ["_640x240.flv","_640x240.avi","_960x360.avi"]. each do |extension|
+      a = Asset.new
+
+      a.data = File.new("#{base_dir}#{v.event.short_code}/#{file}#{extension}")
+
+      a.asset_type_id = 1
+      v.assets << a
+      v.save
+      puts "\t#{extension} video has been attached."
     end
   end
 end
