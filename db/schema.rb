@@ -9,7 +9,7 @@
 #
 # It's strongly recommended to check this file into your version control system.
 
-ActiveRecord::Schema.define(:version => 20100921030430) do
+ActiveRecord::Schema.define(:version => 20101005000036) do
 
   create_table "activities", :force => true do |t|
     t.string   "message"
@@ -143,5 +143,7 @@ ActiveRecord::Schema.define(:version => 20100921030430) do
     t.datetime "announce_date"
     t.text     "note"
   end
+
+  add_index "videos", ["title"], :name => "by_title"
 
 end
