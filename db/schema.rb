@@ -144,6 +144,7 @@ ActiveRecord::Schema.define(:version => 20101005000036) do
     t.text     "note"
   end
 
+  add_index "videos", ["recorded_at"], :name => "by_recorded_at"
   add_index "videos", ["title"], :name => "by_title"
 
 end
