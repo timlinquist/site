@@ -42,4 +42,4 @@ integration:
 
 production:
   <<: *default_settings
-  app_name: Cobys Test App CF
+  app_name: confreaks.net (production)
