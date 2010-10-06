@@ -1,6 +1,6 @@
 common: &default_settings
-  #license_key: '6aedc2bf7fa68fc580525e129b55de49ec81ce1f' # Personal Key
-  license_key: 'ea00ad00f5b45f846925bad996cc1d48e6837f1d'  # ATTI Key
+  license_key: '6aedc2bf7fa68fc580525e129b55de49ec81ce1f' # Personal Key
+  #license_key: 'ea00ad00f5b45f846925bad996cc1d48e6837f1d'  # ATTI Key
   agent_enabled: auto
   monitor_mode: true
   developer_mode: false
