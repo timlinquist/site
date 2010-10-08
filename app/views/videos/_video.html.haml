@@ -44,6 +44,8 @@
       %br
       %strong
         =video.available
+      %br
+        =video.streaming_video.nil? ? "None": video.streaming_video.id
   .clear
   .abstract
     -unless video.abstract.empty?
