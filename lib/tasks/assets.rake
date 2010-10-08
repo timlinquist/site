@@ -69,6 +69,12 @@ namespace :attach do
 
     a.asset_type_id = 4
     v.assets << a
+
+    if size == "small"
+      v.streaming_video = a
+      v.available = true
+    end
+
     v.save
     puts "\taudio file has been attached."
   end
@@ -139,7 +145,14 @@ namespace :attach do
 
       a.asset_type_id = 1
       v.assets << a
+
+      if extension == "_640x240.flv"
+        v.streaming_video = a
+        v.available = true
+      end
+
       v.save
+
       puts "\t#{extension} video has been attached."
     end
   end
