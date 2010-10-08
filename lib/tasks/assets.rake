@@ -110,8 +110,16 @@ namespace :attach do
 
       a.asset_type_id = 1
       v.assets << a
+
+      if size == "small"
+        v.streaming_video = a
+        v.available = true
+      end
+
       v.save
+
       puts "\t#{size} video has been attached."
+
 
     end
   end
