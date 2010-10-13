@@ -11,8 +11,8 @@ atom_feed do |feed|
       entry.published(
         video.post_date.nil? ? video.updated_at.strftime("%Y-%m-%dT%H:%M:%SZ") :
           video.post_date.strftime("%Y-%m-%dT%H:%M:%SZ"))
-      entry.author do |author|
-        video.presenters.each do |presenter|
+      video.presenters.each do |presenter|
+        entry.author do |author|
           author.name(presenter.display_name)
         end
       end
