@@ -8,11 +8,16 @@ atom_feed do |feed|
 
       entry.title(h(video.title))
       entry.summary(truncate(strip_tags(video.abstract), :length => 100))
-
+      entry.published(
+        video.post_date.nil? ? video.updated_at.strftime("%Y-%m-%dT%H:%M:%SZ") :
+          video.post_date.strftime("%Y-%m-%dT%H:%M:%SZ"))
       entry.author do |author|
         video.presenters.each do |presenter|
-          author.name(presenter.display_name)  
+          author.name(presenter.display_name)
         end
+      end
+      video.assets do |asset|
+        entry.link('url' => asset.data.url, 'rel' => 'enclosure')
       end
     end
   end

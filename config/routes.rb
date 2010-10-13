@@ -34,7 +34,7 @@ ActionController::Routing::Routes.draw do |map|
     video.resources :assets
   end
 
-  map.resources :feeds, :only => [:index]
+  map.resources :feeds, :only => [:index, :show]
 
   map.resources :presenters
   map.resources :users
