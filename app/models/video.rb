@@ -7,7 +7,6 @@ class Video < ActiveRecord::Base
 
   validates_presence_of :title
   validates_presence_of :recorded_at
-  validates_uniqueness_of :title, :scope => [ :event_id ]
 
   belongs_to :event
 
