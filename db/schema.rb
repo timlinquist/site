@@ -9,7 +9,7 @@
 #
 # It's strongly recommended to check this file into your version control system.
 
-ActiveRecord::Schema.define(:version => 20101005000036) do
+ActiveRecord::Schema.define(:version => 20101005021433) do
 
   create_table "activities", :force => true do |t|
     t.string   "message"
@@ -64,6 +64,8 @@ ActiveRecord::Schema.define(:version => 20101005000036) do
     t.boolean  "display",           :default => true
   end
 
+  add_index "events", ["short_code"], :name => "by_short_code"
+
   create_table "histories", :force => true do |t|
     t.string   "controller"
     t.string   "action"
@@ -81,6 +83,8 @@ ActiveRecord::Schema.define(:version => 20101005000036) do
     t.datetime "created_at"
     t.datetime "updated_at"
   end
+
+  add_index "histories", ["controller", "action", "param_id"], :name => "by_controller_action_param_id"
 
   create_table "presentations", :force => true do |t|
     t.integer  "presenter_id"
@@ -144,6 +148,7 @@ ActiveRecord::Schema.define(:version => 20101005000036) do
     t.text     "note"
   end
 
+  add_index "videos", ["event_id"], :name => "by_event_id"
   add_index "videos", ["recorded_at"], :name => "by_recorded_at"
   add_index "videos", ["title"], :name => "by_title"
 

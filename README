@@ -7,3 +7,23 @@ Uses capistrano to deploy
      Deployment      -> Capistrano
      Gem Management  -> Isolate
 
+Dependencies:
+
+  capistrano
+    The capistrano gem is required in order to do deploys of this app.
+
+  isolate
+    The isolate gem needs to be installed before you can run the tests
+    on this project.
+
+  ffmpeg
+     In order for the rvideo gem to work correctly ffmpeg must be installed.
+     In order for the asset tests to pass ffmpeg must be installed.
+
+     On OS X I recommend using home brew and doing:
+
+         brew install ffmpeg
+
+This should cover everything you need to get going in a development 
+  environment.
+
