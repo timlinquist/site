@@ -9,7 +9,7 @@
 #
 # It's strongly recommended to check this file into your version control system.
 
-ActiveRecord::Schema.define(:version => 20101005021433) do
+ActiveRecord::Schema.define(:version => 20101110151357) do
 
   create_table "activities", :force => true do |t|
     t.string   "message"
@@ -62,6 +62,7 @@ ActiveRecord::Schema.define(:version => 20101005021433) do
     t.text     "notes"
     t.boolean  "ready",             :default => true
     t.boolean  "display",           :default => true
+    t.integer  "rooms"
   end
 
   add_index "events", ["short_code"], :name => "by_short_code"

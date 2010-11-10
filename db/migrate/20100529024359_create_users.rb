@@ -20,11 +20,13 @@ class CreateUsers < ActiveRecord::Migration
       t.string    :twitter_name
       t.string    :facebook_token
       t.timestamps
-
     end
+
+    restore_table_from_fixture "users", "-original"
   end
 
   def self.down
+    save_table_to_fixture "users", "-original"
     drop_table :users
   end
 end

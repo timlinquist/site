@@ -10,11 +10,11 @@ class CreateEvents < ActiveRecord::Migration
       t.timestamps
     end
 
-    restore_table_from_fixture "events", "original"
+    restore_table_from_fixture "events", "-original"
   end
 
   def self.down
-    save_table_to_fixture "events", "original"
+    save_table_to_fixture "events", "-original"
 
     drop_table :events
   end
