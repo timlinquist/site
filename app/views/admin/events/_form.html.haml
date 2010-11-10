@@ -28,7 +28,7 @@
 
   .form-field
     =f.label :rooms, "Number of Tracks"
-    =f.select_tag options_for_select([1,2,3,4,5,6,7,8,9]), {:multiple => true}
+    =select_tag "[event]rooms", options_for_select([1,2,3,4,5,6,7,8,9])
 
   .form-field
     =f.label :notes, "Notes"

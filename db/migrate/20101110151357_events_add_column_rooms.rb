@@ -1,6 +1,6 @@
 class EventsAddColumnRooms < ActiveRecord::Migration
   def self.up
-    add_column :events, :rooms, :integer
+    add_column :events, :rooms, :integer, :default => 1
     restore_table_from_fixture 'events', '-rooms'
   end
 
