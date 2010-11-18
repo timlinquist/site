@@ -46,4 +46,14 @@ class Presenter < ActiveRecord::Base
   def events
     videos.collect {|video| video.event}.uniq
   end
+
+  def avatar_url(options={})
+    unless user.nil?
+      if user.avatar.url =~ /missing/
+        user.gravatar_url(options)
+      else
+        user.avatar.url(:size => options[:avatar_size])
+      end
+    end
+  end
 end

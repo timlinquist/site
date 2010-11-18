@@ -103,6 +103,25 @@ class User < ActiveRecord::Base
     end
   end
 
+  # Returns a Gravatar URL associated with the email parameter.
+  #
+  # Gravatar Options:
+  # -rating: Can be one of G, PG, R or X. Default is X.
+  # -size: Size of the image. Default is 80px.
+  #  default: URL for fallback image if none is found or image exceeds rating.
+  def gravatar_url(gravatar_options={})
+    grav_url = 'http://www.gravatar.com/avatar.php?'
+    grav_url << "gravatar_id=#{Digest::MD5.new.update(self.email)}"
+    if gravatar_options[:rating]
+      grav_url << "&rating=#{gravatar_options[:rating]}"
+    end
+    grav_url << "&size=#{gravatar_options[:size]}" if gravatar_options[:size]
+    if gravatar_options[:default]
+      grav_url << "&default=#{gravatar_options[:default]}"
+    end
+
+    return grav_url
+  end
 
   private
 
