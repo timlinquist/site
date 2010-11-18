@@ -1,35 +1,37 @@
 =content_for :secondary_content do
   =render :partial => 'main/recent_events', :locals => {:events => @recent_events}
-
 .center
-  %h3
-    Featured Video
-  %span.small
-    from
-  =link_to @video.event.display_name, event_path(@video.event)
-  -if iphone_user_agent?
-    .small
-      Sorry the HTML5 player is not yet working on the iPhone. I need to finish a few conferences before I spend time figuring out the codec issues, that are preventing the videos from playing properly
-  -unless (@p.browser == "Firefox" && @p.browser_version_major.to_i < 4) || iphone_user_agent?
-    .small
-      Change video player:
-      =link_to_unless_current 'HTML5', video_path(@video) + "?player=html5"
-      ="/"
-      =link_to_unless_current 'Flash', video_path(@video) + "?player=flash"
+  -if @video.event
+    %h3
+      Featured Video
+    %span.small
+      from
+    =link_to @video.event.display_name, event_path(@video.event)
+    -if iphone_user_agent?
+      .small
+        Sorry the HTML5 player is not yet working on the iPhone. I need to finish a few conferences before I spend time figuring out the codec issues, that are preventing the videos from playing properly
+    -unless (@p.browser == "Firefox" && @p.browser_version_major.to_i < 4) || iphone_user_agent?
+      .small 
+        Change video player:
+        =link_to_unless_current 'HTML5', video_path(@video) + "?player=html5"
+        ="/"
+        =link_to_unless_current 'Flash', video_path(@video) + "?player=flash"
 
-  .video-frame
-    -if @player == "flash" || (@p.browser == "Firefox" && @p.browser_version_major.to_i < 4)
-      #flash_player
+    .video-frame
+      -if @player == "flash" || (@p.browser == "Firefox" && @p.browser_version_major.to_i < 4)
+        #flash_player
         =render :partial => 'videos/video_player', :locals => { :video => @video }
-    -else
-      #html5_player
-        =render :partial => 'videos/video_player_html5', :locals => { :video => @video }
-  .video-title
-    =link_to @video.title, video_path(@video)
-    -if session.user && session.user.admin?
-      =link_to edit_image_tag, edit_admin_video_path(@video)
-  .video-presenters
-    =display_presenters_with_links @video
-  .video-abstract
-    =RDiscount.new(@video.abstract).to_html
-.clear
+      -else
+        #html5_player
+          =render :partial => 'videos/video_player_html5', :locals => { :video => @video }
+    .video-title
+      =link_to @video.title, video_path(@video)
+      -if session.user && session.user.admin?
+        =link_to edit_image_tag, edit_admin_video_path(@video)
+    .video-presenters
+      =display_presenters_with_links @video
+    .video-abstract
+      =RDiscount.new(@video.abstract).to_html
+    .clear
+  -else
+    There are no featured videos available at this time.
