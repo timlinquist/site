@@ -52,7 +52,7 @@ class Presenter < ActiveRecord::Base
       if user.avatar.url =~ /missing/
         user.gravatar_url(options)
       else
-        user.avatar.url(:size => options[:avatar_size])
+        user.avatar.url(options[:avatar_size])
       end
     end
   end
