@@ -3,7 +3,7 @@
     .presenter-box-inner
       -unless presenter.user.nil?
         .profile_picture
-          =image_tag(presenter.avatar_url(:avatar_size => :tiny, :size => 50))
+          =image_tag(presenter.avatar_url(:avatar_size => :tiny, :size => 50)) unless presenter.avatar_url.nil?
       =link_to presenter.display_name, presenter
       %br
       ="Videos: #{presenter.videos.count}"

@@ -4,7 +4,7 @@
   =render :partial => 'presenters/events', :locals => { :events => @presenter.events }
 .profile_header
   .profile_picture
-    =image_tag(@presenter.avatar_url(:avatar_size => :small, :size => 80))
+    =image_tag(@presenter.avatar_url(:avatar_size => :small, :size => 80)) unless @presenter.avatar_url.nil?
   .profile_actions
     -if @presenter.user == session.user  && !session.anonymous?
       =link_to edit_image_tag, edit_user_path(@presenter.user)
