@@ -14,11 +14,9 @@ class EventsController < ApplicationController
   def show
     @event = Event.find_by_identifier(params[:id])
 
-    recents
+    #recents
 
     if @event
-
-
       if session.user && session.user.admin?
         # do not redirect
       else
@@ -30,5 +28,7 @@ class EventsController < ApplicationController
     else
       redirect_to '/events/missing'
     end
+
+    render :template => 'events/alt_show', :layout => "admin"
   end
 end

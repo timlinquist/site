@@ -17,6 +17,8 @@ class Admin::VideosController < Admin::Controller
       @video.assets.build
     end
     @asset_types = AssetType.find(:all, :order => 'description')
+    @rooms = Room.find(:all, :conditions => ['event_id = ?', @video.event.id])
+    
   end
 
   def new
@@ -30,6 +32,9 @@ class Admin::VideosController < Admin::Controller
     @asset_types = AssetType.find(:all, :order => 'description')
 
     @event = Event.find_by_identifier(params[:event_id])
+    if @event then
+      @rooms = Room.find(:all, :conditions => ["event_id = ?",@event.id])
+    end
 
   end
 

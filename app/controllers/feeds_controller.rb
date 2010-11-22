@@ -14,6 +14,5 @@ class FeedsController < ApplicationController
     @title = @event.display_name
     @updated = @videos.first.updated_at unless @videos.empty?
 
-    render 'index'
   end
 end

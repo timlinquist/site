@@ -1,0 +1,28 @@
+-content_for :title do
+  ="#{@event.display_name} Schedule - Confreaks, LLC"
+.center
+  #conflogo
+    =link_to image_tag(@event.logo.url(:original), :alt => @event.display_name, :title => @event.display_name), @event.url, :class => "noborder"
+  #confnotes
+    %em
+      =RDiscount.new(@event.notes || '').to_html
+  %p.right
+    =link_to 'All Events', events_path
+    -if @event.conference.events.count > 1
+      %br
+      =link_to 'Other Conference Events', @event.conference
+    %br
+    Video Podcast:
+    =link_to 'RSS', "http://feeds.feedburner.com/#{@event.short_code}-large-confreaks"
+    =link_to 'Miro', "http://subscribe.getMiro.com/?url1=http%3A%2F%2Ffeeds.feedburner.com%2F<%=@event.short_code%>-large-confreaks", :title => 'Miro: Internet TV'
+    =link_to 'iPod', "http://feeds.feedburner.com/#{@event.short_code}-ipod-confreaks"
+    -if session.user && session.user.admin?
+      %br
+      =link_to 'Edit this Event', edit_admin_event_path(@event)
+  %h2
+    =@event.display_name
+    Schedule
+  -if session.user && session.user.admin?
+    =link_to 'Add Video', new_admin_event_video_path(@event)
+.videos
+  =render :partial => 'videos/video', :collection => @event.videos

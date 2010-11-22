@@ -6,7 +6,7 @@ atom_feed do |feed|
   @videos.each do |video|
     feed.entry(video) do |entry|
 
-      entry.title(h("#{video.event.display_name} - #{video.title}"))
+      entry.title(h(video.title))
       entry.summary(truncate(strip_tags(video.abstract), :length => 100))
       entry.published(
         video.post_date.nil? ? video.updated_at.strftime("%Y-%m-%dT%H:%M:%SZ") :
