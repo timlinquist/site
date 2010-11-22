@@ -1,4 +1,6 @@
-=content_for :secondary_content do
+-content_for :title do
+  ="#{@video.title} - #{@video.display_presenters} - #{@video.event.display_name}"
+-content_for :secondary_content do
   =render :partial => 'videos/video_column', :locals => {:videos => @videos}
 .center
   %h3
