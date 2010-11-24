@@ -6,6 +6,7 @@ gem "paperclip",     "= 2.3.1.1"
 gem "rvideo"
 gem "rdiscount"
 gem "disqus"
+gem "twitter_oauth"
 
 env :development, :test do
   gem "modelizer"

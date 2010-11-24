@@ -20,6 +20,8 @@ class User < ActiveRecord::Base
 
   has_one :profile
 
+  has_one :twitter_account, :dependent => :destroy
+
   has_many :activities,
            :order => 'created_at desc',
            :conditions => ['suppressed = ?', false]
@@ -45,6 +47,19 @@ class User < ActiveRecord::Base
   cattr_reader :per_page
 
   @@per_page = 25
+
+  def has_twitter_oauth?
+    self.twitter_account and
+      self.twitter_account.token and
+      self.twitter_account.secret
+  end
+
+  def create_or_update_twitter_account_with_oauth_token(token,secret)
+    twitter_account = self.twitter_account ? self.twitter_account : TwitterAccount.new(:user_id => self.id)
+    twitter_account.token = token
+    twitter_account.secret = secret
+    twitter_account.save!
+  end
 
   def self.authenticate username, password
     user = find(:first, :conditions => ['LOWER(username) = LOWER(?)',username])

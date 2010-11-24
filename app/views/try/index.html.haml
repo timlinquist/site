@@ -1,0 +1,10 @@
+%h1
+  Test Twitter API
+-if @link
+  You have not authorized Confreaks, LLC on your twitter account.
+  =link_to "Click here to authorize", @link
+-else
+  Try to update your status
+  =form_tag "/try/update_status", :method => "post" do
+    =text_field_tag "status"
+    =submit_tag "Update"

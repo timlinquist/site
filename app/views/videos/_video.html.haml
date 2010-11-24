@@ -1,53 +1,54 @@
-.video[video]
-  .recorded-at
-    =video.recorded_at.strftime('%d-%b-%y %H:%M')
-  .thumbnail
-    =link_to image_tag(video.image.url(:thumb), :width => 142, :class => 'noborder'), video_path(video)
-  .main-info
-    -if @controller.controller_name == "presenters"
-      .conference
-        =link_to video.event.display_name, event_path(video.event)
-    .title
-      -if video.available
-        =link_to video.title, video_path(video)
-      -else
-        =video.title
-    .presenters
-      =display_presenters_with_links video 
-    -if video.note
-      .note
-        =RDiscount.new(video.note).to_html
-    .rating
-      %span.small
-        Rated:
-      %strong
-        =video.rating
-    -if video.available
+-if video.available || (session.user && session.user.admin?)
+  .video[video]
+    .recorded-at
+      =video.recorded_at.strftime('%d-%b-%y %H:%M')
+    .thumbnail
+      =link_to image_tag(video.image.url(:thumb), :width => 142, :class => 'noborder'), video_path(video)
+    .main-info
+      -if @controller.controller_name == "presenters"
+        .conference
+          =link_to video.event.display_name, event_path(video.event)
+      .title
+        -if video.available
+          =link_to video.title, video_path(video)
+        -else
+          =video.title
+      .presenters
+        =display_presenters_with_links video 
+      -if video.note
+        .note
+          =RDiscount.new(video.note).to_html
       .rating
         %span.small
-          Views:
+          Rated:
         %strong
-          =number_with_delimiter(video.views, :delimiter => ',')
-    -if video.post_date
-      .post-date
-        %span.small
-          Posted on:
-        %strong
-          =video.post_date.strftime("%b %d, %Y")
+          =video.rating
+      -if video.available
+        .rating
+          %span.small
+            Views:
+          %strong
+            =number_with_delimiter(video.views, :delimiter => ',')
+      -if video.post_date
+        .post-date
+          %span.small
+            Posted on:
+          %strong
+            =video.post_date.strftime("%b %d, %Y")
 
-  -if session.user && session.user.admin?
-    .admin-tools
-      =link_to edit_image_tag, edit_admin_video_path(video)
-      =link_to delete_image_tag, admin_video_path(video), :method => 'Delete'
-      %br
-      =video.assets.count
-      %br
-      %strong
-        =video.available
-      %br
-        =video.streaming_video.nil? ? "None": video.streaming_video.id
+    -if session.user && session.user.admin?
+      .admin-tools
+        =link_to edit_image_tag, edit_admin_video_path(video)
+        =link_to delete_image_tag, admin_video_path(video), :method => 'Delete'
+        %br
+        =video.assets.count
+        %br
+        %strong
+          =video.available
+        %br
+          =video.streaming_video.nil? ? "None": video.streaming_video.id
+    .clear
+    .abstract
+      -unless video.abstract.empty?
+        =RDiscount.new(truncate(video.abstract, :length => 250)).to_html
   .clear
-  .abstract
-    -unless video.abstract.empty?
-      =RDiscount.new(truncate(video.abstract, :length => 250)).to_html
-.clear
