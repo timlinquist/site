@@ -4,7 +4,7 @@ class VideosController < ApplicationController
       @videos = Video.search(params[:search],params[:all])
       @message = "#{@videos.count} results matching your query '#{params[:search]}'"
       if params[:all]=="1"
-        @message = @message + 
+        @message = @message +
           " including videos not yet available. '#{params[:all]}' #{params[:all].class}"
       end
     else
@@ -40,8 +40,11 @@ class VideosController < ApplicationController
     @player = params[:player] || "html5"
 
     @video = Video.find(params[:id])
-    @videos = Video.find(:all, :conditions => ['event_id = ?', @video.event_id],
-                        :order => 'recorded_at')
+    @video = unless if @video.available?
+    @videos = Video.find(:all, 
+                         :conditions => ['event_id = ? and avalailable = ?',
+                                         @video.event_id, true],
+                         :order => 'recorded_at')
 
   end
 end
