@@ -40,11 +40,15 @@ class VideosController < ApplicationController
     @player = params[:player] || "html5"
 
     @video = Video.find(params[:id])
-    @video = unless if @video.available?
-    @videos = Video.find(:all, 
+
+    if @video.available?
+      @videos = Video.find(:all,
                          :conditions => ['event_id = ? and avalailable = ?',
                                          @video.event_id, true],
                          :order => 'recorded_at')
-
+    else
+      flash[:error]="The video '#{@video.title}' is not currently available."
+      redirect_to event_path(@video.event)
+    end
   end
 end
