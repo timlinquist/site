@@ -156,4 +156,33 @@ namespace :attach do
       puts "\t#{extension} video has been attached."
     end
   end
+
+  desc "Zen Coder Test"
+  task :zct, [:video_id, :file_name] => :environment do | t, args |
+    v = Video.find(args[:video_id])
+
+    base_dir = "#{RAILS_ROOT}/../../../source/"
+    file = "#{args[:file_name]}"
+    
+    puts "Attempting to attach the video file to '#{v.title}'."
+
+    a = Asset.new
+    a.data = File.new("#{base_dir}#{v.event.short_code}/#{file}")
+
+    a.asset_type_id = 1  # Set asset_type to video
+
+    v.assets << a
+
+    v.save
+
+    puts "File has been attached."
+
+    # Notify Zencoder of the file, and create the following jobs:
+    #   1280x720
+    #   640x360
+    #   MP3
+    #   iPhone Version
+    #   iPad Version
+
+  end
 end

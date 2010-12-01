@@ -1,0 +1,46 @@
+{
+  "test": 1,
+  "input": "http://confreaks.net/system/assets/datas/90/original/14-mar-2009-10-30-herding-tigers-software-development-and-the-art-of-war-daniel-philpott-large.mp4",
+  "output": [
+    {
+      "base_url": "ftp://cfprod:75uu8juu@confreaks.net/source/zencoder/",
+      "filename": "test-large.mp4",
+      "label": "1280x720",
+      "video_codec": "h264",
+      "quality": 3,
+      "speed": 3,
+      "width": 1280,
+      "height": 720,
+      "aspect_mode": "preserve",
+      "audio_codec": "aac",
+      "audio_quality": 3,
+      "thumbnails": {
+        "number": 25,
+        "size": "640x360",
+        "base_url": "ftp://cfprod:75uu8juu@confreaks.net/source/zencoder/",
+        "prefix": "test-thumb"
+      }
+    },
+    {
+      "base_url": "ftp://cfprod:75uu8juu@confreaks.net/source/zencoder/",
+      "filename": "test-small.mp4",
+      "label": "640x360",
+      "video_codec": "h264",
+      "quality": 3,
+      "speed": 3,
+      "width": 640,
+      "height": 360,
+      "aspect_mode": "preserve",
+      "audio_codec": "aac",
+      "audio_quality": 3
+    },
+    {
+      "base_url": "ftp://cfprod:75uu8juu@confreaks.net/source/zencoder/",
+      "filename": "test.mp3",
+      "label": "Audio",
+      "audio_codec": "mp3",
+      "audio_quality": 3,
+      "skip_video": 1
+    } 
+  ]
+}

@@ -42,9 +42,9 @@ class VideosController < ApplicationController
     @video = Video.find(params[:id])
 
     if @video.available?
-      @videos = Video.find(:all,
-                         :conditions => ['event_id = ? and avalailable = ?',
-                                         @video.event_id, true],
+      @videos = Video.available.find(:all,
+                         :conditions => ['event_id = ?',
+                                         @video.event_id],
                          :order => 'recorded_at')
     else
       flash[:error]="The video '#{@video.title}' is not currently available."

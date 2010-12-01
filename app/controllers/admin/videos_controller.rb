@@ -18,7 +18,7 @@ class Admin::VideosController < Admin::Controller
     end
     @asset_types = AssetType.find(:all, :order => 'description')
     @rooms = Room.find(:all, :conditions => ['event_id = ?', @video.event.id])
-    
+
   end
 
   def new
@@ -61,7 +61,6 @@ class Admin::VideosController < Admin::Controller
       end
     else
       flash[:error] = "The video was not saved..."
-      
       new
       render :action => 'new'
     end
@@ -95,5 +94,29 @@ class Admin::VideosController < Admin::Controller
         @video.errors.full_messages.to_sentence
     end
     redirect_to admin_event_path event
+  end
+
+  def attach
+    @video = Video.find(params[:id])
+
+    base_dir = "#{RAILS_ROOT}/../../../source/"
+    file = "#{@video.id}.mp4"
+    full_file = "#{base_dir}#{@video.event.short_code}/#{file}"
+
+    if File.exists?(full_file)
+      a = Asset.new
+      a.data = File.new(full_file)
+
+      a.asset_type_id = 1
+
+      @video.assets << a
+
+      @video.save
+      flash[:success]="File: #{full_file} was attached to #{@video.title}"
+    else
+      flash[:error] = "File: #{full_file} does not exist"
+    end
+
+    redirect_to video_path(@video)
   end
 end

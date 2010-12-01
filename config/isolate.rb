@@ -7,6 +7,7 @@ gem "rvideo"
 gem "rdiscount"
 gem "disqus"
 gem "twitter_oauth"
+gem "rest-client"
 
 env :development, :test do
   gem "modelizer"

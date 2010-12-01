@@ -1,0 +1,51 @@
+{
+  "test": 1,
+  "input": "<%=@asset_url%>",
+  "output": [
+    {
+      "base_url": "ftp://cfprod:75uu8juu@confreaks.net/source/zencoder/",
+      "filename": "<%=@base_file_name%>-large.mp4",
+      "label": "1280x720",
+      "video_codec": "h264",
+      "quality": 3,
+      "speed": 3,
+      "width": 1280,
+      "height": 720,
+      "aspect_mode": "preserve",
+      "audio_codec": "aac",
+      "audio_quality": 3,
+      "thumbnails": {
+        "number": 25,
+        "size": "640x360",
+        "base_url": "ftp://cfprod:75uu8juu@confreaks.net/source/zencoder/",
+        "prefix": "<%=@base_file_name%>-thumb%>"
+      }
+    },
+    {
+      "base_url": "ftp://cfprod:75uu8juu@confreaks.net/source/zencoder/",
+      "filename": "<%=@base_file_name%>-small.mp4",
+      "label": "640x360",
+      "video_codec": "h264",
+      "quality": 3,
+      "speed": 3,
+      "width": 640,
+      "height": 360,
+      "aspect_mode": "preserve",
+      "audio_codec": "aac",
+      "audio_quality": 3
+    },
+    {
+      "base_url": "ftp://cfprod:75uu8juu@confreaks.net/source/zencoder/",
+      "filename": "<%=@base_file_name%>.mp3",
+      "label": "Audio Only File",
+      "notifications": [
+        "http://confreaks.net/zc-callback/"
+      ],
+      "audio_codec": "mp3",
+      "audio_quality": 3,
+      "skip_video": 1
+    }
+
+  ],
+  "api_key": "79517d12641249bb20140e45eec23c7b"
+}

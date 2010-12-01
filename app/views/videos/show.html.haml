@@ -34,6 +34,8 @@
   .video-abstract
     =RDiscount.new(@video.abstract).to_html
 .video-details
+  -if session.user && session.user.admin?
+    =link_to "Attach Uploaded File", admin_attach_path(@video)
   .assets
     =render :partial => 'asset_display', :collection => @video.assets.downloadable
   .video-links

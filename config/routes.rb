@@ -3,7 +3,7 @@ ActionController::Routing::Routes.draw do |map|
   map.dispcal '/calendar/:year/:month',
     :controller => 'calendar',
     :action => 'index',
-    :requirements => {:year => /\d{4}/, :month => /\d{1,2}/}, 
+    :requirements => {:year => /\d{4}/, :month => /\d{1,2}/},
     :year => Time.zone.now.year,
     :month => Time.zone.now.month
 
@@ -43,6 +43,9 @@ ActionController::Routing::Routes.draw do |map|
   map.admin "/admin", :controller => 'admin/root',  :action => 'index'
 
   map.namespace :admin do | admin |
+    admin.attach   '/videos/attach/:id',
+                         :controller => :videos,
+                         :action => "attach"
     admin.resources :videos
     admin.resources :events do |event|
       event.resources :videos
