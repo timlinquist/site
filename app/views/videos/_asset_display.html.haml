@@ -1,2 +1,5 @@
 .asset-box.small
   =link_to asset_display.display_description, asset_display.data.url
+  -if session.user && session.user.admin?
+    -if @video.assets.count == 1
+      =link_to 'ZC', admin_encode_path(asset_display)

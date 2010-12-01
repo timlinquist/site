@@ -43,9 +43,12 @@ ActionController::Routing::Routes.draw do |map|
   map.admin "/admin", :controller => 'admin/root',  :action => 'index'
 
   map.namespace :admin do | admin |
-    admin.attach   '/videos/attach/:id',
+    admin.attach    '/videos/attach/:id',
                          :controller => :videos,
                          :action => "attach"
+    admin.encode    '/assets/encode/:id',
+                         :controller => :assets,
+                         :action => "encode"
     admin.resources :videos
     admin.resources :events do |event|
       event.resources :videos
