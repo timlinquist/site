@@ -12,6 +12,7 @@ class Admin::AssetsController < Admin::Controller
     @asset.data.url
 
     template_file = "#{RAILS_ROOT}/lib/templates/zencoder-job-template.erb"
+    @base_file_name = @asset.video.to_param
 
     # Generate the Json template to be posted to ZenCoder
     @json_data = Confreaks::Renderer.new(template_file, binding).render
