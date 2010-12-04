@@ -8,6 +8,7 @@ gem "rdiscount"
 gem "disqus"
 gem "twitter_oauth"
 gem "rest-client"
+gem "zencoder"
 
 env :development, :test do
   gem "modelizer"

@@ -2,6 +2,9 @@
   =error_messages_for(:object => @video, :message => "You must fix these fields before proceeding", :header_message => nil)
   %h3
     Basic Info
+    (
+    =link_to 'Preview', video_path(@video), :target => "_blank"
+    )
   .form-field
     =f.label :event, "Event"
     -unless @event
@@ -75,8 +78,8 @@
   .form-field
     =f.label :announce_date, "Announce on"
     =calendar_date_select_tag "[video]announce_date", (@video.announce_date unless @video.nil?), :time => true
-  %h3 
-    Asset(s) - 
+  %h3
+    Asset(s) -
     =@video.assets.count
   -f.fields_for :assets do |assetbuilder|
     =render 'asset_fields', :f => assetbuilder
@@ -85,7 +88,8 @@
 
   .form-field
     =f.submit "Save", :class => "button"
-    =f.submit "Save and add another", :class => "button"
+    -unless @controller.action_name == "edit"
+      =f.submit "Save and add another", :class => "button"
     -if @event
       =link_to "Discard", event_path(@event), :class => "button"
     -else

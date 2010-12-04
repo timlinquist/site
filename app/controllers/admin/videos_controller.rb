@@ -79,7 +79,7 @@ class Admin::VideosController < Admin::Controller
         @video.errors.full_messages.to_sentence
     end
 
-    redirect_to event_path @video.event
+    redirect_to edit_admin_video_path @video
   end
 
   def destroy
