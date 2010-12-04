@@ -1,3 +1,5 @@
+require 'zencoder'
+
 class Admin::AssetsController < Admin::Controller
   layout "admin"
 
