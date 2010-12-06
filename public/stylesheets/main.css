@@ -521,6 +521,10 @@ ul#flash li.success {
     text-align: center;
 }
 
+.video-twitter {
+    float: right;
+}
+
 #flash_player {
     text-align: center;
     margin: 0 auto 0;

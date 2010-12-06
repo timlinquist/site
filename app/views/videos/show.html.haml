@@ -22,6 +22,8 @@
     -else
       #html5_player
         =render :partial => 'videos/video_player_html5', :locals => { :video => @video }
+  .video-twitter
+    <a href="http://twitter.com/share" class="twitter-share-button" data-text="Check out this presentation!" data-count="vertical" data-via="confreaks">Tweet</a><script type="text/javascript" src="http://platform.twitter.com/widgets.js"></script>
   .video-title
     =@video.title
     -if session.user && session.user.admin?
