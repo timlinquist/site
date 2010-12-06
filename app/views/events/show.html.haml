@@ -13,12 +13,6 @@
     -if @event.conference.events.count > 1
       %br
       =link_to 'Other Conference Events', @event.conference
-    -if false
-      %br
-      Video Podcast:
-      =link_to 'RSS', "http://feeds.feedburner.com/#{@event.short_code}-large-confreaks"
-      =link_to 'Miro', "http://subscribe.getMiro.com/?url1=http%3A%2F%2Ffeeds.feedburner.com%2F<%=@event.short_code%>-large-confreaks", :title => 'Miro: Internet TV'
-      =link_to 'iPod', "http://feeds.feedburner.com/#{@event.short_code}-ipod-confreaks"
     -if session.user && session.user.admin?
       %br
       =link_to 'Edit this Event', edit_admin_event_path(@event)
