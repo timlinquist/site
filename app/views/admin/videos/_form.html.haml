@@ -4,6 +4,8 @@
     Basic Info
     (
     =link_to 'Preview', video_path(@video), :target => "_blank"
+    |
+    =link_to 'Conference', event_path(@video.event), :target => "_blank"
     )
   .form-field
     =f.label :event, "Event"
