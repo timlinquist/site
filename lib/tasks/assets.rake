@@ -62,6 +62,12 @@ namespace :attach do
       v.save
       puts "\t#{size} video has been attached."
 
+      if size == "small"
+        puts "\tThis is the streaming video."
+        v.streaming_video = a
+        v.available = true
+        v.save
+      end
     end
 
     a = Asset.new
@@ -70,12 +76,6 @@ namespace :attach do
     a.asset_type_id = 4
     v.assets << a
 
-    if size == "small"
-      v.streaming_video = a
-      v.available = true
-    end
-
-    v.save
     puts "\taudio file has been attached."
   end
 
