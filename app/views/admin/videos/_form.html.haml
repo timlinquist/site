@@ -2,11 +2,12 @@
   =error_messages_for(:object => @video, :message => "You must fix these fields before proceeding", :header_message => nil)
   %h3
     Basic Info
-    (
-    =link_to 'Preview', video_path(@video)
-    |
-    =link_to 'Conference', event_path(@video.event)
-    )
+    -unless @controller.action_name =="new"
+      (
+      =link_to 'Preview', video_path(@video)
+      |
+      =link_to 'Conference', event_path(@video.event)
+      )
   .form-field
     =f.label :event, "Event"
     -unless @event
