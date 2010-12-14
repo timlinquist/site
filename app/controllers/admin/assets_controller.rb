@@ -19,6 +19,6 @@ class Admin::AssetsController < Admin::Controller
     # Generate the Json template to be posted to ZenCoder
     @json_data = Confreaks::Renderer.new(template_file, binding).render
 
-    Zencoder::Job.create(@json_data)
+    @results = Zencoder::Job.create(@json_data)
   end
 end
