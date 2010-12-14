@@ -22,28 +22,6 @@ namespace :attach do
     puts "File has been attached."
   end
 
-  desc "Attach Audio File"
-  task :audio, [:video_id, :file_name] => :environment do | t, args |
-
-    v=Video.find(args[:video_id])
-
-    puts "Attempting to attach an audio file to '#{v.title}'."
-
-    a = Asset.new
-
-    base_dir = "#{RAILS_ROOT}/../../../source/"
-    file = "#{args[:file_name]}"
-
-    a.data = File.new("#{base_dir}#{v.event.short_code}/#{file}")
-
-    a.asset_type_id = 4  # Only thing unique about this vs. Video
-
-    v.assets << a
-
-    v.save
-    puts "File has been attached."
-  end
-
   desc "Attach a set of Video and Audio Files"
   task :all, [:video_id, :file_name_prefix] => :environment do | t, args |
 
@@ -157,32 +135,40 @@ namespace :attach do
     end
   end
 
-  desc "Zen Coder Test"
-  task :zct, [:video_id, :file_name] => :environment do | t, args |
+  desc "Attach the results of a ZC encode job"
+  task :zo, [:video_id] => :environment do | t, args |
     v = Video.find(args[:video_id])
 
     base_dir = "#{RAILS_ROOT}/../../../source/"
-    file = "#{args[:file_name]}"
-    
+
     puts "Attempting to attach the video file to '#{v.title}'."
 
+
+    # Attach the large and small videos
+    ['small','large'].each do |size|
+      file = "#{v.to_param}-#{size}.mp4"
+      a = Asset.new
+      a.data = File.new("#{base_dir}zencoder/#{file}")
+
+      a.asset_type_id = 1  # Set asset_type to video
+
+      v.assets << a
+
+      v.save
+
+      puts "File #{file} has been attached."
+    end
+
+    # Attach the audio file
+    file = "#{v.to_param}.mp3"
     a = Asset.new
-    a.data = File.new("#{base_dir}#{v.event.short_code}/#{file}")
+    a.data = File.new("#{base_dir}zencoder/#{file}")
 
-    a.asset_type_id = 1  # Set asset_type to video
-
+    a.asset_type_id = 4
     v.assets << a
-
     v.save
 
-    puts "File has been attached."
-
-    # Notify Zencoder of the file, and create the following jobs:
-    #   1280x720
-    #   640x360
-    #   MP3
-    #   iPhone Version
-    #   iPad Version
+    puts "File #{file} has been attached."
 
   end
 end
