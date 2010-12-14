@@ -1,5 +1,11 @@
 %h1 Encode
 %p
+  =link_to 'Conference', event_path(@asset.video.event)
+  %br
+  =link_to 'Presentation', video_path(@asset.video)
+%p
   =@asset.display_description
 %p
   =@json_data
+%p
+  =@results.to_s
