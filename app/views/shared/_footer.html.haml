@@ -1,6 +1,6 @@
 #footer
   .footertext
-    Copyright &copy; 2007-2010 - Confreaks, LLC
+    ="Copyright &copy; 2007-#{Date.today.year} - Confreaks, LLC"
     %br
     =render :partial => 'shared/ccasa_blurb'
   .license
@@ -19,7 +19,6 @@
       =link_to_unless_current 'About Us', about_us_path
     %li
       =link_to_unless_current "Services", services_path
-
 .center
   .small
     Version:
