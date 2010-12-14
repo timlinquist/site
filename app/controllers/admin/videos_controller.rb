@@ -1,4 +1,7 @@
 class Admin::VideosController < Admin::Controller
+  before_filter :require_user, :except => :callback
+  before_filter :require_admin_user, :except => :callback
+
   layout "admin"
 
   def index
@@ -102,5 +105,9 @@ class Admin::VideosController < Admin::Controller
     end
 
     redirect_to video_path(@video)
+  end
+
+  def callback
+    render :nothing => true
   end
 end
