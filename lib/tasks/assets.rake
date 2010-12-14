@@ -141,7 +141,7 @@ namespace :attach do
 
     base_dir = "#{RAILS_ROOT}/../../../source/"
 
-    puts "Attempting to attach the video file to '#{v.title}'."
+    puts "Attempting to attach Zencoder output to '#{v.title}'."
 
 
     # Attach the large and small videos
@@ -157,6 +157,12 @@ namespace :attach do
       v.save
 
       puts "File #{file} has been attached."
+
+      if size == "small"
+        puts "\tSetting this as the streaming video."
+        v.streaming_video = a
+        v.save
+      end
     end
 
     # Attach the audio file
@@ -170,5 +176,8 @@ namespace :attach do
 
     puts "File #{file} has been attached."
 
+    puts "Marking presentation #{v.id} - #{v.title} as available"
+    v.available =true
+    v.save
   end
 end
