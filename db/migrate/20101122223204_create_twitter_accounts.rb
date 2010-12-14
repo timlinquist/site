@@ -7,11 +7,11 @@ class CreateTwitterAccounts < ActiveRecord::Migration
       t.timestamps
     end
 
-    restore_table_from_fixtures "twitter_accounts","-original"
+    restore_table_from_fixture "twitter_accounts","-original"
   end
 
   def self.down
-    save_table_to_fixtures "twitter_accounts","-original"
+    save_table_to_fixture "twitter_accounts","-original"
 
     drop_table :twitter_accounts
   end
