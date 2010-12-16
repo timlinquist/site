@@ -62,5 +62,6 @@ ActionController::Routing::Routes.draw do |map|
 
   map.zc_callback '/zc-callback',
                   :controller => 'admin/videos',
-                  :action => 'callback'
+                  :action => 'callback',
+                  :method => ['post','get']
 end

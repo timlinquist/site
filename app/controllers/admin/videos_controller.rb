@@ -108,6 +108,11 @@ class Admin::VideosController < Admin::Controller
   end
 
   def callback
+    respond_to do |format|
+      format.js {
+        render :text => 'ok'.to_json
+      }
+    end
     render :nothing => true
   end
 end

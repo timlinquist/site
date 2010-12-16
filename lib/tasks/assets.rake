@@ -137,6 +137,7 @@ namespace :attach do
 
   desc "Attach the results of a ZC encode job"
   task :zo, [:video_id] => :environment do | t, args |
+    
     v = Video.find(args[:video_id])
 
     base_dir = "#{RAILS_ROOT}/../../../source/"
