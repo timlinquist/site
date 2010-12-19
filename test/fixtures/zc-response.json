@@ -1,0 +1,12 @@
+HTTP/1.1 200 OK
+Date: Thu, 16 Dec 2010 03:14:12 GMT
+Server: Apache
+X-Powered-By: Phusion Passenger (mod_rails/mod_rack) 2.2.9
+ETag: "72054d9a6fbdcc7df012e19f32345b65"
+X-Runtime: 58
+Cache-Control: private, max-age=0, must-revalidate
+Set-Cookie: _v2a_session=BAh7BjoPc2Vzc2lvbl9pZCIlOGNjZGNlNWU3YTVlOTM5NWY4NWFlODY4ZTg1YzcwNmQ%3D--d7dd0da9e78d19cc2d5718a6668fb9a08726ae83; path=/; HttpOnly
+Content-Length: 4
+Status: 200
+Content-Type: text/javascript; charset=utf-8
+

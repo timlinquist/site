@@ -67,7 +67,7 @@ class Video < ActiveRecord::Base
   end
 
   def self.random
-      if Rails.env == "production"
+      if Rails.env == "production" || Rails.env == "development"
         order = 'rand()'
       else
         order = 'random()'

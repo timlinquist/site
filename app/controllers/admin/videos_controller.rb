@@ -110,9 +110,11 @@ class Admin::VideosController < Admin::Controller
   end
 
   def callback
+    #puts "\t#{params[:output][:label]}"
+
     respond_to do |format|
       format.js {
-        render :text => 'ok'.to_json
+        render :text => "ok".to_json
       }
     end
   end

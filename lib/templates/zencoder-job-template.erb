@@ -14,8 +14,11 @@
       "aspect_mode": "preserve",
       "audio_codec": "aac",
       "audio_quality": 3,
+      "notifications": [
+        "http://confreaks.net/zc-callback/"
+      ],
       "thumbnails": {
-        "number": 25,
+        "number": 5,
         "size": "640x360",
         "base_url": "ftp://cfprod:75uu8juu@confreaks.net/source/zencoder/",
         "prefix": "<%=@base_file_name%>-thumb"
@@ -32,7 +35,10 @@
       "height": 360,
       "aspect_mode": "preserve",
       "audio_codec": "aac",
-      "audio_quality": 3
+      "audio_quality": 3,
+      "notifications": [
+        "http://confreaks.net/zc-callback/"
+      ]
     },
     {
       "base_url": "ftp://cfprod:75uu8juu@confreaks.net/source/zencoder/",
@@ -47,5 +53,5 @@
     }
 
   ],
-  "api_key": "79517d12641249bb20140e45eec23c7b"
+  "api_key": "<%=Confreaks.config[:zencoder_api_key]%>"
 }
