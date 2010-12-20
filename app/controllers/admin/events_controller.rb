@@ -42,7 +42,7 @@ class Admin::EventsController < Admin::Controller
     if @event.save
       flash[:success]="Event changes saved successfully."
     else
-      flash[:error]="Event changes could not be saved: " + 
+      flash[:error]="Event changes could not be saved: " +
         @event.errors.full_messages.to_sentence
     end
 

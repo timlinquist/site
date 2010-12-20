@@ -9,8 +9,6 @@ class Event < ActiveRecord::Base
   has_many :available_videos, :class_name => 'Video',
            :order => 'recorded_at desc', :conditions => ['available = ?',true]
 
-  has_many :rooms
-
   has_event_calendar
 
   has_attached_file :logo,
