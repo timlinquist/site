@@ -137,7 +137,7 @@ namespace :attach do
 
   desc "Attach the results of a ZC encode job"
   task :zo, [:video_id] => :environment do | t, args |
-    
+
     v = Video.find(args[:video_id])
 
     base_dir = "#{RAILS_ROOT}/../../../source/"
@@ -152,6 +152,8 @@ namespace :attach do
       a.data = File.new("#{base_dir}zencoder/#{file}")
 
       a.asset_type_id = 1  # Set asset_type to video
+
+      a.width, a.height, a.duration = a.get_metadata
 
       v.assets << a
 
