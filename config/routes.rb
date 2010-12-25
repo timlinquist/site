@@ -49,9 +49,15 @@ ActionController::Routing::Routes.draw do |map|
     admin.encode    '/assets/encode/:id',
                          :controller => :assets,
                          :action => "encode"
+    admin.refresh  '/assets/refresh/:id',
+                         :controller => :assets,
+                         :action => 'refresh_meta_data'
+
     admin.resources :videos
     admin.resources :events do |event|
-      event.resources :videos
+      event.resources :videos do |video|
+        video.resources :assets
+      end
     end
     admin.resources :presenters
     admin.resources :conferences

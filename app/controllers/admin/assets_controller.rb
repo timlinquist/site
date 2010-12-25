@@ -21,4 +21,14 @@ class Admin::AssetsController < Admin::Controller
 
     @response = Zencoder::Job.create(@json_data)
   end
+
+  def refresh_meta_data
+    a = Asset.find(params[:id])
+
+    a.width, a.height, a.duration = a.get_metadata
+
+    a.save
+
+    redirect_to video_path(a.video)
+  end
 end

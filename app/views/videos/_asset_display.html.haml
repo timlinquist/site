@@ -2,3 +2,4 @@
   =link_to asset_display.display_description, asset_display.data.url
   -if session.user && session.user.admin?
     =link_to 'ZC', admin_encode_path(asset_display)
+    =link_to 'Refresh', admin_refresh_path(asset_display)
