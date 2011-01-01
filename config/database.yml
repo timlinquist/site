@@ -1,11 +1,11 @@
-development:
+development-mysql:
   adapter: mysql
   database: confreaks
   username: root
   host: localhost
 
 # SQLite version 3.x
-development-sqlite3:
+development:
   adapter: sqlite3
   database: db/development.sqlite3
   pool: 5

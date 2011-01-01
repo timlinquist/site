@@ -16,11 +16,9 @@ class AssetTest < ActiveSupport::TestCase
     #puts a.height
     #puts a.streaming
 
-    a.get_metadata
     assert_not_nil a.duration, "duration is nil"
     assert_not_nil a.width,  "width is nil"
     assert_not_nil a.height, "height is nil"
-    assert_not_nil a.raw_response, "raw response is nil"
   end
 
   test "validate height" do
@@ -35,7 +33,7 @@ class AssetTest < ActiveSupport::TestCase
     a = Asset.new
     a.data = File.new('test/fixtures/jeff-patton-small.mp4')
     a.save
-    
+
     assert_not_nil a.width
   end
 

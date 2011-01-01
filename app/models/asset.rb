@@ -17,6 +17,8 @@ class Asset < ActiveRecord::Base
     :conditions => ['asset_types.downloadable = ?', true],
     :order => 'data_file_size desc'
 
+  before_save :populate_metadata
+
   def size
     if width > 0 and height > 0
       "#{width}x#{height}"
@@ -48,6 +50,10 @@ class Asset < ActiveRecord::Base
         description
       end
     end
+  end
+
+  def populate_metadata
+    self.width, self.height, self.duration = self.get_metadata
   end
 
   def get_metadata

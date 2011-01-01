@@ -13,6 +13,7 @@ gem "zencoder"
 env :development, :test do
   gem "modelizer"
   gem "sqlite3-ruby"
+  gem "ruby-mysql", :lib => 'mysql'
 end
 
 env :production do
