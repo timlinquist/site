@@ -41,12 +41,15 @@
         =link_to edit_image_tag, edit_admin_video_path(video)
         =link_to delete_image_tag, admin_video_path(video), :method => 'Delete'
         %br
+        Assets:
         =video.assets.count
         %br
+        Available:
         %strong
           =video.available
         %br
-          =video.streaming_video.nil? ? "None": video.streaming_video.id
+        Streaming:
+        =video.streaming_video.nil? ? "None": video.streaming_video.id
     .clear
     .abstract
       -unless video.abstract.empty?
