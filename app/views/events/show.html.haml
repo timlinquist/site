@@ -19,6 +19,8 @@
   %h2
     =@event.display_name
     Schedule
+  =@event.videos.count
+  presentations available
   -if session.user && session.user.admin?
     =link_to 'Add Video', new_admin_event_video_path(@event)
 .videos
