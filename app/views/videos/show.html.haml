@@ -39,6 +39,8 @@
 .video-details
   -if session.user && session.user.admin?
     =link_to "Attach Uploaded File", admin_attach_path(@video)
+    %br
+    =link_to "Admin Tweet", 'http://twitter.com/share', :class => 'twitter-share-button', 'data-text' => "New Video! ##{@video.event.short_code} - #{@video.title} by #{@video.display_presenters}", 'data-count' => 'vertical'
   .assets
     =render :partial => 'asset_display', :collection => @video.assets.downloadable
   .video-links
