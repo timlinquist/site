@@ -6,4 +6,4 @@
           =image_tag(presenter.avatar_url(:avatar_size => :tiny, :size => 50)) unless presenter.avatar_url.nil?
       =link_to presenter.display_name, presenter
       %br
-      ="Videos: #{presenter.videos.count}"
+      ="Videos: #{presenter.videos.available.count}"
