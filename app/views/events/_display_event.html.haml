@@ -10,3 +10,6 @@
       %br
       %span.small
         =link_to display_event.date_occurred, event_path(display_event), :class => 'noborder'
+      -if session.user.admin? && !display_event.ready
+        %br
+        PREVIEW
