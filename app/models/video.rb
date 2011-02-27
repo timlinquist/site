@@ -74,7 +74,7 @@ class Video < ActiveRecord::Base
       end
 
       Video.find(:first,
-                 :conditions => ["streaming_asset_id is not null and available = ?", true],
+                 :conditions => ["streaming_asset_id is not null and available = ? and post_date >= ?", true, Date.today - 365 ],
                  :order => order)
   end
 

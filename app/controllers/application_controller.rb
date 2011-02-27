@@ -58,6 +58,7 @@ class ApplicationController < ActionController::Base
     @recent_events = Event.active.find(:all,
                                        :order => 'start_at desc',
                                        :limit =>5)
+
     @recent_videos = @recent_events.map {|event| event.videos.first}
   end
 end
