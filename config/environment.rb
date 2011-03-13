@@ -11,7 +11,7 @@ Rails::Initializer.run do |config|
   config.action_mailer.raise_delivery_errors = false
   config.action_mailer.default_url_options = { :host => 'localhost' }
 
-  config.action_controller.asset_host = "http://confreaks.net"
+  #config.action_controller.asset_host = "http://confreaks.net"
 
   config.after_initialize do
     Disqus::defaults[:account]="confreaks"
