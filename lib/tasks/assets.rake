@@ -135,6 +135,33 @@ namespace :attach do
     end
   end
 
+  desc "Attach original flv & avi files with DW size, hyphen not underscore"
+  task :old_flv2, [:video_id, :file_name_prefix] => :environment do | t, args |
+
+    v = Video.find(args[:video_id])
+
+    base_dir = "#{RAILS_ROOT}/../../../source/"
+    file = "#{args[:file_name_prefix]}"
+
+    ["-640x240.flv","-960x360.avi"]. each do |extension|
+      a = Asset.new
+
+      a.data = File.new("#{base_dir}#{v.event.short_code}/#{file}#{extension}")
+
+      a.asset_type_id = 1
+      v.assets << a
+
+      if extension == "_640x240.flv"
+        v.streaming_video = a
+        v.available = true
+      end
+
+      v.save
+
+      puts "\t#{extension} video has been attached."
+    end
+  end
+
   desc "Attach the results of a ZC encode job"
   task :zo, [:video_id] => :environment do | t, args |
 

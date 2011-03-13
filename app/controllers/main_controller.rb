@@ -2,7 +2,11 @@ class MainController < ApplicationController
   def home_page
     recents
 
-    @video = Video.random
+    if params[:id].nil?
+      @video = Video.random
+    else
+      @video = Video.find(params[:id])
+    end
 
     @p = Confreaks::ParseUserAgent.new
 
