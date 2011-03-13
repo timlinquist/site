@@ -143,7 +143,7 @@ namespace :attach do
     base_dir = "#{RAILS_ROOT}/../../../source/"
     file = "#{args[:file_name_prefix]}"
 
-    ["-640x240.flv","-960x360.avi"]. each do |extension|
+    ["-640x240.flv","-960x368.avi"]. each do |extension|
       a = Asset.new
 
       a.data = File.new("#{base_dir}#{v.event.short_code}/#{file}#{extension}")
