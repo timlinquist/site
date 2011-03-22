@@ -1,7 +1,8 @@
 -content_for :title do
   ="All Events available at Confreaks"
-This is a list of all the conferences that have agreed to release their content under the creative commons share alike with attribution.
-.center
-%ul.event-list
-  =render :partial => "display_event", :collection => @events
+.grid_16
+  This is a list of all the conferences that have agreed to release their content under the creative commons share alike with attribution.
+  .center
+    %ul.event-list
+      =render :partial => "display_event", :collection => @events
 .clear

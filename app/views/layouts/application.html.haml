@@ -21,12 +21,10 @@
   %body
     .container_16
       =render :partial => 'shared/header'
-      .grid_10
+      .grid_12
         =render :partial => 'shared/display_flash'
         =yield
-      .grid_3.box
-        &nbsp;
-      .grid_3
+      .grid_4
         =yield :secondary_content
         %br
         <iframe src="http://www.facebook.com/plugins/likebox.php?href=http%3A%2F%2Fwww.facebook.com%2Fpages%2FConfreaks-LLC%2F115902641808919&amp;width=182&amp;colorscheme=light&amp;connections=10&amp;stream=false&amp;header=false&amp;height=340" scrolling="no" frameborder="0" style="border:none; overflow:hidden; width:182px; height:355px;" allowTransparency="true"></iframe>

@@ -16,19 +16,25 @@
     <link rel="alternat" type="application/rss+xml"
           title = "RSS" href="feeds2.feedburner.com/confreaks-general"/>
     <title><%= h(yield(:title)) || "Confreaks, LLC"%></title>
+    <%=stylesheet_link_tag '960/reset'%>
+    <%=stylesheet_link_tag '960/text'%>
+    <%=stylesheet_link_tag '960/960'%>
     <%=stylesheet_link_tag 'main.css'%>
+
     <%= javascript_include_tag :defaults %>
     <%= calendar_date_select_includes %>
     <%= yield(:head) %>
   </head>
   <body>
-    <%=render :partial => 'shared/header'%>
-    <div id="content">
-      <%=render :partial => 'shared/display_flash'%>
-      <%= yield %>
+    <div class="container_16">
+      <%=render :partial => 'shared/header'%>
+      <div id="content">
+        <%=render :partial => 'shared/display_flash'%>
+        <%= yield %>
+      </div>
+      <div class="clear">
+      </div>
+      <%=render :partial => 'shared/footer'%>
     </div>
-    <div class="clear">
-    </div>
-    <%=render :partial => 'shared/footer'%>
   </body>
 </html>
