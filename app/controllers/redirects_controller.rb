@@ -8,7 +8,7 @@ class RedirectsController < ApplicationController
       date = Time.parse("#{parts[2]}-#{parts[1]}-#{parts[0]} #{parts[3]}:#{parts[4]}")
       @event.videos.each do |video|
         if video.recorded_at == date
-          redirect_to video_path(video), :status => 302
+          redirect_to video_path(video), :status => 301
         end
       end
     else
@@ -27,7 +27,7 @@ class RedirectsController < ApplicationController
         if video.recorded_at == date
           video.assets.each do |asset|
             if asset.data_file_name =~ /#{params[:id]}/
-              redirect_to asset.data.url, :status => 302
+              redirect_to asset.data.url, :status => 301
             end
           end
         end
