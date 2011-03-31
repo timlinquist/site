@@ -30,6 +30,12 @@ ActionController::Routing::Routes.draw do |map|
 
   map.resources :events, :member => { :missing_event => [:get] }
 
+  map.resources :redirects do | redirect |
+    redirect.resources :videos, :controller => 'redirects'
+  end
+
+  map.connect "/redirects/:redirect_id/videos/videos/:id.mp4", :controller => 'redirects', :action => 'file_redirect'
+
   map.resources :videos do | video |
     video.resources :assets
   end
