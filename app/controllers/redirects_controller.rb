@@ -2,7 +2,7 @@ class RedirectsController < ApplicationController
 
   def index
     @event = Event.find_by_identifier(params[:redirect_id])
-    redirect_to event_path @event, :status => 301
+    redirect_to event_path(@event), :status => 301
   end
 
   def show
@@ -22,13 +22,13 @@ class RedirectsController < ApplicationController
     when "agileroots2009"
       if type == "page"
         redirect_event_block @event do |video|
-          redirect_to video_path(video), :status => 301
+          redirect_to video_path(video), :status => 301 and return
         end
       elsif type == "file"
         redirect_event_block @event do |video|
           video.assets.each do |asset|
             if asset.data_file_name =~ /#{params[:id]}/
-              redirect_to asset.data.url, :status => 301
+              redirect_to asset.data.url, :status => 301 and return
             end
           end
         end
