@@ -7,3 +7,7 @@ mwrc:
 larubyconf:
   id: 2
   name: LA Ruby Conference
+
+agileroots:
+  id: 3
+  name: Agile Roots

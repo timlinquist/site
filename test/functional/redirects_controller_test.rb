@@ -2,7 +2,6 @@ require 'test_helper'
 
 class RedirectsControllerTest < ActionController::TestCase
   # Replace this with your real tests.
-  test "the truth" do
-    assert true
+  def test_page_redirect
   end
 end

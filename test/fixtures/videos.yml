@@ -16,3 +16,11 @@ no_streaming:
   recorded_at: 2009-09-09 09:09 AM
   available: true
   include_random: true
+
+redirect_test:
+  id: 3
+  event_id: 3
+  title: Artisanal Retro Futurism Team Scale Anarcho Syndicalism
+  recorded_at: 2009-06-16 04:00 PM  # adjusted for -7 TZ issue
+  available: true
+  include_random: true

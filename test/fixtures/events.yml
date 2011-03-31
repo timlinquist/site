@@ -11,3 +11,9 @@ larubyconf2010:
   conference_id: 2
   name_suffix: 2010
   short_code: larubyconf2010
+
+agileroots2009:
+  id: 3
+  conference_id: 3
+  name_suffix: 2009
+  short_code: agileroots2009
