@@ -21,20 +21,34 @@ class RedirectsController < ApplicationController
     case @event.short_code
     when "agileroots2009"
       if type == "page"
-        redirect_event_block @event do |video|
-          redirect_to video_path(video), :status => 301 and return
-        end
+        process_page_redirect
       elsif type == "file"
-        redirect_event_block @event do |video|
-          video.assets.each do |asset|
-            if asset.data_file_name =~ /#{params[:id]}/
-              redirect_to asset.data.url, :status => 301 and return
-            end
-          end
-        end
+        process_file_redirect_based_on_date
+      end
+    when "mwrc2010"
+      if type == "page"
+        process_page_redirect
+      elsif type == "file"
+        process_file_redirect_based_on_date
       end
     else
       render :text => 'redirect not support'
+    end
+  end
+
+  def process_file_redirect_based_on_date
+    redirect_event_block @event do |video|
+      video.assets.each do |asset|
+        if asset.data_file_name =~ /#{params[:id]}/
+          redirect_to asset.data.url, :status => 301 and return
+        end
+      end
+    end
+  end
+
+  def process_page_redirect
+    redirect_event_block @event do |video|
+      redirect_to video_path(video), :status => 301 and return
     end
   end
 

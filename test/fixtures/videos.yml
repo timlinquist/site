@@ -17,10 +17,16 @@ no_streaming:
   available: true
   include_random: true
 
-redirect_test:
+redirect_test_agileroots2009:
   id: 3
   event_id: 3
   title: Artisanal Retro Futurism Team Scale Anarcho Syndicalism
   recorded_at: 2009-06-16 04:00 PM  # adjusted for -7 TZ issue
   available: true
   include_random: true
+
+redirect_test_mwrc2010:
+  id: 4
+  event_id: 1
+  title: Mobile Ruby
+  recorded_at: 2010-03-12 21:30
