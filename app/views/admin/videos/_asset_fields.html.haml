@@ -3,7 +3,7 @@
     .form-field
       %label
         &nbsp;
-      =link_to_remove_fields "Remove this asset", f
+      =link_to_remove_fields "Remove this asset (#{f.object.id})", f
     .form-field
       =f.label :description, "Description"
       =f.text_field :description
