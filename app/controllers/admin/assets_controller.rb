@@ -22,6 +22,23 @@ class Admin::AssetsController < Admin::Controller
     @response = Zencoder::Job.create(@json_data)
 
     @asset.zencoder_response = @response.body
+    @asset.zencoder_job_id = @response.body['id']
+
+    @response.body['outputs'].each do | output |
+      a = Asset.new
+
+      a.zencoder_output_id = output['id']
+      a.description = output['label']
+
+      if a.description == "audio" then
+        a.asset_type = AssetType.find_by_description("Audio")
+      else
+        a.asset_type = AssetType.find_by_description("Video")
+      end
+
+      @asset.video.assets << a
+    end
+
     @asset.save
   end
 
