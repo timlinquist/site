@@ -112,7 +112,11 @@ class Admin::VideosController < Admin::Controller
   def callback
     # Code here to handle params
     if params['output'].nil?
-      render :text => "Response wasn't parsed to JSON".to_json and return
+      # for some reason the data from zencoder_fetcher comes in as nice
+      # json, the data from the production server does not :(
+      results = request.body
+      
+      render :text => "Response wasn't parsed to JSON it was, #{results}".to_json and return
     end
 
     base_dir = "#{RAILS_ROOT}/../../../source/"
