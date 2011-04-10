@@ -110,7 +110,40 @@ class Admin::VideosController < Admin::Controller
   end
 
   def callback
-    # Need to add code to process the zencoder output
+    base_dir = "#{RAILS_ROOT}/../../../source/"
+
+    a = Asset.find_by_zencoder_output_id(params['output']['id'])
+
+    file_extension = "mp4"
+
+    case a.description
+    when "1280x720"
+      size = "-large"
+    when "640x360"
+      size = "-small"
+    else
+      size = ""
+      file_extension="mp3"
+    end
+
+    file = "#{a.video.to_param}#{size}.#{file_extension}"
+
+    a.data = File.new("#{base_dir}zencoder/#{file}")
+
+    a.width, a.height, a.duration = a.get_metadata
+
+    a.description = ""
+
+    a.zencoder_job_complete = true
+
+    a.save
+
+    if size == "-small"
+      v = a.video
+      v.streaming_video = a
+      v.available = true
+      v.save
+    end
 
     respond_to do |format|
       format.js {

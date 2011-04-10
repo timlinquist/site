@@ -27,6 +27,7 @@ class Admin::AssetsController < Admin::Controller
     @response.body['outputs'].each do | output |
       a = Asset.new
 
+      a.zencoder_job_id = @asset.zencoder_job_id
       a.zencoder_output_id = output['id']
       a.description = output['label']
 
