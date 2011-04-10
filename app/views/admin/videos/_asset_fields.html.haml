@@ -17,7 +17,7 @@
     .form-field
       %label
         ZC Job ID
-      -if f.object.zencoder_job_id
+      -if f.object.zencoder_job_id  && !f.object.zencoder_output_id
         =link_to f.object.zencoder_job_id, "http://app.zencoder.com/jobs/#{f.object.zencoder_job_id}", :target => "_blank"
       -unless f.object.zencoder_output_id
         =link_to 'ZC', admin_encode_path(f.object, :edit => true)
@@ -30,7 +30,7 @@
       %label
         ZC Complete?
       =f.object.zencoder_job_complete ? "Yes":"No"
-    -unless f.object.zencoder_job_id
+    -if f.object.zencoder_output_id
       .form-field
         %label
           ZC Output ID

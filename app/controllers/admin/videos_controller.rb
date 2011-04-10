@@ -114,8 +114,8 @@ class Admin::VideosController < Admin::Controller
     if params['output'].nil?
       # for some reason the data from zencoder_fetcher comes in as nice
       # json, the data from the production server does not :(
-      results = request.body
-      
+      results = params.last
+
       render :text => "Response wasn't parsed to JSON it was, #{results}".to_json and return
     end
 
