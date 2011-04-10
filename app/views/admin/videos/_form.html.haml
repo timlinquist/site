@@ -24,11 +24,6 @@
     =f.label :title, "Title"
     =f.text_field :title, :size => 60
 
-  -unless @event.nil? && @video.event.nil?
-    .form-field
-      =f.label :room_id, "Room"
-      =f.collection_select :room_id, @rooms, :id, :name
-
   %h3 Presenter(s)
   -f.fields_for :presentations do |builder|
     =render 'presentation_fields', :f => builder

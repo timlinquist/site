@@ -435,17 +435,20 @@ ul#flash li.error {
     border: 3px red solid;
     background: pink;
     padding: 5px;
+    margin-right: 50px;
 }
 ul#flash li.notice {
     border: 3px #a0a0a0 solid;
     background: #e0e0e0;
     padding: 5px;
+    margin-right: 50px;
 }
 
 ul#flash li.success {
     background: #9be59f;
     border: 3px green solid;
-    padding: 5px;;
+    padding: 5px;
+    margin-right: 50px;
 }
 
 .errorExplanation {

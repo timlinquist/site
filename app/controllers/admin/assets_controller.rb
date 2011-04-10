@@ -21,12 +21,13 @@ class Admin::AssetsController < Admin::Controller
 
     @response = Zencoder::Job.create(@json_data)
 
+    # Process Zencoder response and generate associated assets
     @asset.zencoder_response = @response.body
     @asset.zencoder_job_id = @response.body['id']
 
     @response.body['outputs'].each do | output |
       a = Asset.new
-
+      a.generated_by_asset_id = @asset.id
       a.zencoder_job_id = @asset.zencoder_job_id
       a.zencoder_output_id = output['id']
       a.description = output['label']
@@ -41,6 +42,11 @@ class Admin::AssetsController < Admin::Controller
     end
 
     @asset.save
+
+    if params[:edit]
+      flash[:success] = "Video submitted to Zencoder for encoding."
+      redirect_to edit_admin_video_path(@asset.video) and return
+    end
   end
 
   def refresh_meta_data
