@@ -110,7 +110,7 @@ class Admin::VideosController < Admin::Controller
   end
 
   def callback
-    #puts "\t#{params[:output][:label]}"
+    # Need to add code to process the zencoder output
 
     respond_to do |format|
       format.js {
