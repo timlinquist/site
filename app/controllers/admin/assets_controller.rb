@@ -21,7 +21,7 @@ class Admin::AssetsController < Admin::Controller
 
     @response = Zencoder::Job.create(@json_data)
 
-    @asset.zencoder_response = @response
+    @asset.zencoder_response = @response.to_json
     @asset.save
   end
 
