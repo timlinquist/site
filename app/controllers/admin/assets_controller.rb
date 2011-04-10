@@ -20,6 +20,9 @@ class Admin::AssetsController < Admin::Controller
     @json_data = Confreaks::Renderer.new(template_file, binding).render
 
     @response = Zencoder::Job.create(@json_data)
+
+    @asset.zencoder_response = @response
+    @asset.save
   end
 
   def refresh_meta_data
