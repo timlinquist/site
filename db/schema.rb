@@ -9,7 +9,7 @@
 #
 # It's strongly recommended to check this file into your version control system.
 
-ActiveRecord::Schema.define(:version => 20110408191239) do
+ActiveRecord::Schema.define(:version => 20110410043833) do
 
   create_table "activities", :force => true do |t|
     t.string   "message"
@@ -43,6 +43,7 @@ ActiveRecord::Schema.define(:version => 20110408191239) do
     t.integer  "zencoder_job_id"
     t.boolean  "zencoder_job_complete", :default => false
     t.text     "zencoder_response"
+    t.integer  "zencoder_output_id"
   end
 
   create_table "conferences", :force => true do |t|
