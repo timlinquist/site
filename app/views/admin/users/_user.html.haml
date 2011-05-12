@@ -11,9 +11,6 @@
     =user.time_zone
   %td
     =user.created_at.strftime("%Y-%m-%d %H:%M:%S")
-    %br
-    =time_ago_in_words(user.created_at)
-    ago
   %td.center
     =user.activities.count
   %td.center

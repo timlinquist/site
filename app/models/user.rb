@@ -107,6 +107,7 @@ class User < ActiveRecord::Base
   end
 
   def welcome_email
+    self.record_activity self, "Welcome email has been sent"
     UserMailer.deliver_welcome_email(self)
   end
 
