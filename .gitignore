@@ -8,3 +8,4 @@ public/system/assets/datas/*/
 public/system/users/avatars/*/
 public/system/videos/images/*/
 .DS_Store
+*.sql
