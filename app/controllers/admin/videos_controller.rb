@@ -136,6 +136,7 @@ class Admin::VideosController < Admin::Controller
     end
 
     file = "#{a.video.to_param}#{size}.#{file_extension}"
+    # pick a random thumbnail as the preview image
     image_file = "#{a.video.to_param}-thumb_#{rand(5).to_s.rjust(4,"0")}.png"
 
     a.data = File.new("#{base_dir}zencoder/#{file}")
@@ -153,7 +154,6 @@ class Admin::VideosController < Admin::Controller
       v.streaming_asset_id = a.id
       v.available = true
       v.post_date = Date.today
-      v.note += "This has been activated by the callback function (#{a.id})\n"
       v.image = File.new("#{base_dir}zencoder/#{image_file}")
       v.save
     end
