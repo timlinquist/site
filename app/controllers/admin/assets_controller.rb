@@ -8,12 +8,17 @@ class Admin::AssetsController < Admin::Controller
   end
 
   # Submit this asset to ZenCoder for preparation
-  def encode
+  def encode size=nil
     @asset = Asset.find(params[:id])
 
     @asset.data.url
 
-    template_file = "#{RAILS_ROOT}/lib/templates/zencoder-job-template.erb"
+    if size.nil?
+      template_file = "#{RAILS_ROOT}/lib/templates/zencoder-job-template.erb"
+    else
+      template_file = "#{RAILS_ROOT}/lib/templates/zencoder-job-template-small-only.erb"
+    end
+
     @base_file_name = @asset.video.to_param
 
     # Generate the Json template to be posted to ZenCoder
@@ -47,6 +52,11 @@ class Admin::AssetsController < Admin::Controller
       flash[:success] = "Video submitted to Zencoder for encoding."
       redirect_to edit_admin_video_path(@asset.video) and return
     end
+  end
+
+  # created creates a 640x360 and an audio file only, NO 1280x720
+  def encode_small
+    encode "small"
   end
 
   def refresh_meta_data

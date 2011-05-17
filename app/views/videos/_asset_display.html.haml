@@ -1,8 +1,9 @@
 .asset-box.small
   -if session.user && session.user.admin?
     =link_to asset_display.display_description, asset_display.data.url
-    -unless asset_display.zencoder_output_id || asset_display.zencoder_job_id 
+    -unless asset_display.zencoder_output_id || asset_display.zencoder_job_id
       =link_to 'ZC', admin_encode_path(asset_display)
+      =link_to 'zcs', admin_encode_small_path(asset_display)
     =link_to 'Refresh', admin_refresh_path(asset_display)
   -else
     -unless asset_display.data_file_name.nil?

@@ -5,7 +5,15 @@
 %h2.center Presenters
 .center
   %em.small
-    Listed alphabetically by last name.
+    -if @sort == "alpha" 
+      Sort alphabetically by last name.
+    -else
+      =link_to "Sort alphabetically by last name.", presenters_path(:alpha => @alpha)
+    |
+    =link_to "Sort by Number of Presentations", presenters_path(:sort_order => 'presentations',:alpha => @alpha)
+    |
+    =link_to "Sort by Total Views", presenters_path(:sort_order => 'views', :alpha => @alpha)
+
 =render :partial => 'alpha_bar'
 %ul.presenter-list
   =render :partial => 'presenter', :collection => @presenters

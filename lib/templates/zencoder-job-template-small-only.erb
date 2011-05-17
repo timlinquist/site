@@ -1,0 +1,45 @@
+{
+  "test": 0,
+  "input": "http://confreaks.net<%=@asset.data.url%>",
+  "output": [
+    {
+      "base_url": "ftp://cfprod:75uu8juu@confreaks.net/source/zencoder/",
+      "filename": "<%=@base_file_name%>-small.mp4",
+      "label": "640x360",
+      "video_codec": "h264",
+      "quality": 3,
+      "speed": 3,
+      "width": 640,
+      "height": 360,
+      "aspect_mode": "preserve",
+      "audio_codec": "aac",
+      "audio_quality": 3,
+      "notifications": [
+        { "format": "json",
+          "url": "http://confreaks.net/zc-callback/"
+        }
+      ],
+      "thumbnails": {
+        "number": 5,
+        "size": "640x360",
+        "base_url": "ftp://cfprod:75uu8juu@confreaks.net/source/zencoder/",
+        "prefix": "<%=@base_file_name%>-thumb"
+      }
+    },
+    {
+      "base_url": "ftp://cfprod:75uu8juu@confreaks.net/source/zencoder/",
+      "filename": "<%=@base_file_name%>.mp3",
+      "label": "audio",
+      "notifications": [
+        { "format": "json",
+          "url": "http://confreaks.net/zc-callback/"
+        }
+      ],
+      "audio_codec": "mp3",
+      "audio_quality": 3,
+      "skip_video": 1
+    }
+
+  ],
+  "api_key": "<%=Confreaks.config[:zencoder_api_key]%>"
+}
