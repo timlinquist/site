@@ -195,36 +195,51 @@ namespace :attach do
       end
     end
 
-    task :zos, [:video_id] => :environment do | t, args |
+    # Attach the audio file
+    file = "#{v.to_param}.mp3"
+    a = Asset.new
+    a.data = File.new("#{base_dir}zencoder/#{file}")
 
-      v = Video.find(args[:video_id])
+    a.asset_type_id = 4
+    v.assets << a
+    v.save
 
-      base_dir = "#{RAILS_ROOT}/../../../source/"
+    puts "File #{file} has been attached."
 
-      puts "Attempting to attach Zencoder output to '#{v.title}'."
+    puts "Marking presentation #{v.id} - #{v.title} as available"
+    v.available =true
+    v.save
+  end
 
-      # Attach the small videos
-      ['small'].each do |size|
-        file = "#{v.to_param}-#{size}.mp4"
-        a = Asset.new
-        a.data = File.new("#{base_dir}zencoder/#{file}")
+  desc "Attach the results of a zcs encode job"
+  task :zos, [:video_id] => :environment do | t, args |
 
-        a.asset_type_id = 1  # Set asset_type to video
+    v = Video.find(args[:video_id])
 
-        a.width, a.height, a.duration = a.get_metadata
+    base_dir = "#{RAILS_ROOT}/../../../source/"
 
-        v.assets << a
+    puts "Attempting to attach Zencoder output to '#{v.title}'."
 
+    # Attach the small video
+    ['small'].each do |size|
+      file = "#{v.to_param}-#{size}.mp4"
+      a = Asset.new
+      a.data = File.new("#{base_dir}zencoder/#{file}")
+
+      a.asset_type_id = 1  # Set asset_type to video
+
+      a.width, a.height, a.duration = a.get_metadata
+
+      v.assets << a
+
+      v.save
+
+      puts "File #{file} has been attached."
+
+      if size == "small"
+        puts "\tSetting this as the streaming video."
+        v.streaming_video = a
         v.save
-
-        puts "File #{file} has been attached."
-
-        if size == "small"
-          puts "\tSetting this as the streaming video."
-          v.streaming_video = a
-          v.save
-        end
-
       end
     end
 
@@ -243,4 +258,5 @@ namespace :attach do
     v.available =true
     v.save
   end
+
 end
