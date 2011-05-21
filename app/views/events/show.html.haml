@@ -1,7 +1,5 @@
 -content_for :title do
   ="#{@event.display_name} Schedule - Confreaks, LLC"
--content_for :secondary_content do
-  =render :partial => 'main/recent_events', :locals => {:events => @recent_events}
 .center
   #conflogo
     =link_to image_tag(@event.logo.url(:original), :alt => @event.display_name, :title => @event.display_name), @event.url, :class => "noborder"
@@ -13,15 +11,26 @@
     -if @event.conference.events.count > 1
       %br
       =link_to 'Other Conference Events', @event.conference
+    -if false
+      %br
+      Video Podcast:
+      =link_to 'RSS', "http://feeds.feedburner.com/#{@event.short_code}-large-confreaks"
+      =link_to 'Miro', "http://subscribe.getMiro.com/?url1=http%3A%2F%2Ffeeds.feedburner.com%2F<%=@event.short_code%>-large-confreaks", :title => 'Miro: Internet TV'
+      =link_to 'iPod', "http://feeds.feedburner.com/#{@event.short_code}-ipod-confreaks"
     -if session.user && session.user.admin?
       %br
       =link_to 'Edit this Event', edit_admin_event_path(@event)
+  .video-twitter
+    =link_to 'Tweet', 'http://twitter.com/share', :class => 'twitter-share-button', 'data-text' => "See the available videos for ##{@event.short_code}", 'data-count' => 'vertical', 'data-via' => 'confreaks'
+    =javascript_include_tag 'http://platform.twitter.com/widgets.js', :type => 'text/javascript'
   %h2
     =@event.display_name
     Schedule
-  =@event.videos.count
-  presentations available
+  ="(#{@event.available_videos.count} presentations available)"
   -if session.user && session.user.admin?
+    =@event.videos.count
+    |
     =link_to 'Add Video', new_admin_event_video_path(@event)
+.clear
 .videos
   =render :partial => 'videos/video', :collection => @event.videos

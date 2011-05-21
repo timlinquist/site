@@ -29,6 +29,6 @@ class EventsController < ApplicationController
       redirect_to '/events/missing'
     end
 
-    render :template => 'events/alt_show', :layout => "admin"
+    render :layout => "admin"
   end
 end
