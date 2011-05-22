@@ -109,16 +109,9 @@ class Admin::VideosController < Admin::Controller
     redirect_to video_path(@video)
   end
 
+  # callback - this method is called by zencoder when an output element
+  # of a job is completed
   def callback
-    # Code here to handle params
-    if params['output'].nil?
-      # for some reason the data from zencoder_fetcher comes in as nice
-      # json, the data from the production server does not :(
-      # Fixed this by adding a hash of format and URL to the notifications
-      # section of the job request, leaving here just in case
-      render :text => "Response wasn't parsed to JSON it was." and return
-    end
-
     base_dir = "#{RAILS_ROOT}/../../../source/"
 
     a = Asset.find_by_zencoder_output_id(params['output']['id'])
@@ -140,13 +133,11 @@ class Admin::VideosController < Admin::Controller
     image_file = "#{a.video.to_param}-thumb_#{rand(5).to_s.rjust(4,"0")}.png"
 
     a.data = File.new("#{base_dir}zencoder/#{file}")
+    a.save
 
-    a.width, a.height, a.duration = a.get_metadata
-
+    a.populate_metadata
     a.description = ""
-
     a.zencoder_job_complete = true
-
     a.save
 
     if size == "-small"
@@ -170,9 +161,9 @@ class Admin::VideosController < Admin::Controller
     end
 
     if all_done
-      gb_asset = Asset.find(a.generated_by_asset_id)
-      gb.asset.zencoder_job_completed = true
-      gb.save
+      generated_by_asset = Asset.find(a.generated_by_asset_id)
+      generated_by_asset.zencoder_job_completed = true
+      generated_by_asset.save
     end
 
     respond_to do |format|
