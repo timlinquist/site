@@ -53,7 +53,9 @@ class Asset < ActiveRecord::Base
   end
 
   def populate_metadata
-    self.width, self.height, self.duration = self.get_metadata
+    unless self.data_content_type == "video/quicktime"
+      self.width, self.height, self.duration = self.get_metadata
+    end
   end
 
   def get_metadata
