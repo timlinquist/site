@@ -20,27 +20,30 @@ class Asset < ActiveRecord::Base
   before_save :populate_metadata
 
   def size
-    if width > 0 and height > 0
-      "#{width}x#{height}"
-    else
+    if width && height
+      if width > 0 and height > 0
+        "#{width}x#{height}"
+      else
+        ""
+      end
       ""
     end
   end
 
   def display_description
-    hlp = Object.new.extend(ActionView::Helpers::NumberHelper)
+    helpers = Object.new.extend(ActionView::Helpers::NumberHelper)
     elements = Array.new
     if asset_type && asset_type.description == "Video" then
       elements << (description.blank? ? nil : description)
       elements << size
       elements << data_content_type
-      elements << hlp.number_to_human_size(data_file_size)
+      elements << helpers.number_to_human_size(data_file_size)
       elements << duration
       elements.compact.join(" - ")
     elsif asset_type && asset_type.description == "Audio" then
       elements << (description.blank? ? nil : description)
       elements << data_content_type
-      elements << hlp.number_to_human_size(data_file_size)
+      elements << helpers.number_to_human_size(data_file_size)
       elements << duration
       elements.compact.join(" - ")
     else
