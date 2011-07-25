@@ -1,4 +1,6 @@
 class Conference < ActiveRecord::Base
+  belongs_to :organization
+
   has_many :events
 
   cattr_reader :per_page

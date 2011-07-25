@@ -16,6 +16,10 @@ class User < ActiveRecord::Base
 
   has_many :votes
 
+  has_many :organization_users
+
+  has_many :organizations, :through => :organization_users
+
   belongs_to :presenter
 
   has_one :profile

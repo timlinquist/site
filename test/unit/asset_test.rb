@@ -21,6 +21,14 @@ class AssetTest < ActiveSupport::TestCase
     assert_not_nil a.height, "height is nil"
   end
 
+  test "size should return blank or dimensions" do
+    a = Asset.new
+    a.data = File.new('test/fixtures/jeff-patton-small.mp4')
+    a.save
+
+    assert "640x360", a.size
+  end
+
   test "validate height" do
     a = Asset.new
     a.data = File.new('test/fixtures/jeff-patton-small.mp4')
