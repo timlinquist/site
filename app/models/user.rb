@@ -66,7 +66,7 @@ class User < ActiveRecord::Base
     if user && user.password?(password)
       user.last_login_date = Time.zone.now
       user.save
-      self.record_activity user, "logged in successfully."
+      User.record_activity user, "logged in successfully."
       user
     end
   end
@@ -107,7 +107,7 @@ class User < ActiveRecord::Base
   end
 
   def welcome_email
-    self.record_activity self, "Welcome email has been sent"
+    User.record_activity self, "Welcome email has been sent"
     UserMailer.deliver_welcome_email(self)
   end
 
