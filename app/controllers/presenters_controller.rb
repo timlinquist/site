@@ -13,7 +13,6 @@ class PresentersController < ApplicationController
     @presenters = Presenter.paginate(:all,
                                      :order => 'last_name, first_name',
                                      :limit => 10,
-                                     :include => [:videos],
                                      :conditions => conditions.join(" and "),
                                      :page => params[:page])
 
