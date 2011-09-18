@@ -13,7 +13,11 @@
       %br
       %span.small
         =display_event.videos.available.count
+        -if session.user && session.user.admin?
+          of
+          =display_event.videos.count
         available presentations
-      -if session.user && session.user.admin? && !display_event.ready
-        %p
-          PREVIEW
+      -if session.user && session.user.admin?
+        -if !display_event.ready
+          %p
+            PREVIEW
