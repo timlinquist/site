@@ -8,8 +8,8 @@ class VideosController < ApplicationController
           " including videos not yet available. '#{params[:all]}' #{params[:all].class}"
       end
     else
-      @videos = Video.available.find(:all, :order => 'recorded_at desc', :limit => 5)
-      @message = "The five most recent videos available."
+      @videos = Video.available.find(:all, :order => 'recorded_at desc', :limit => 10)
+      @message = "The ten most recent videos available."
     end
     render :layout => 'admin'
   end
