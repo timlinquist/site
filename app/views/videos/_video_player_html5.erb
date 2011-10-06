@@ -1,5 +1,5 @@
 <%-unless video.streaming_video.nil?%>
-<video id="html5-player" controls poster="<%="#{request.protocol}#{request.host_with_port}#{video.image.url(:preview)}"%>">
+<video id="html5-player" controls poster="<%="#{request.protocol}#{request.host_with_port}#{video.image.url(:preview)}"%>" preload="none">
 <source src="<%=video.streaming_video_url%>" />
 <%=render :partial => 'videos/video_player', :locals => { :video => @video} %>
 </video>
