@@ -9,6 +9,7 @@ gem "disqus"
 gem "twitter_oauth"
 gem "rest-client"
 gem "zencoder"
+gem "newrelic_rpm"
 
 env :development, :test do
   gem "modelizer"
