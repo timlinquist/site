@@ -10,13 +10,10 @@ gem "twitter_oauth"
 gem "rest-client"
 gem "zencoder"
 gem "newrelic_rpm"
+gem "ruby-mysql", "=2.9.3", :lib => 'mysql'
 
 env :development, :test do
   gem "modelizer"
   gem "sqlite3"
-  gem "ruby-mysql", "=2.9.3", :lib => 'mysql'
 end
 
-env :production do
-  gem "ruby-mysql", "=2.9.3", :lib => 'mysql'
-end
