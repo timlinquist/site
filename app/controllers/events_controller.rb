@@ -1,6 +1,7 @@
 require 'rdiscount'
 
 class EventsController < ApplicationController
+  layout 'admin'
 
   def index
     if session.user && session.user.admin?
@@ -14,6 +15,8 @@ class EventsController < ApplicationController
   def show
     @event = Event.find_by_identifier(params[:id])
 
+    @data = params[:id]
+
     #recents
 
     if @event
@@ -26,9 +29,8 @@ class EventsController < ApplicationController
         end
       end
     else
-      redirect_to '/events/missing'
+      render :template => '/events/missing_event'
+      #redirect_to '/events/missing/?data='+@data
     end
-
-    render :layout => "admin"
   end
 end
