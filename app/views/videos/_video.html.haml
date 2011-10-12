@@ -34,7 +34,7 @@
           %span.small
             Posted on:
           %strong
-            =video.post_date.strftime("%b %d, %Y")
+            =video.post_date.strftime("%b %d, %Y %H:%M")
 
     -if session.user && session.user.admin?
       .admin-tools

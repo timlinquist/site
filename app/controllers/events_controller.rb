@@ -4,10 +4,12 @@ class EventsController < ApplicationController
   layout 'admin'
 
   def index
+    order = 'start_at desc'
+
     if session.user && session.user.admin?
-      @events = Event.find(:all, :order => 'start_at desc')
+      @events = Event.find(:all, :order => order)
     else
-      @events = Event.active.find(:all, :order => 'start_at desc')
+      @events = Event.active.find(:all, :order => order)
     end
     render :layout => 'admin'
   end
@@ -16,6 +18,12 @@ class EventsController < ApplicationController
     @event = Event.find_by_identifier(params[:id])
 
     @data = params[:id]
+
+    if params[:sort] == 'post'
+      @videos = @event.available_videos_posted
+    else
+      @videos = @event.available_videos
+    end
 
     #recents
 
