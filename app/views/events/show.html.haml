@@ -26,14 +26,17 @@
   %h2
     =@event.display_name
     Schedule
-  ="(#{@event.available_videos.count} presentations available)"
-  %p.center
+  ="(#{@event.available_videos.count} presentations available"
+  -if session.user && session.user.admin?
+    of
+    =@event.videos.count
+  )
+  %p
     -if params[:sort] == 'post'
       =link_to 'Sort by Date Presentations occurred', event_path(@event)
     -else
       =link_to 'Sort by Date Posted', event_path(@event, :sort => 'post')
     -if session.user && session.user.admin?
-      =@event.videos.count
       |
       =link_to 'Add Video', new_admin_event_video_path(@event)
 .clear
