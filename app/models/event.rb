@@ -6,7 +6,9 @@ class Event < ActiveRecord::Base
   belongs_to :conference
 
   has_many :videos, :order => 'recorded_at asc'
-  has_many :videos_posted, :order => 'post_date desc'
+  has_many :videos_posted, :class_name => 'Video',
+           :order => 'post_date desc'
+
   has_many :available_videos, :class_name => 'Video',
            :order => 'recorded_at desc', :conditions => ['available = ?',true]
   has_many :available_videos_posted, :class_name => 'Video',
