@@ -46,22 +46,20 @@ class Video < ActiveRecord::Base
   @@per_page = 25
 
   def self.search(search, all)
-    puts all
-    puts all.class
     if all == "1"
       puts "Searching with find"
       if search
         self.find(:all, :conditions => ['title like ?', "%#{search}%"],
-                       :order => 'recorded_at desc')
+                       :order => 'posted_date desc')
       else
-        self.find(:all, :order => 'recorded_at desc')
+        self.find(:all, :order => 'posted_date desc')
       end
     else
       if search
         available.find(:all, :conditions => ['title like ?', "%#{search}%"],
-             :order => 'recorded_at desc')
+             :order => 'posted_date desc')
       else
-        available.find(:all, :order => 'recorded_at desc')
+        available.find(:all, :order => 'posted_date desc')
       end
     end
   end
