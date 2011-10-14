@@ -50,16 +50,16 @@ class Video < ActiveRecord::Base
       puts "Searching with find"
       if search
         self.find(:all, :conditions => ['title like ?', "%#{search}%"],
-                       :order => 'posted_date desc')
+                       :order => 'post_date desc')
       else
-        self.find(:all, :order => 'posted_date desc')
+        self.find(:all, :order => 'post_date desc')
       end
     else
       if search
         available.find(:all, :conditions => ['title like ?', "%#{search}%"],
-             :order => 'posted_date desc')
+             :order => 'post_date desc')
       else
-        available.find(:all, :order => 'posted_date desc')
+        available.find(:all, :order => 'post_date desc')
       end
     end
   end
