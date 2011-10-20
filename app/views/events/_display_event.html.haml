@@ -19,7 +19,7 @@
         available presentations
         %br
         Video Views: 
-        =display_event.available_videos.collect(&:views).sum
+        =number_with_delimiter(display_event.available_videos.collect(&:views).sum)
       -if session.user && session.user.admin?
         -if !display_event.ready
           %p
