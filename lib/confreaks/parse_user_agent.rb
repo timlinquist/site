@@ -8,7 +8,7 @@ module Confreaks
 
     def parse(user_agent)
       if '-' == user_agent || user_agent.nil?
-        raise 'Invalid User Agent'
+        Rails.logger "#{user_agent} was invalid"
       end
 
       @user_agent = user_agent
