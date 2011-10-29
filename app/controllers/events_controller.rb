@@ -19,20 +19,21 @@ class EventsController < ApplicationController
 
     @data = params[:id]
 
-    if params[:sort] == 'post'
-      if session.user && session.user.admin?
-        @videos = @event.videos_posted
+    if @event
+      if params[:sort] == 'post'
+        if session.user && session.user.admin?
+          @videos = @event.videos_posted
+        else
+          @videos = @event.available_videos_posted
+        end
       else
-        @videos = @event.available_videos_posted
-      end
-    else
-      if session.user && session.user.admin?
-        @videos = @event.videos
-      else
-        @videos = @event.available_videos
+        if session.user && session.user.admin?
+          @videos = @event.videos
+        else
+          @videos = @event.available_videos
+        end
       end
     end
-
     #recents
 
     if @event
