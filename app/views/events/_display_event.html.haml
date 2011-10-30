@@ -17,9 +17,6 @@
           of
           =display_event.videos.count
         available presentations
-        %br
-        Video Views: 
-        =number_with_delimiter(display_event.available_videos.collect(&:views).sum)
       -if session.user && session.user.admin?
         -if !display_event.ready
           %p
