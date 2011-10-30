@@ -17,7 +17,7 @@ class EventsController < ApplicationController
   def show
     @event = Event.find_by_identifier(params[:id])
 
-    @data = params[:id]
+    @data = params[:id] 
 
     if @event
       if params[:sort] == 'post'
@@ -46,7 +46,7 @@ class EventsController < ApplicationController
         end
       end
     else
-      render :template => '/events/missing_event'
+      render :template => 'events/missing_event'
       #redirect_to '/events/missing/?data='+@data
     end
   end
