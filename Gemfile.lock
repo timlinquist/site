@@ -33,6 +33,7 @@ GEM
     autotest (4.4.6)
       ZenTest (>= 4.4.1)
     builder (2.1.2)
+    calendar_date_select (1.16.1)
     cocaine (0.2.0)
     disqus (1.0.4)
       json
@@ -107,6 +108,7 @@ PLATFORMS
 
 DEPENDENCIES
   autotest
+  calendar_date_select (= 1.16.1)
   disqus
   haml (= 3.0.6)
   modelizer (= 3.0.0)
