@@ -6,73 +6,68 @@ Confreaks::Application.routes.draw do
   # :year => Time.zone.now.year,
   # :month => Time.zone.now.month
 
-  # root :controller => "main", :action => "home_page"
+  root :controller => "main", :action => "home_page"
 
-  # terms_of_service '/terms-of-service', :controller => "main",
-  #                                           :action     => "tos"
-  # privacy_policy   '/privacy-policy',   :controller => "main",
-  #                                           :action     => "privacy"
-  # contact_us       '/contact-us',       :controller => "main",
-  #                                           :action     => "contact_us"
-  # contact          '/contact',          :controller => "main",
-  #                                           :action     => "contact"
-  # about_us         '/about-us',         :controller => "main",
-  #                                           :action     => "about_us"
-  # services         '/services',         :controller => "main",
-  #                                           :action     => "services"
-  # blog '/blog', :controller => 'blog',  :action => 'index'
+  match '/terms-of-service', :to => "main#tos", :as => 'terms_of_service'
+  match '/privacy-policy', :to => "main#privacy", :as => 'privacy_policy'
+  match '/contact-us', :to => "main#contact_us", :as => 'contact_us'
+  match '/contact', :to => "main#contact", :as => 'contact'
+  match '/about-us', :to => "main#about_us", :as => 'about_us'
+  match '/services', :to => "main#services", :as => 'services'
+  match '/blog', :to => 'blog#index', :as => 'blog'
+  match '/events/missing', :to => "events#missing_event", :as => 'missing_event'
 
-  missing_event    '/events/missing',   :controller => "events",
-                                            :action     => "missing_event"
+  match "/redirects/:redirect_id/videos/videos/:id.mp4", :to => 'redirects#file_redirect' # FIXME: this one ain't tested!
 
-  connect "/redirects/:redirect_id/videos/videos/:id.mp4", :controller => 'redirects', :action => 'file_redirect'
+  match "/admin", :to => 'admin/root#index', :as => 'admin'
+  # namespace :admin do
+  #   attach    '/videos/attach/:id',
+  #                        :controller => :videos,
+  #                        :action => "attach"
+  #   encode    '/assets/encode/:id',
+  #                        :controller => :assets,
+  #                        :action => "encode"
+  #   encode_small '/assets/encode_small/:id',
+  #                        :controller => :assets,
+  #                        :action => "encode_small"
+  #   refresh  '/assets/refresh/:id',
+  #                        :controller => :assets,
+  #                        :action => 'refresh_meta_data'
 
-  admin "/admin", :controller => 'admin/root',  :action => 'index'
-  namespace :admin do
-    attach    '/videos/attach/:id',
-                         :controller => :videos,
-                         :action => "attach"
-    encode    '/assets/encode/:id',
-                         :controller => :assets,
-                         :action => "encode"
-    encode_small '/assets/encode_small/:id',
-                         :controller => :assets,
-                         :action => "encode_small"
-    refresh  '/assets/refresh/:id',
-                         :controller => :assets,
-                         :action => 'refresh_meta_data'
-
-    resources :videos
-    resources :events do
-      resources :videos do
-        resources :assets
-      end
-    end
+  #   resources :videos
+  #   resources :events do
+  #     resources :videos do
+  #       resources :assets
+  #     end
+  #   end
   
-    resource  :session, :member => { :reset => [:get, :post] }
-    resources :events, :member => { :missing_event => [:get] }
-    resources :redirects do
-      resources :videos, :controller => 'redirects'
-    end
-    resources :videos do
-      resources :assets
-    end
-    resources :feeds, :only => [:index, :show]
-    resources :presenters
-    resources :users
-    resources :conferences
-    resources :presenters
-    resources :conferences
-    resources :users
-    resources :asset_types
-    resources :assets
-  end
+  #   resource  :session, :member => { :reset => [:get, :post] }
+  #   resources :events, :member => { :missing_event => [:get] }
+  #   resources :redirects do
+  #     resources :videos, :controller => 'redirects'
+  #   end
+  #   resources :videos do
+  #     resources :assets
+  #   end
+  #   resources :feeds, :only => [:index, :show]
+  #   resources :presenters
+  #   resources :users
+  #   resources :conferences
+  #   resources :presenters
+  #   resources :conferences
+  #   resources :users
+  #   resources :asset_types
+  #   resources :assets
+  # end
 
-  zc_callback '/zc-callback',
-                 :controller => 'admin/videos',
-                  :action => 'callback',
-                  :method => ['post','get']
+  # zc_callback '/zc-callback',
+  #                :controller => 'admin/videos',
+  #                 :action => 'callback',
+  #                 :method => ['post','get']
 
+
+###
+  
   # The priority is based upon order of creation:
   # first created -> highest priority.
 
