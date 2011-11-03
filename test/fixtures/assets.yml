@@ -1,0 +1,19 @@
+# Read about fixtures at http://ar.rubyonrails.org/classes/Fixtures.html
+
+streaming:
+  id: 1
+  video_id: 1
+  asset_type_id: 1
+  
+
+redirect_test_small:
+  id: 2
+  video_id: 3
+  asset_type_id: 1
+  data_file_name: 16-jun-2009-09-00-artisanal-retro-futurism-team-scale-anarcho-syndicalism-brian-marick-small.mp4
+
+redirect_test_large:
+  id: 3
+  video_id: 3
+  asset_type_id: 1
+  data_file_name: 16-jun-2009-09-00-artisanal-retro-futurism-team-scale-anarcho-syndicalism-brian-marick-large.mp4
