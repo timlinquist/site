@@ -37,7 +37,7 @@ class Video < ActiveRecord::Base
     },
   :default_url => '/system/:class/:attachment/missing-:style.png'
 
-  named_scope :available, :conditions => ['available = ?', true]
+  scope :available, :conditions => ['available = ?', true]
 
   cattr_reader :per_page
 
