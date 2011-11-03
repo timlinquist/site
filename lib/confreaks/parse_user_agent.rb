@@ -8,21 +8,23 @@ module Confreaks
 
     def parse(user_agent)
       if '-' == user_agent || user_agent.nil?
-        raise 'Invalid User Agent'
+       # Rails.logger "#{user_agent} was invalid"
       end
 
       @user_agent = user_agent
 
       # fix Opera
       #useragent =~ s/Opera (\d)/Opera\/$1/i;
-      useragent = @user_agent.gsub(/(Opera [\d])/,'Opera\1')
+      if @user_agent
+        useragent = @user_agent.gsub(/(Opera [\d])/,'Opera\1')
 
-      # grab all Agent/version strings as 'agents'
-      @agents = Array.new
+        # grab all Agent/version strings as 'agents'
+        @agents = Array.new
 
-      @user_agent.split(/\s+/).each do |string|
-        if string =~ /\//
-          @agents<< string
+        @user_agent.split(/\s+/).each do |string|
+          if string =~ /\//
+            @agents<< string
+          end
         end
       end
 

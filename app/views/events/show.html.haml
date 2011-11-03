@@ -7,6 +7,9 @@
     %em
       =RDiscount.new(@event.notes || '').to_html
   %p.right
+    Total views:
+    =number_with_delimiter(@event.available_videos.collect(&:views).sum)
+    %br
     =link_to 'All Events', events_path
     -if @event.conference.events.count > 1
       %br

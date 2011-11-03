@@ -1,12 +1,8 @@
 #footer
   .footertext
-    ="Copyright &copy; 2007-#{Date.today.year} - Confreaks, LLC"
-    %br
     =render :partial => 'shared/ccasa_blurb'
   .license
     =link_to image_tag("somerights20.gif", :alt=>'Creative Commons button'), 'http://creativecommons.org/licenses/by-sa/3.0/', :target => "_blank"
-    %br
-    =link_to image_tag("http://static.getclicky.com/media/links/badge.gif", :alt => "Real Time Web Analytics"), "http://getclicky.com/214610"
   .clear
   %ul
     %li.first
@@ -19,6 +15,9 @@
       =link_to_unless_current 'About Us', about_us_path
     %li
       =link_to_unless_current "Services", services_path
+  %ul
+    %li.first
+      =link_to 'Performance monitoring provided by New Relic', 'http://newrelic.com'
 .center
   .small
     Version:
