@@ -1,6 +1,8 @@
 require 'test_helper'
+require 'modelizer'
 
 class UserTest < ActiveSupport::TestCase
+  include Modelizer
   fixtures :users
 
   model_template_for User do

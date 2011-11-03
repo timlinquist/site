@@ -1,3 +1,5 @@
+require 'confreaks/crypto'
+
 class User < ActiveRecord::Base
   attr_accessible :username, :time_zone, :email, :session_token, :admin,
     :password, :password_confirmation, :first_name, :last_name,
