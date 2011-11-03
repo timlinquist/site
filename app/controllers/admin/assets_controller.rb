@@ -14,9 +14,9 @@ class Admin::AssetsController < Admin::Controller
     @asset.data.url
 
     if size.nil?
-      template_file = "#{RAILS_ROOT}/lib/templates/zencoder-job-template.erb"
+      template_file = "#{Rails.root}/lib/templates/zencoder-job-template.erb"
     else
-      template_file = "#{RAILS_ROOT}/lib/templates/zencoder-job-template-small-only.erb"
+      template_file = "#{Rails.root}/lib/templates/zencoder-job-template-small-only.erb"
     end
 
     @base_file_name = @asset.video.to_param

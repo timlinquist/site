@@ -9,7 +9,7 @@ namespace :attach do
 
     a = Asset.new
 
-    base_dir = "#{RAILS_ROOT}/../../../source/"
+    base_dir = "#{Rails.root}/../../../source/"
     file = "#{args[:file_name]}"
 
     a.data = File.new("#{base_dir}#{v.event.short_code}/#{file}")
@@ -27,7 +27,7 @@ namespace :attach do
 
     v = Video.find(args[:video_id])
 
-    base_dir = "#{RAILS_ROOT}/../../../source/"
+    base_dir = "#{Rails.root}/../../../source/"
     file = "#{args[:file_name_prefix]}"
 
     ["small","large","xtra-large"].each do |size|
@@ -66,7 +66,7 @@ namespace :attach do
 
     a = Asset.new
 
-    base_dir = "#{RAILS_ROOT}/../../../source/"
+    base_dir = "#{Rails.root}/../../../source/"
     file = "#{args[:file_name]}"
 
     a.data = File.new("#{base_dir}#{v.event.short_code}/#{file}")
@@ -84,7 +84,7 @@ namespace :attach do
 
     v = Video.find(args[:video_id])
 
-    base_dir = "#{RAILS_ROOT}/../../../source/"
+    base_dir = "#{Rails.root}/../../../source/"
     file = "#{args[:file_name_prefix]}"
 
     ["small","large"].each do |size|
@@ -113,7 +113,7 @@ namespace :attach do
 
     v = Video.find(args[:video_id])
 
-    base_dir = "#{RAILS_ROOT}/../../../source/"
+    base_dir = "#{Rails.root}/../../../source/"
     file = "#{args[:file_name_prefix]}"
 
     ["_640x240.flv","_640x240.avi","_960x360.avi"]. each do |extension|
@@ -140,7 +140,7 @@ namespace :attach do
 
     v = Video.find(args[:video_id])
 
-    base_dir = "#{RAILS_ROOT}/../../../source/"
+    base_dir = "#{Rails.root}/../../../source/"
     file = "#{args[:file_name_prefix]}"
 
     ["-640x240.flv","-960x368.mp4"]. each do |extension|
@@ -167,7 +167,7 @@ namespace :attach do
 
     v = Video.find(args[:video_id])
 
-    base_dir = "#{RAILS_ROOT}/../../../source/"
+    base_dir = "#{Rails.root}/../../../source/"
 
     puts "Attempting to attach Zencoder output to '#{v.title}'."
 
@@ -216,7 +216,7 @@ namespace :attach do
 
     v = Video.find(args[:video_id])
 
-    base_dir = "#{RAILS_ROOT}/../../../source/"
+    base_dir = "#{Rails.root}/../../../source/"
 
     puts "Attempting to attach Zencoder output to '#{v.title}'."
 

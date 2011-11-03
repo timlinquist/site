@@ -88,7 +88,7 @@ class Admin::VideosController < Admin::Controller
   def attach
     @video = Video.find(params[:id])
 
-    base_dir = "#{RAILS_ROOT}/../../../source/"
+    base_dir = "#{Rails.root}/../../../source/"
     file = "#{@video.id}.mp4"
     full_file = "#{base_dir}#{@video.event.short_code}/#{file}"
 
@@ -112,7 +112,7 @@ class Admin::VideosController < Admin::Controller
   # callback - this method is called by zencoder when an output element
   # of a job is completed
   def callback
-    base_dir = "#{RAILS_ROOT}/../../../source/"
+    base_dir = "#{Rails.root}/../../../source/"
 
     a = Asset.find_by_zencoder_output_id(params['output']['id'])
 
