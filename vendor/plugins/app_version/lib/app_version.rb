@@ -4,9 +4,9 @@ require 'yaml'
 class AppVersion
   include Comparable
 
-  attr_accessor :major, :minor, :patch, :milestone, :build, :branch, :committer, :build_date
+  attr_accessor :major, :minor, :patch, :milestone, :build, :branch, :committer, :build_date, :format
 
-  [:major, :minor, :patch, :milestone, :build, :branch, :committer].each do |attr|
+  [:major, :minor, :patch, :milestone, :build, :branch, :committer, :format].each do |attr|
     define_method "#{attr}=".to_sym do |value|
       instance_variable_set("@#{attr}".to_sym, value.blank? ? nil : value.to_s)
     end
@@ -18,7 +18,7 @@ class AppVersion
   #   Version.new(:major => 1, :minor => 0) #=> "1.0"
   def initialize(args = nil)
     if args && args.is_a?(Hash)
-      args.each_key {|key| args[key.to_sym] = args.delete(key) unless key.is_a?(Symbol)}
+      args.keys.reject {|key| key.is_a?(Symbol) }.each {|key| args[key.to_sym] = args.delete(key) }
 
       [:major, :minor].each do |param|
         raise ArgumentError.new("The #{param.to_s} parameter is required") if args[param].blank?
@@ -31,9 +31,16 @@ class AppVersion
       @build      = args[:build].to_s     unless args[:build].blank?
       @branch     = args[:branch].to_s    unless args[:branch].blank?
       @committer  = args[:committer].to_s unless args[:committer].blank?
+      @format     = args[:format].to_s    unless args[:format].blank?
 
       unless args[:build_date].blank?
-        @build_date = Date.parse(args[:build_date].to_s)
+        b_date = case args[:build_date]
+             when 'git-revdate'
+               get_revdate_from_git
+             else
+               args[:build_date].to_s
+             end
+        @build_date = Date.parse(b_date)
       end
 
       @build = case args[:build]
@@ -95,13 +102,17 @@ class AppVersion
   end
 
   def to_s
-    str = "#{major}.#{minor}"
-    str << ".#{patch}" unless patch.blank?
-    str << " M#{milestone}" unless milestone.blank?
-    str << " (#{build})" unless build.blank?
-    str << " of #{branch}" unless branch.blank?
-    str << " by #{committer}" unless committer.blank?
-    str << " on #{build_date}" unless build_date.blank?
+    if @format
+      str = eval(@format.to_s.inspect)
+    else
+      str = "#{major}.#{minor}"
+      str << ".#{patch}" unless patch.blank?
+      str << " M#{milestone}" unless milestone.blank?
+      str << " (#{build})" unless build.blank?
+      str << " of #{branch}" unless branch.blank?
+      str << " by #{committer}" unless committer.blank?
+      str << " on #{build_date}" unless build_date.blank?
+    end
     str
   end
 
@@ -117,10 +128,16 @@ private
 
   def get_revcount_from_git
     if File.exists?(".git")
-      `git rev-list HEAD|wc -l`.strip
+      `git rev-list --count HEAD`.strip
     end
   end
-
+  
+  def get_revdate_from_git
+    if File.exists?(".git")
+      `git show --date=short --pretty=format:%cd|head -n1`.strip
+    end
+  end
+  
   def get_hash_from_git
     if File.exists?(".git")
       `git show --pretty=format:%H|head -n1|cut -c 1-6`.strip
@@ -128,6 +145,6 @@ private
   end
 end
 
-if defined?(RAILS_ROOT) && File.exists?("#{RAILS_ROOT}/config/version.yml")
-  APP_VERSION = AppVersion.load "#{RAILS_ROOT}/config/version.yml"
+if defined?(Rails.root.to_s) && File.exists?("#{(Rails.root.to_s)}/config/version.yml")
+  APP_VERSION = AppVersion.load "#{(Rails.root.to_s)}/config/version.yml"
 end
