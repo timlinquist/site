@@ -17,3 +17,4 @@ gem "newrelic_rpm"
 gem 'modelizer', '= 3.0.0'
 gem 'autotest'
 gem 'calendar_date_select', '= 1.16.1'
+gem 'event-calendar', :require => 'event_calendar'
