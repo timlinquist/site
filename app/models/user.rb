@@ -91,7 +91,7 @@ class User < ActiveRecord::Base
   def password_reset password
     self.password = password
     save
-    UserMail.deliver_reset_email self, password
+    UserMail.reset_email(self, password).deliver
   end
 
   def hash_and_salt_password
@@ -112,7 +112,7 @@ class User < ActiveRecord::Base
 
   def welcome_email
     User.record_activity self, "Welcome email has been sent"
-    UserMailer.deliver_welcome_email(self)
+    UserMailer.welcome_email(self).deliver
   end
 
   def full_name
