@@ -6,7 +6,7 @@ gem 'sqlite3'
 gem "uuid",          "= 2.3.1"
 gem "will_paginate", "~> 3.0.2"
 gem "haml",          "= 3.0.6"
-gem "paperclip",     "= 2.3.1.1"
+gem "paperclip", "~> 2.4"
 gem "rvideo"
 gem "rdiscount"
 gem "disqus"

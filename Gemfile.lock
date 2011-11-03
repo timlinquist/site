@@ -33,6 +33,7 @@ GEM
     autotest (4.4.6)
       ZenTest (>= 4.4.1)
     builder (2.1.2)
+    cocaine (0.2.0)
     disqus (1.0.4)
       json
     erubis (2.6.6)
@@ -51,7 +52,11 @@ GEM
     modelizer (3.0.0)
     newrelic_rpm (3.2.0.1)
     oauth (0.4.5)
-    paperclip (2.3.1.1)
+    paperclip (2.4.5)
+      activerecord (>= 2.3.0)
+      activesupport (>= 2.3.2)
+      cocaine (>= 0.0.2)
+      mime-types
     polyglot (0.3.3)
     rack (1.2.4)
     rack-mount (0.6.14)
@@ -106,7 +111,7 @@ DEPENDENCIES
   haml (= 3.0.6)
   modelizer (= 3.0.0)
   newrelic_rpm
-  paperclip (= 2.3.1.1)
+  paperclip (~> 2.4)
   rails (= 3.0.9)
   rdiscount
   rest-client
