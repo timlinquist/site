@@ -1,40 +1,13 @@
 ENV["RAILS_ENV"] = "test"
-require File.expand_path(File.dirname(__FILE__) + "/../config/environment")
-require 'test_help'
-
-require 'modelizer'
-
-Intercession.test!
+require File.expand_path('../../config/environment', __FILE__)
+require 'rails/test_help'
 
 class ActiveSupport::TestCase
-  self.use_transactional_fixtures = true
-  self.use_instantiated_fixtures  = false
-
+  # Setup all fixtures in test/fixtures/*.(yml|csv) for all tests in alphabetical order.
+  #
+  # Note: You'll currently still have to declare fixtures explicitly in integration tests
+  # -- they do not yet inherit this setting
   fixtures :all
 
-  def refute expr, message = nil
-    assert !expr, message
-  end
-
-  alias :refute_equal :assert_not_equal
-
-  def login user, password = "123456", &block
-    user = users(user) if Symbol === user
-    @request.session[:user_id] = user.id
-
-    if block_given?
-      yield user
-      @controller.session[:user_id] = nil
-    end
-
-    user
-  end
-
-  def logout
-    @request.session[:user_id] = nil
-  end
-end
-
-class Test::Unit::TestCase
-  include Modelizer
+  # Add more helper methods to be used by all tests here...
 end
