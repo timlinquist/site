@@ -39,6 +39,12 @@ class Presenter < ActiveRecord::Base
     end
   end
 
+  def twitter_name
+    if twitter_handle
+      twitter_handle.gsub("@","")
+    end
+  end
+
   def last_first
     "#{last_name}, #{first_name}"
   end

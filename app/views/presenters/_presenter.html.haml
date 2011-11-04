@@ -5,5 +5,8 @@
         .profile_picture
           =image_tag(presenter.avatar_url(:avatar_size => :tiny, :size => 50)) unless presenter.avatar_url.nil?
       =link_to presenter.display_name, presenter
+      -if presenter.twitter_handle
+        %br
+        =link_to presenter.twitter_handle, "http://twitter.com/#{presenter.twitter_name}", :target => "blank"
       %br
       ="Videos: #{presenter.videos.available.count}"
