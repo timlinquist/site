@@ -1,4 +1,5 @@
-gem "rails",         "= 2.3.11"
+gem "rake", "0.8.7"
+gem "rails",         "= 2.3.14"
 gem "uuid",          "= 2.3.1"
 gem "will_paginate", "= 2.3.14"
 gem "haml",          "= 3.0.6"
