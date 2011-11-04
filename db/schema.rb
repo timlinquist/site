@@ -9,7 +9,7 @@
 #
 # It's strongly recommended to check this file into your version control system.
 
-ActiveRecord::Schema.define(:version => 20110725075252) do
+ActiveRecord::Schema.define(:version => 20111104135041) do
 
   create_table "activities", :force => true do |t|
     t.string   "message"
@@ -126,6 +126,7 @@ ActiveRecord::Schema.define(:version => 20110725075252) do
     t.datetime "created_at"
     t.datetime "updated_at"
     t.integer  "user_id"
+    t.string   "twitter_handle"
   end
 
   create_table "rooms", :force => true do |t|
