@@ -9,3 +9,7 @@ public/system/users/avatars/*/
 public/system/videos/images/*/
 .DS_Store
 *.sql
+
+config/settings.local.yml
+config/settings/*.local.yml
+config/environments/*.local.yml
