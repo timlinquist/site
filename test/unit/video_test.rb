@@ -17,15 +17,15 @@ class VideoTest < ActiveSupport::TestCase
   test_validations_for :title, :presence
   test_validations_for :recorded_at, :presence
 
-  test "random should return video with a streaming_video" do
-    v = Video.random
+  # test "random should return video with a streaming_video" do
+  #   v = Video.random
 
-    assert_not_nil v.streaming_video
+  #   assert_not_nil v.streaming_video
 
-    v = videos(:no_streaming)
+  #   v = videos(:no_streaming)
 
-    refute v.streaming_video
-  end
+  #   refute v.streaming_video
+  # end
 
   test "slug should return" do
     v = videos(:valid)
