@@ -26,11 +26,11 @@ Confreaks::Application.routes.draw do
   # resources :redirects do
   #   resources :videos, :controller => 'redirects'
   # end
-  # resources :videos do
+  resources :videos #do
   #   resources :assets
   # end
   # resources :feeds, :only => [:index, :show]
-  # resources :presenters
+  resources :presenters
   # resources :conferences
   
   match "/admin", :to => 'admin/root#index', :as => 'admin'
