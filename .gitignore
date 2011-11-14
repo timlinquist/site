@@ -3,6 +3,7 @@ db/*.sqlite3
 log/*.log
 tmp/
 public/system/events/logos/*/
+public/system/assets/data/*/
 public/system/assets/datas/*/
 public/system/users/avatars/*/
 public/system/videos/images/*/
