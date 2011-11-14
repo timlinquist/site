@@ -19,9 +19,10 @@ Confreaks::Application.routes.draw do
 
   match "/redirects/:redirect_id/videos/videos/:id.mp4", :to => 'redirects#file_redirect' # FIXME: this one ain't tested!
 
-  # resources :users
+  resources :users
   resource  :session, :member => { :reset => [:get, :post] }
-  # resources :events, :member => { :missing_event => [:get] }
+  resources :events, :member => { :missing_event => [:get] }
+
   # resources :redirects do
   #   resources :videos, :controller => 'redirects'
   # end
