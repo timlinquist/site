@@ -16,7 +16,7 @@ gem "zencoder"
 gem "newrelic_rpm"
 gem 'modelizer', '= 3.0.0'
 gem 'autotest'
-gem 'calendar_date_select', '= 1.16.1'
 gem 'event-calendar', :require => 'event_calendar'
 gem 'liangzan-intercession'
-
+gem 'calendar_date_select', :git => 'git://github.com/paneq/calendar_date_select.git'
+gem "rails_config"

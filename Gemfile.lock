@@ -1,3 +1,9 @@
+GIT
+  remote: git://github.com/paneq/calendar_date_select.git
+  revision: 977048211b94599fe0f08eb37a481f3d69df48f6
+  specs:
+    calendar_date_select (1.16.2)
+
 GEM
   remote: http://rubygems.org/
   specs:
@@ -33,7 +39,6 @@ GEM
     autotest (4.4.6)
       ZenTest (>= 4.4.1)
     builder (2.1.2)
-    calendar_date_select (1.16.1)
     cocaine (0.2.0)
     disqus (1.0.4)
       json
@@ -74,6 +79,8 @@ GEM
       activesupport (= 3.0.9)
       bundler (~> 1.0)
       railties (= 3.0.9)
+    rails_config (0.2.5)
+      activesupport (>= 3.0)
     railties (3.0.9)
       actionpack (= 3.0.9)
       activesupport (= 3.0.9)
@@ -110,7 +117,7 @@ PLATFORMS
 
 DEPENDENCIES
   autotest
-  calendar_date_select (= 1.16.1)
+  calendar_date_select!
   disqus
   event-calendar
   haml (= 3.1.2)
@@ -119,6 +126,7 @@ DEPENDENCIES
   newrelic_rpm
   paperclip (~> 2.4)
   rails (= 3.0.9)
+  rails_config
   rdiscount
   rest-client
   rvideo
