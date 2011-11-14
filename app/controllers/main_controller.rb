@@ -1,3 +1,5 @@
+require 'confreaks/parse_user_agent'
+
 class MainController < ApplicationController
   def home_page
     recents
