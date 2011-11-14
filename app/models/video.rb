@@ -65,15 +65,9 @@ class Video < ActiveRecord::Base
   end
 
   def self.random
-      if Rails.env == "production" || Rails.env == "development"
-        order = 'rand()'
-      else
-        order = 'random()'
-      end
-
-      Video.find(:first,
-                 :conditions => ["streaming_asset_id is not null and available = ? and recorded_at >= ?", true, Date.today - 365 ],
-                 :order => order)
+    videos = Video.find(:all,
+                        :conditions => ["streaming_asset_id is not null and available = ? and recorded_at >= ?", true, Date.today - 365 ])
+    videos[rand(videos.size)]
   end
 
   def to_param
