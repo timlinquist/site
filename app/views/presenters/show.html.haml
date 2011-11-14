@@ -4,7 +4,7 @@
   =render :partial => 'presenters/events', :locals => { :events => @presenter.events }
 .profile_header
   .video-twitter
-    =link_to 'Tweet', 'http://twitter.com/share', :class => 'twitter-share-button', 'data-text' => "#See all of {@presenter.display_name}'s Presentations", 'data-count' => 'vertical', 'data-via' => 'confreaks'
+    =link_to 'Tweet', 'http://twitter.com/share', :class => 'twitter-share-button', 'data-text' => "See all of #{@presenter.display_name}'s #{@presenter.twitter_handle} Presentations", 'data-count' => 'vertical', 'data-via' => 'confreaks'
     =javascript_include_tag 'http://platform.twitter.com/widgets.js', :type => 'text/javascript'
   .profile_picture
     =image_tag(@presenter.avatar_url(:avatar_size => :small, :size => 80)) unless @presenter.avatar_url.nil?
