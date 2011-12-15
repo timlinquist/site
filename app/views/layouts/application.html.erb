@@ -21,6 +21,15 @@
     <%=javascript_include_tag :defaults %>
     <%=calendar_date_select_includes %>
     <%=yield(:head) %>
+    <script type="text/javascript">
+      window.onload=function(){
+      var key = "abeb6636-a53b-49c2-a37c-d596084495e7";
+      var host = "http://logs.loggly.com";
+      castor = new loggly({ url: host+'/inputs/'+key+'?rt=1', level: 'log'});
+      castor.log("url="+window.location.href + " browser=" + castor.user_agent + " height=" + castor.browser_size.height);
+      }
+    </script>
+    <script type="text/javascript" src="http://d3eyf2cx8mbems.cloudfront.net/js/loggly-0.1.0.js"></script>
   </head>
   <body>
     <%=render :partial => 'shared/header'%>
