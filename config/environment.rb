@@ -24,3 +24,4 @@ end
 require 'will_paginate'
 require 'rdiscount'
 require 'newrelic_rpm'
+require 'paperclip'
