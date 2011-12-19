@@ -45,7 +45,7 @@ class Video < ActiveRecord::Base
 
   @@per_page = 25
 
-  def self.search(search, all)
+  def self.search(search, all = "1")
     if all == "1"
       puts "Searching with find"
       if search

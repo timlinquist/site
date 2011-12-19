@@ -16,5 +16,6 @@ gem "ruby-mysql", "=2.9.3", :lib => 'mysql'
 env :development, :test do
   gem "modelizer"
   gem "sqlite3"
+  gem "rdoc"
 end
 
