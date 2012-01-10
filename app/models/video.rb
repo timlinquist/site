@@ -71,9 +71,12 @@ class Video < ActiveRecord::Base
         order = 'random()'
       end
 
-      Video.find(:first,
+      begin
+        random_video = Video.find(:first,
                  :conditions => ["streaming_asset_id is not null and available = ? and recorded_at >= ?", true, Date.today - 365 ],
                  :order => order)
+      end while !random_video.event.ready?
+    return random_video
   end
 
   def to_param
