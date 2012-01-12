@@ -41,7 +41,7 @@ class VideosController < ApplicationController
 
     @video = Video.find(params[:id])
 
-    if @video.available? || (session.user && session.user.admin?)
+    if (@video.available? && @video.event.ready?) || (session.user && session.user.admin?)
       @videos = Video.available.find(:all,
                          :conditions => ['event_id = ?',
                                          @video.event_id],

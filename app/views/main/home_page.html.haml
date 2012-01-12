@@ -11,7 +11,7 @@
       .small
         Sorry the HTML5 player is not yet working on the iPhone. I need to finish a few conferences before I spend time figuring out the codec issues, that are preventing the videos from playing properly
     -unless (@p.browser == "Firefox" && @p.browser_version_major.to_i < 4) || iphone_user_agent?
-      .small 
+      .small
         Change video player:
         =link_to_unless_current 'HTML5', video_path(@video) + "?player=html5"
         ="/"
