@@ -20,7 +20,7 @@ set :branch, 'master'
 
 #set :deploy_via, :copy
 
-set :application, "confreaks.net"
+set :application, ""
 
 set :home_dir, "/home/#{user}"
 
@@ -37,6 +37,10 @@ when 'production'
   set :application, "www.#{domain}"
   role :web, domain
   role :app, domain
+when 'bluebox'
+  set :application, "www.#{domain}"
+  role :web, "confreaks.com"
+  role :app, "confreaks.com"
 else
   puts fail_message
   exit
