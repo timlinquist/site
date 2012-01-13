@@ -56,7 +56,7 @@ namespace :presentations do
             file_name = "#{RAILS_ROOT}/../../shared#{asset.data.url.split("?")[0]}"
             unless File.exists?(file_name)
               puts "\t\tMissing file: #{file_name}"
-              `scp cfprod@confreaks.net:~/www.confreaks.net/shared#{asset.data.url.split("?")[0]} /home/deploy/www.confreaks.net/shared/#{asset.data.url.split("?")[0]`
+              `scp cfprod@confreaks.net:~/www.confreaks.net/shared#{asset.data.url.split("?")[0]} /home/deploy/www.confreaks.net/shared/#{asset.data.url.split("?")[0]}`
             end
           end
         end
