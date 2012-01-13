@@ -15,7 +15,7 @@ ssh_options[:forward_agent] = true
 set :scm, 'git'
 set :scm_username, 'deploy'
 set :scm_password, 'confreaks-deploy'
-set :repository, "git@github.com:confreaks/site"
+set :repository, "git://github.com/confreaks/site.git"
 set :branch, 'master'
 
 set :home_dir, "/home/#{user}"
