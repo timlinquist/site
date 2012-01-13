@@ -2,7 +2,7 @@ namespace :presentations do
   desc "List any missing assets"
   task :validate, [:short_code] => :environment do | t, args |
     if args[:short_code] == "all"
-      events = Event.find(:all, :conditions => ["ready =?", true])
+      events = Event.find(:all, :conditions => ["ready =?", true], :order => "")
     else
       event = Event.find_by_identifier(args[:short_code])
       events = [event] unless event.nil?
@@ -29,6 +29,39 @@ namespace :presentations do
         end
       end
     end
+  end
+
+  desc "Copy any missing assets"
+  task :fix, [:short_code] => :environment do |t, args|
+    if args[:short_code] == "all"
+      events = Event.find(:all, :conditions => ["ready =?", true], :order => "")
+    else
+      event = Event.find_by_identifier(args[:short_code])
+      events = [event] unless event.nil?
+    end
+
+    if events.nil?
+      puts "No event #{args[:short_code]} found"
+      exit
+    end
+
+    events.each do |event|
+      puts "#{event.short_code}"
+      event.videos.each do |video|
+        puts "\t#{video.title}"
+        if video.assets.count == 0
+          puts "\t\tNo assets defined."
+        else
+          video.assets.each do |asset|
+            file_name = "#{RAILS_ROOT}/../../shared#{asset.data.url.split("?")[0]}"
+            unless File.exists?(file_name)
+              puts "\t\tMissing file: #{file_name}"
+              `scp cfprod@confreaks.net:~/www.confreaks.net/shared#{asset.data.url.split("?")[0]} /home/deploy/www.confreaks.net/shared/#{asset.data.url.split("?")[0]`
+            end
+          end
+        end
+      end
+    end    
   end
 end
 
