@@ -21,7 +21,7 @@ namespace :presentations do
           puts "\t\tNo assets defined."
         else
           video.assets.each do |asset|
-            file_name = "#{RAILS_ROOT}#{asset.data.url.split("?")[0]}"
+            file_name = "#{RAILS_ROOT}/../..#{asset.data.url.split("?")[0]}"
             unless File.exists?(file_name)
               puts "\t\tMissing file: #{file_name}"
             end
