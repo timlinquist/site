@@ -25,4 +25,4 @@ production:
   database: cfv2a
   username: cfv2a
   password: confreaks
-  host: mysql.confreaks.net
+  host: localhost
