@@ -11,15 +11,29 @@ GEM
     activeresource (2.3.14)
       activesupport (= 2.3.14)
     activesupport (2.3.14)
+    capistrano (2.9.0)
+      highline
+      net-scp (>= 1.0.0)
+      net-sftp (>= 2.0.0)
+      net-ssh (>= 2.0.14)
+      net-ssh-gateway (>= 1.1.0)
     disqus (1.0.4)
       json
     haml (3.0.6)
+    highline (1.6.9)
     json (1.6.4)
     macaddr (1.5.0)
       systemu (>= 2.4.0)
     mime-types (1.17.2)
     multi_json (1.0.4)
     mysql (2.8.1)
+    net-scp (1.0.4)
+      net-ssh (>= 1.99.1)
+    net-sftp (2.0.5)
+      net-ssh (>= 2.0.9)
+    net-ssh (2.3.0)
+    net-ssh-gateway (1.1.0)
+      net-ssh (>= 1.99.1)
     newrelic_rpm (3.3.1)
     oauth (0.4.5)
     paperclip (2.3.1.1)
@@ -51,6 +65,7 @@ PLATFORMS
   ruby
 
 DEPENDENCIES
+  capistrano
   disqus
   haml (= 3.0.6)
   mysql
