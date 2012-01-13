@@ -4,7 +4,7 @@ fail_message = "\nInvalid deploy_env specified\n\tUsage: cap {command} -S deploy
 
 begin; deploy_env; rescue NameError; set :deploy_env, 'integration' end
 
-set :user, 'cfprod'
+set :user, 'deploy'
 set :domain, 'confreaks.net'
 set :use_sudo, false
 
