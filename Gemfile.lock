@@ -26,7 +26,6 @@ GEM
       systemu (>= 2.4.0)
     mime-types (1.17.2)
     multi_json (1.0.4)
-    mysql (2.8.1)
     net-scp (1.0.4)
       net-ssh (>= 1.99.1)
     net-sftp (2.0.5)
@@ -49,6 +48,7 @@ GEM
     rdiscount (1.6.8)
     rest-client (1.6.7)
       mime-types (>= 1.16)
+    ruby-mysql (2.9.4)
     rvideo (0.9.3)
     systemu (2.4.2)
     twitter_oauth (0.4.3)
@@ -68,13 +68,13 @@ DEPENDENCIES
   capistrano
   disqus
   haml (= 3.0.6)
-  mysql
   newrelic_rpm
   paperclip (= 2.3.1.1)
   rails (= 2.3.14)
-  rake (= 0.8.7)
+  rake
   rdiscount
   rest-client
+  ruby-mysql
   rvideo
   twitter_oauth
   uuid (= 2.3.1)

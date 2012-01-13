@@ -1,6 +1,6 @@
 source :gemcutter
 
-gem "rake", "0.8.7"
+gem "rake"
 gem "rails",         "= 2.3.14"
 gem "uuid",          "= 2.3.1"
 gem "will_paginate", "= 2.3.14"
@@ -13,5 +13,5 @@ gem "twitter_oauth"
 gem "rest-client"
 gem "zencoder"
 gem "newrelic_rpm"
-gem "mysql"
+gem "ruby-mysql"
 gem "capistrano"

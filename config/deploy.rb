@@ -19,10 +19,6 @@ set :scm_password, 'confreaks-deploy'
 set :repository, "git@github.com:confreaks/site"
 set :branch, 'master'
 
-#set :deploy_via, :copy
-
-set :application, ""
-
 set :home_dir, "/home/#{user}"
 
 case deploy_env
