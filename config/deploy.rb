@@ -7,7 +7,6 @@ begin; deploy_env; rescue NameError; set :deploy_env, 'integration' end
 set :user, 'deploy'
 set :domain, 'confreaks.net'
 set :use_sudo, false
-set :deploy_via, :copy
 
 # version control config
 
