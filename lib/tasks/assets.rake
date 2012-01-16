@@ -33,7 +33,7 @@ namespace :presentations do
               size = File.size(file_name)
               unless size == asset.data_file_size
                 puts "\t\tFile Size mismatch: #{number_to_human_size(size)} vs. #{number_to_human_size(asset.data_file_size)}"
-                if argss[:fix]
+                if args[:fix]
                   `scp cfprod@confreaks.net:~/www.confreaks.net/shared#{asset.data.url.split("?")[0]} /home/deploy/www.confreaks.net/shared/#{asset.data.url.split("?")[0]}`
                 end
               end
