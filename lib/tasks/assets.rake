@@ -34,7 +34,7 @@ namespace :presentations do
   desc "Copy any missing assets"
   task :fix, [:short_code] => :environment do |t, args|
     if args[:short_code] == "all"
-      events = Event.find(:all, :conditions => ["ready =?", true], :order => "")
+      events = Event.find(:all, :conditions => ["ready =?", true], :order => "short_code")
     else
       event = Event.find_by_identifier(args[:short_code])
       events = [event] unless event.nil?
@@ -54,9 +54,14 @@ namespace :presentations do
         else
           video.assets.each do |asset|
             file_name = "#{RAILS_ROOT}/../../shared#{asset.data.url.split("?")[0]}"
+
             unless File.exists?(file_name)
               puts "\t\tMissing file: #{file_name}"
               `scp cfprod@confreaks.net:~/www.confreaks.net/shared#{asset.data.url.split("?")[0]} /home/deploy/www.confreaks.net/shared/#{asset.data.url.split("?")[0]}`
+            else
+              size = File.size(file_name)
+              puts "\t\t\t#{size} vs. #{video.assets.file_size}"
+
             end
           end
         end
