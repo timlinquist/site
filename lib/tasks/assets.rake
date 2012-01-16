@@ -70,7 +70,7 @@ namespace :presentations do
               unless size == video.assets.data_file_size
                 puts "\t\tFile Size mismatch: #{size} vs. #{video.assets.data_file_size}"
               `scp cfprod@confreaks.net:~/www.confreaks.net/shared#{asset.data.url.split("?")[0]} /home/deploy/www.confreaks.net/shared/#{asset.data.url.split("?")[0]}`
-
+              end
             end
           end
         end
