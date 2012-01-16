@@ -60,13 +60,13 @@ namespace :presentations do
               `scp cfprod@confreaks.net:~/www.confreaks.net/shared#{asset.data.url.split("?")[0]} /home/deploy/www.confreaks.net/shared/#{asset.data.url.split("?")[0]}`
             else
               size = File.size(file_name)
-              puts "\t\t\t#{size} vs. #{video.assets.file_size}"
+              puts "\t\t\t#{size} vs. #{video.assets.data_file_size}"
 
             end
           end
         end
       end
-    end    
+    end
   end
 end
 
@@ -84,7 +84,7 @@ namespace :presentation do
       puts "No presentations found matching '#{args[:search_string]}"
     end
   end
-  
+
   namespace :attach do
     desc "Attach Primary Video File"
     task :primary_video, [:video_id, :file_name] => :environment do | t, args |
