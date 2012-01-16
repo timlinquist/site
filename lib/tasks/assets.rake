@@ -1,8 +1,10 @@
 namespace :presentations do
   desc "List any missing assets"
   task :validate, [:short_code] => :environment do | t, args |
+    include ActionView::Helpers
+
     if args[:short_code] == "all"
-      events = Event.find(:all, :conditions => ["ready =?", true], :order => "")
+      events = Event.find(:all, :conditions => ["ready =?", true], :order => "short_code")
     else
       event = Event.find_by_identifier(args[:short_code])
       events = [event] unless event.nil?
@@ -24,6 +26,11 @@ namespace :presentations do
             file_name = "#{RAILS_ROOT}/../../shared#{asset.data.url.split("?")[0]}"
             unless File.exists?(file_name)
               puts "\t\tMissing file: #{file_name}"
+            else
+              size = File.size(file_name)
+              #unless size == asset.data_file_size
+                puts "\t\tFile Size mismatch: #{number_to_human_size(size)} vs. #{number_to_human_size(asset.data_file_size)}"
+              #end
             end
           end
         end
@@ -60,7 +67,9 @@ namespace :presentations do
               `scp cfprod@confreaks.net:~/www.confreaks.net/shared#{asset.data.url.split("?")[0]} /home/deploy/www.confreaks.net/shared/#{asset.data.url.split("?")[0]}`
             else
               size = File.size(file_name)
-              puts "\t\t\t#{size} vs. #{video.assets.data_file_size}"
+              unless size == video.assets.data_file_size
+                puts "\t\tFile Size mismatch: #{size} vs. #{video.assets.data_file_size}"
+              `scp cfprod@confreaks.net:~/www.confreaks.net/shared#{asset.data.url.split("?")[0]} /home/deploy/www.confreaks.net/shared/#{asset.data.url.split("?")[0]}`
 
             end
           end
