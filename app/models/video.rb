@@ -66,6 +66,8 @@ class Video < ActiveRecord::Base
 
     final_results = search_results.select{ |v| v.event.ready? }
 
+    puts "SR: #{search_results.count} | FR: #{final_results.count}"
+
     return final_results
   end
 
