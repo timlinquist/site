@@ -47,21 +47,26 @@ class Video < ActiveRecord::Base
 
   def self.search(search, all = "1")
     if all == "1"
-      puts "Searching with find"
       if search
-        self.find(:all, :conditions => ['title like ?', "%#{search}%"],
+        search_results = self.find(:all, 
+                       :conditions => ['title like ?', "%#{search}%"],
                        :order => 'post_date desc')
       else
-        self.find(:all, :order => 'post_date desc')
+        search_results = self.find(:all, :order => 'post_date desc')
       end
     else
       if search
-        available.find(:all, :conditions => ['title like ?', "%#{search}%"],
+        search_results = available.find(:all, 
+             :conditions => ['title like ?', "%#{search}%"],
              :order => 'post_date desc')
       else
-        available.find(:all, :order => 'post_date desc')
+        search_results = available.find(:all, :order => 'post_date desc')
       end
     end
+
+    final_results = search_results.select{ |v| v.event.ready? }
+
+    return final_results
   end
 
   def self.random
